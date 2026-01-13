@@ -88,7 +88,6 @@ body {
 /* ===== END HAMBURGER MENU FIX ===== */
 
 /* Language selector sizing */
-/* Language selector - compact and clean */
 .language-selector {
     background-color: white !important;
     color: #122942 !important;
@@ -332,4 +331,130 @@ body {
     width: 100%;
     height: 100%;
     object-fit: cover;
+}
+
+/* Contact Page Styles */
+.contact-info-section {
+    padding: 2rem;
+    background-color: #f8f9fa;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.contact-title {
+    color: #122942;
+    font-weight: 700;
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+}
+
+.contact-item {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: #333;
+}
+
+.contact-item strong {
+    color: #122942;
+    display: inline-block;
+    min-width: 80px;
+}
+
+.contact-link {
+    color: #FF8800;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.contact-link:hover {
+    color: #122942;
+    text-decoration: underline;
+}
+
+.social-media-section h5 {
+    color: #122942;
+    font-weight: 600;
+}
+
+.social-icon {
+    display: inline-block;
+    transition: transform 0.3s ease;
+}
+
+.social-icon:hover {
+    transform: translateY(-5px);
+}
+
+.social-img {
+    width: 50px;
+    height: 50px;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.3s ease;
+}
+
+.social-icon:hover .social-img {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.map-section {
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.map-img {
+    width: 100%;
+    height: auto;
+    display: block;
+    transition: transform 0.3s ease;
+}
+
+.map-img:hover {
+    transform: scale(1.02);
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+    .contact-info-section {
+        padding: 1.5rem;
+        margin-bottom: 2rem;
+        text-align: center;
+    }
+
+    .contact-title {
+        font-size: 1.75rem;
+    }
+
+    .contact-item {
+        font-size: 1rem;
+    }
+
+    .contact-item strong {
+        display: block;
+        margin-bottom: 0.25rem;
+    }
+
+    .social-media-section .d-flex {
+        justify-content: center !important;
+    }
+
+    .map-section {
+        margin-top: 1rem;
+    }
+}
+
+@media (max-width: 576px) {
+    .contact-title {
+        font-size: 1.5rem;
+    }
+
+    .contact-item {
+        font-size: 0.95rem;
+    }
+
+    .social-img {
+        width: 45px;
+        height: 45px;
+    }
 }
