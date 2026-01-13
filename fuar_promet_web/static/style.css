@@ -10,10 +10,24 @@ body {
 /* ================= NAVBAR ================= */
 .navbar {
     border-bottom: 2px solid #38240D;
+    padding: 0.5rem 1rem;
+    background-color: #fefefe !important;
+
+}
+
+.navbar-brand {
+    padding: 0;
+    margin: 0;
+}
+
+.navbar-brand img {
+    width: 70px;
+    height: auto;
+    display: block;
 }
 
 .navbar-nav .nav-item {
-    margin-right: 5rem;
+    margin-right: 3rem;
 }
 
 .navbar-nav .nav-item:last-child {
@@ -23,6 +37,8 @@ body {
 .navbar-nav .nav-link {
     color: #122942;
     transition: color 0.3s;
+    font-size: 0.9rem;
+    padding: 0.5rem 0.75rem;
 }
 
 .navbar-nav .nav-link:hover {
@@ -33,6 +49,12 @@ body {
 /* Hamburger */
 .navbar-toggler {
     border: 1px solid rgba(0,0,0,0.1);
+    padding: 0.4rem 0.6rem;
+}
+
+.navbar-toggler-icon {
+    width: 1.2em;
+    height: 1.2em;
 }
 
 @media (min-width: 992px) {
@@ -46,10 +68,10 @@ body {
     background-color: white !important;
     color: #122942 !important;
     border: 2px solid #122942 !important;
-    padding: 8px 16px !important;
+    padding: 6px 12px !important;
     border-radius: 6px !important;
-    width: 100px !important;
-    font-size: 0.875rem !important;
+    width: 80px !important;
+    font-size: 0.8rem !important;
     font-weight: 600 !important;
     cursor: pointer !important;
     transition: all 0.3s ease !important;
@@ -66,9 +88,9 @@ body {
     background-color: white !important;
     color: #122942 !important;
     border: 2px solid #122942 !important;
-    padding: 8px 16px !important;
+    padding: 6px 12px !important;
     border-radius: 6px !important;
-    font-size: 0.875rem !important;
+    font-size: 0.8rem !important;
     font-weight: 600 !important;
 }
 
@@ -83,9 +105,9 @@ body {
     background-color: white !important;
     color: #122942 !important;
     border: 2px solid #122942 !important;
-    padding: 8px 16px !important;
+    padding: 6px 12px !important;
     border-radius: 6px !important;
-    font-size: 0.875rem !important;
+    font-size: 0.8rem !important;
     font-weight: 600 !important;
     cursor: pointer !important;
     transition: all 0.3s ease !important;
@@ -98,6 +120,8 @@ body {
 
 .search-btn svg {
     transition: all 0.3s ease;
+    width: 14px;
+    height: 14px;
 }
 
 .search-btn:hover svg {
@@ -109,7 +133,7 @@ body {
     background-color: white !important;
     color: #122942 !important;
     border: 2px solid #122942 !important;
-    padding: 8px 12px !important;
+    padding: 6px 10px !important;
     border-radius: 6px !important;
     transition: all 0.3s ease !important;
 }
@@ -121,6 +145,8 @@ body {
 
 .mobile-search-btn svg {
     transition: all 0.3s ease;
+    width: 14px;
+    height: 14px;
 }
 
 .mobile-search-btn:hover svg {
@@ -131,6 +157,94 @@ body {
 #searchCollapse {
     background-color: #f8f9fa;
     border-top: 1px solid #dee2e6;
+}
+
+/* ================= HOME PAGE ================= */
+/* Hero Image */
+.home_img {
+    width: 100%;
+    height: auto;
+    display: block;
+    margin: 2rem 0;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+/* Slide-in Animations */
+.slide-in {
+    opacity: 0;
+    transform: translateY(30px);
+    animation: slideInUp 0.8s ease forwards;
+}
+
+.slide-in.delay-1 {
+    animation-delay: 0.2s;
+}
+
+.slide-in.delay-2 {
+    animation-delay: 0.4s;
+}
+
+@keyframes slideInUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Reveal Section */
+.reveal-section {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    margin-bottom: 4rem;
+    min-height: 300px;
+}
+
+.image-block {
+    overflow: hidden;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    height: 300px;
+}
+
+.image-block img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.3s ease;
+}
+
+.image-block:hover img {
+    transform: scale(1.05);
+}
+
+.empty-space {
+    background-color: #f8f9fa;
+    border-radius: 10px;
+    height: 300px;
+}
+
+/* Animation states */
+.from-left,
+.from-right {
+    opacity: 0;
+    transition: all 0.8s ease;
+}
+
+.from-left {
+    transform: translateX(-100px);
+}
+
+.from-right {
+    transform: translateX(100px);
+}
+
+.reveal-section.visible .from-left,
+.reveal-section.visible .from-right {
+    opacity: 1;
+    transform: translateX(0);
 }
 
 /* ================= CARDS ================= */
@@ -254,6 +368,36 @@ body {
 
 /* ================= MOBILE RESPONSIVENESS ================= */
 @media (max-width: 991px) {
+    /* Navbar */
+    .navbar-brand img {
+        width: 60px;
+    }
+
+    /* Typography - Headings */
+    h1 {
+        font-size: 1.75rem;
+    }
+
+    .display-4 {
+        font-size: 1.5rem;
+    }
+
+    /* Home Page Mobile */
+    .reveal-section {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+        min-height: auto;
+    }
+
+    .image-block {
+        height: 250px;
+    }
+
+    .empty-space {
+        display: none;
+    }
+
+    /* Contact Page Mobile */
     .contact-info-section {
         margin-bottom: 2rem;
     }
@@ -268,6 +412,40 @@ body {
 }
 
 @media (max-width: 768px) {
+    /* Navbar */
+    .navbar-nav .nav-item {
+        margin-right: 0;
+        margin-bottom: 0.5rem;
+    }
+
+    .navbar-brand img {
+        width: 55px;
+    }
+
+    /* Typography - Headings */
+    h1 {
+        font-size: 1.5rem;
+    }
+
+    .display-4 {
+        font-size: 1.35rem;
+        line-height: 1.4;
+    }
+
+    /* Home Page */
+    .home_img {
+        margin: 1rem 0;
+    }
+
+    .reveal-section {
+        margin-bottom: 2rem;
+    }
+
+    .image-block {
+        height: 220px;
+    }
+
+    /* Contact Page */
     .contact-title {
         font-size: 1.75rem;
     }
@@ -282,6 +460,32 @@ body {
 }
 
 @media (max-width: 576px) {
+    /* Navbar */
+    .navbar-brand img {
+        width: 50px;
+    }
+
+    /* Typography - Headings and Text */
+    h1 {
+        font-size: 1.25rem;
+    }
+
+    .display-4 {
+        font-size: 1.1rem;
+        line-height: 1.3;
+        font-weight: 400;
+    }
+
+    body {
+        font-size: 14px;
+    }
+
+    /* Home Page */
+    .image-block {
+        height: 200px;
+    }
+
+    /* Contact Page */
     .contact-info-section {
         padding: 1.5rem;
     }
