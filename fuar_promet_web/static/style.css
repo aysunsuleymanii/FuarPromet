@@ -1,6 +1,6 @@
 /* ================= BASE ================= */
 
-/* Force mobile viewport and prevent scaling issues */
+/* Standard box sizing for all elements */
 * {
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
@@ -8,9 +8,7 @@
 }
 
 html {
-    width: 100%;
-    max-width: 100%;
-    overflow-x: hidden;
+    /* Removed width: 100% and overflow-x: hidden to restore natural zoom behavior */
     -webkit-text-size-adjust: 100%;
     -ms-text-size-adjust: 100%;
     text-size-adjust: 100%;
@@ -22,12 +20,9 @@ body {
     font-weight: 600;
     margin: 0;
     padding: 0;
-    width: 100%;
-    max-width: 100%;
-    overflow-x: hidden;
-    -webkit-text-size-adjust: 100%;
-    -ms-text-size-adjust: 100%;
     position: relative;
+    /* Prevents horizontal scrolling from animations while allowing pinch-to-zoom */
+    overflow-x: hidden;
 }
 
 /* Force form elements to inherit font properties */
@@ -44,29 +39,28 @@ textarea {
     font-size: 16px !important;
 }
 
-/* Prevent horizontal overflow on all containers */
+/* Fix Bootstrap Container behavior */
 .container,
-.container-fluid,
-.row {
+.container-fluid {
+    width: 100%;
     max-width: 100%;
-    overflow-x: hidden;
+    padding-right: 15px;
+    padding-left: 15px;
 }
 
-/* Ensure images don't overflow */
+/* CRITICAL FIX: Reset negative margins on rows to prevent the "white gap" on the right */
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    margin-right: 0;
+    margin-left: 0;
+}
+
+/* Ensure images don't overflow their containers */
 img {
     max-width: 100%;
     height: auto;
-}
-
-/* Fix Bootstrap container widths on mobile */
-@media (max-width: 991px) {
-    .container,
-    .container-fluid {
-        padding-left: 15px;
-        padding-right: 15px;
-        width: 100% !important;
-        max-width: 100% !important;
-    }
+    display: block;
 }
 
 /* ================= NAVBAR ================= */
@@ -75,24 +69,16 @@ img {
     padding: 0.5rem 1rem;
     background-color: #fefefe !important;
     width: 100%;
-    max-width: 100%;
 }
 
 .navbar .container-fluid {
-    width: 100%;
     padding-left: 0.5rem;
     padding-right: 0.5rem;
-}
-
-.navbar-brand {
-    padding: 0;
-    margin: 0;
 }
 
 .navbar-brand img {
     width: 70px;
     height: auto;
-    display: block;
 }
 
 .navbar-nav .nav-item {
@@ -115,21 +101,9 @@ img {
     text-decoration: underline;
 }
 
-/* Hamburger */
 .navbar-toggler {
     border: 1px solid rgba(0,0,0,0.1);
     padding: 0.4rem 0.6rem;
-}
-
-.navbar-toggler-icon {
-    width: 1.2em;
-    height: 1.2em;
-}
-
-@media (min-width: 992px) {
-    .navbar-toggler {
-        display: none;
-    }
 }
 
 /* ================= LANGUAGE SELECTOR ================= */
@@ -152,8 +126,6 @@ img {
 }
 
 /* ================= SEARCH FUNCTIONALITY ================= */
-/* Search Input */
-.search-input,
 .form-control[type="search"] {
     background-color: white !important;
     color: #122942 !important;
@@ -161,18 +133,8 @@ img {
     padding: 6px 12px !important;
     border-radius: 6px !important;
     font-size: 16px !important;
-    font-weight: 600 !important;
 }
 
-.search-input:focus,
-.form-control[type="search"]:focus {
-    outline: none !important;
-    box-shadow: 0 0 0 0.2rem rgba(18, 41, 66, 0.25) !important;
-    border-color: #122942 !important;
-}
-
-/* Search Button */
-.search-btn,
 .btn-outline-secondary {
     background-color: white !important;
     color: #122942 !important;
@@ -180,66 +142,18 @@ img {
     padding: 6px 12px !important;
     border-radius: 6px !important;
     font-size: 16px !important;
-    font-weight: 600 !important;
-    cursor: pointer !important;
     transition: all 0.3s ease !important;
 }
 
-.search-btn:hover,
 .btn-outline-secondary:hover {
     background-color: #122942 !important;
     color: white !important;
 }
 
-.search-btn svg,
-.btn-outline-secondary svg {
-    transition: all 0.3s ease;
-    width: 14px;
-    height: 14px;
-}
-
-.search-btn:hover svg,
-.btn-outline-secondary:hover svg {
-    fill: white;
-}
-
-/* Mobile Search Icon Button */
-.mobile-search-btn {
-    background-color: white !important;
-    color: #122942 !important;
-    border: 2px solid #122942 !important;
-    padding: 6px 10px !important;
-    border-radius: 6px !important;
-    transition: all 0.3s ease !important;
-}
-
-.mobile-search-btn:hover {
-    background-color: #122942 !important;
-    color: white !important;
-}
-
-.mobile-search-btn svg {
-    transition: all 0.3s ease;
-    width: 14px;
-    height: 14px;
-}
-
-.mobile-search-btn:hover svg {
-    fill: white;
-}
-
-/* Search Collapse Section */
-#searchCollapse {
-    background-color: #f8f9fa;
-    border-top: 1px solid #dee2e6;
-}
-
 /* ================= HOME PAGE ================= */
-/* Hero Image */
 .home_img {
     width: 100%;
     height: auto;
-    display: block;
     margin: 2rem 0;
     border-radius: 10px;
     box-shadow: 0 4px 6px rgba(0,0,0,0.1);
@@ -252,13 +166,8 @@ img {
     animation: slideInUp 0.8s ease forwards;
 }
 
-.slide-in.delay-1 {
-    animation-delay: 0.2s;
-}
-
-.slide-in.delay-2 {
-    animation-delay: 0.4s;
-}
+.slide-in.delay-1 { animation-delay: 0.2s; }
+.slide-in.delay-2 { animation-delay: 0.4s; }
 
 @keyframes slideInUp {
     to {
@@ -274,6 +183,7 @@ img {
     gap: 2rem;
     margin-bottom: 4rem;
     min-height: 300px;
+    overflow: hidden; /* Important for horizontal animations */
 }
 
 .image-block {
@@ -287,13 +197,10 @@ img {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    display: block;
     transition: transform 0.3s ease;
 }
 
-.image-block:hover img {
-    transform: scale(1.05);
-}
+.image-block:hover img { transform: scale(1.05); }
 
 .empty-space {
     background-color: #f8f9fa;
@@ -302,19 +209,13 @@ img {
 }
 
 /* Animation states */
-.from-left,
-.from-right {
+.from-left, .from-right {
     opacity: 0;
     transition: all 0.8s ease;
 }
 
-.from-left {
-    transform: translateX(-100px);
-}
-
-.from-right {
-    transform: translateX(100px);
-}
+.from-left { transform: translateX(-50px); } /* Reduced distance to prevent zoom triggers */
+.from-right { transform: translateX(50px); }
 
 .reveal-section.visible .from-left,
 .reveal-section.visible .from-right {
@@ -337,20 +238,11 @@ img {
     overflow: hidden;
 }
 
-.product-img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
-
 /* ================= CONTACT PAGE ================= */
 .contact-info-section {
     padding: 2rem;
     background-color: #f8f9fa;
     border-radius: 10px;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-    display: flex;
-    flex-direction: column;
 }
 
 .contact-title {
@@ -358,46 +250,6 @@ img {
     font-weight: 700;
     font-size: 2rem;
     margin-bottom: 1.5rem;
-}
-
-.contact-item {
-    font-size: 1.1rem;
-    margin-bottom: 1rem;
-}
-
-.contact-item strong {
-    color: #122942;
-    min-width: 80px;
-    display: inline-block;
-}
-
-.contact-link {
-    color: #FF8800 !important;
-    text-decoration: none !important;
-    font-weight: 600;
-}
-
-.contact-link:hover {
-    color: #122942 !important;
-    text-decoration: underline !important;
-}
-
-/* ================= SOCIAL MEDIA SECTION ================= */
-.social-media-section {
-    margin-top: 2rem;
-}
-
-.social-media-section h5 {
-    color: #122942;
-    font-weight: 700;
-    margin-bottom: 1rem;
-}
-
-.social-icons-wrapper {
-    display: flex;
-    gap: 15px;
-    align-items: center;
-    flex-wrap: wrap;
 }
 
 .social-icon {
@@ -410,26 +262,14 @@ img {
     background-color: #ffffff;
     box-shadow: 0 2px 8px rgba(0,0,0,0.15);
     transition: all 0.3s ease;
-    text-decoration: none;
 }
 
-.social-icon img {
-    width: 24px;
-    height: 24px;
-    object-fit: contain;
-    display: block;
-}
-
-.social-icon:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-}
+.social-icon:hover { transform: translateY(-3px); }
 
 /* ================= MAP ================= */
 .map-section {
     border-radius: 10px;
     overflow: hidden;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
     min-height: 450px;
 }
 
@@ -438,152 +278,33 @@ img {
     height: 100%;
     min-height: 450px;
     border: 0;
-    display: block;
 }
 
 /* ================= MOBILE RESPONSIVENESS ================= */
+
 @media (max-width: 991px) {
-    /* Navbar */
-    .navbar-brand img {
-        width: 60px;
-    }
+    .navbar-brand img { width: 60px; }
+    .navbar-nav .nav-item { margin-right: 0; margin-bottom: 0.5rem; }
 
-    /* Typography - Headings */
-    h1 {
-        font-size: 1.75rem;
-    }
+    h1 { font-size: 1.75rem; }
+    .display-4 { font-size: 1.5rem; }
 
-    .display-4 {
-        font-size: 1.5rem;
-    }
-
-    /* Home Page Mobile */
     .reveal-section {
         grid-template-columns: 1fr;
         gap: 1.5rem;
         min-height: auto;
     }
-
-    .image-block {
-        height: 250px;
-    }
-
-    .empty-space {
-        display: none;
-    }
-
-    /* Contact Page Mobile */
-    .contact-info-section {
-        margin-bottom: 2rem;
-    }
-
-    .map-section {
-        min-height: 350px;
-    }
-
-    .map-section iframe {
-        min-height: 350px;
-    }
+    .empty-space { display: none; }
 }
 
 @media (max-width: 768px) {
-    /* Navbar */
-    .navbar-nav .nav-item {
-        margin-right: 0;
-        margin-bottom: 0.5rem;
-    }
-
-    .navbar-brand img {
-        width: 55px;
-    }
-
-    /* Typography - Headings */
-    h1 {
-        font-size: 1.5rem;
-    }
-
-    .display-4 {
-        font-size: 1.35rem;
-        line-height: 1.4;
-    }
-
-    /* Home Page */
-    .home_img {
-        margin: 1rem 0;
-    }
-
-    .reveal-section {
-        margin-bottom: 2rem;
-    }
-
-    .image-block {
-        height: 220px;
-    }
-
-    /* Contact Page */
-    .contact-title {
-        font-size: 1.75rem;
-    }
-
-    .contact-item {
-        font-size: 1rem;
-    }
-
-    .social-icons-wrapper {
-        justify-content: flex-start;
-    }
+    .image-block { height: 220px; }
+    .contact-title { font-size: 1.75rem; }
 }
 
 @media (max-width: 576px) {
-    /* Navbar */
-    .navbar-brand img {
-        width: 50px;
-    }
-
-    /* Typography - Headings and Text */
-    h1 {
-        font-size: 1.25rem;
-    }
-
-    .display-4 {
-        font-size: 1.1rem;
-        line-height: 1.3;
-        font-weight: 400;
-    }
-
-    body {
-        font-size: 14px;
-    }
-
-    /* Home Page */
-    .image-block {
-        height: 200px;
-    }
-
-    /* Contact Page */
-    .contact-info-section {
-        padding: 1.5rem;
-    }
-
-    .contact-title {
-        font-size: 1.5rem;
-    }
-
-    .social-icon {
-        width: 38px;
-        height: 38px;
-    }
-
-    .social-icon img {
-        width: 20px;
-        height: 20px;
-    }
-
-    .map-section {
-        min-height: 300px;
-    }
-
-    .map-section iframe {
-        min-height: 300px;
-    }
+    body { font-size: 14px; }
+    .navbar-brand img { width: 50px; }
+    .display-4 { font-size: 1.1rem; }
+    .map-section, .map-section iframe { min-height: 300px; }
 }
