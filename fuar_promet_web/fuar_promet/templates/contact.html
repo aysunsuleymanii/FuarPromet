@@ -4,56 +4,59 @@
 {% block title %}{% trans "Contact" %} - Fuar Promet{% endblock %}
 
 {% block content %}
-<div class="container my-5">
-    <div class="row g-4 align-items-stretch">
+<div class="container my-5 py-lg-4">
+    <div class="row g-0 overflow-hidden rounded-4 shadow-sm border">
 
-        <!-- Contact Info -->
-        <div class="col-lg-6">
-            <div class="contact-info-section h-100">
-                <h2 class="contact-title">{% trans "Contact Us" %}</h2>
+        <div class="col-lg-5 bg-white p-4 p-md-5">
+            <div class="contact-info-section">
+                <h2 class="contact-title mb-4">{% trans "Get in Touch" %}</h2>
 
-                <div class="contact-item">
-                    <strong>{% trans "Email" %}:</strong>
-                    <a href="mailto:info@fuarpromet.com.mk" class="contact-link">
-                        info@fuarpromet.com.mk
-                    </a>
+                <div class="contact-details">
+                    <div class="contact-item-box mb-4">
+                        <div class="icon-circle"><i class="bi bi-envelope"></i></div>
+                        <div>
+                            <small class="text-uppercase text-muted fw-bold d-block">{% trans "Email" %}</small>
+                            <a href="mailto:info@fuarpromet.com.mk" class="contact-link-new">info@fuarpromet.com.mk</a>
+                        </div>
+                    </div>
+
+                    <div class="contact-item-box mb-4">
+                        <div class="icon-circle"><i class="bi bi-telephone"></i></div>
+                        <div>
+                            <small class="text-uppercase text-muted fw-bold d-block">{% trans "Phone" %}</small>
+                            <a href="tel:+38970271156" class="contact-link-new">+389 70 271 156</a>
+                        </div>
+                    </div>
+
+                    <div class="contact-item-box mb-5">
+                        <div class="icon-circle"><i class="bi bi-geo-alt"></i></div>
+                        <div>
+                            <small class="text-uppercase text-muted fw-bold d-block">{% trans "Address" %}</small>
+                            <a href="https://maps.app.goo.gl/sQ31sznbCokuigpu7" target="_blank"
+                               class="contact-link-new">FUAR-PROMET, Zdunje</a>
+                        </div>
+                    </div>
                 </div>
 
-                <div class="contact-item">
-                    <strong>{% trans "Phone" %}:</strong>
-                    <a href="tel:+38970271156" class="contact-link">
-                        +389 70 271 156
-                    </a>
-                </div>
-
-                <div class="contact-item">
-                    <strong>{% trans "Address" %}:</strong>
-                    <a href="https://maps.app.goo.gl/jBT4Qm7EXMrin6ni6" target="_blank" class="contact-link">
-                        RV3M+4F, Zdunje
-                    </a>
-                </div>
-
-                <div class="social-media-section mt-4">
-                    <h5>{% trans "Follow Us" %}</h5>
+                <div class="social-media-section pt-4 border-top">
+                    <h6 class="fw-bold mb-3">{% trans "FOLLOW US" %}</h6>
                     <div class="social-icons-wrapper">
-                        <a href="https://www.instagram.com/fuarpromet/" target="_blank" class="social-icon">
-                            <img src="{% static 'instagram.jpg' %}" alt="Instagram">
+                        <a href="https://www.instagram.com/fuarpromet/" target="_blank" class="social-btn">
+                            <img src="{% static 'instagram.jpg' %}" alt="Instagram" class="social-img-custom">
                         </a>
-                        <a href="https://www.facebook.com/fuar.promet.2025" target="_blank" class="social-icon">
-                            <img src="{% static 'facebook.png' %}" alt="Facebook">
+                        <a href="https://www.facebook.com/fuar.promet.2025" target="_blank" class="social-btn">
+                            <img src="{% static 'facebook.png' %}" alt="Facebook" class="social-img-custom">
                         </a>
                     </div>
                 </div>
             </div>
         </div>
 
-        <!-- Map -->
-        <div class="col-lg-6">
+        <div class="col-lg-7">
             <div class="map-section h-100">
-                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2974.1834720147813!2d20.88109727628994!3d41.80280787012462!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1351590043c08237%3A0x55b2abd352fa8654!2sFUAR-PROMET!5e0!3m2!1sen!2smk!4v1768334067705!5m2!1sen!2smk"
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2974.183656295426!2d20.883672200000003!3d41.8028039!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1351590043c08237%3A0x55b2abd352fa8654!2sFUAR-PROMET!5e0!3m2!1sen!2smk!4v1768343159978!5m2!1sen!2smk"
                         width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
                         referrerpolicy="no-referrer-when-downgrade"></iframe>
-
             </div>
         </div>
 
