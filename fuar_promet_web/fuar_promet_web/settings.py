@@ -150,5 +150,7 @@ if not DEBUG:
 
     # Add your PythonAnywhere domain here
     CSRF_TRUSTED_ORIGINS = [
-        'https://fuarpromet.com.mk'
+        'https://www.fuarpromet.com.mk',
+        'https://fuarpromet.com.mk',
+        'https://webapp-2910853.pythonanywhere.com'
     ]
