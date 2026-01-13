@@ -46,9 +46,9 @@ body {
     background-color: white !important;
     color: #122942 !important;
     border: 2px solid #122942 !important;
-    padding: 8px 12px !important;
+    padding: 8px 16px !important;
     border-radius: 6px !important;
-    width: 60px !important;
+    width: 100px !important;
     font-size: 0.875rem !important;
     font-weight: 600 !important;
     cursor: pointer !important;
@@ -86,6 +86,8 @@ body {
     background-color: #f8f9fa;
     border-radius: 10px;
     box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    display: flex;
+    flex-direction: column;
 }
 
 .contact-title {
@@ -97,7 +99,7 @@ body {
 
 .contact-item {
     font-size: 1.1rem;
-    margin-bottom: 0.75rem;
+    margin-bottom: 1rem;
 }
 
 .contact-item strong {
@@ -107,43 +109,57 @@ body {
 }
 
 .contact-link {
-    color: #FF8800;
-    text-decoration: none;
+    color: #FF8800 !important;
+    text-decoration: none !important;
+    font-weight: 600;
 }
 
 .contact-link:hover {
-    color: #122942;
-    text-decoration: underline;
+    color: #122942 !important;
+    text-decoration: underline !important;
 }
 
-/* ================= SOCIAL ICONS (FIXED) ================= */
+/* ================= SOCIAL MEDIA SECTION ================= */
+.social-media-section {
+    margin-top: 2rem;
+}
+
+.social-media-section h5 {
+    color: #122942;
+    font-weight: 700;
+    margin-bottom: 1rem;
+}
+
 .social-icons-wrapper {
     display: flex;
-    gap: 12px;
+    gap: 15px;
     align-items: center;
+    flex-wrap: wrap;
 }
 
 .social-icon {
-    width: 36px;
-    height: 36px;
+    width: 42px;
+    height: 42px;
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    border-radius: 6px;
+    border-radius: 8px;
     background-color: #ffffff;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.12);
-    transition: transform 0.2s ease;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+    transition: all 0.3s ease;
+    text-decoration: none;
 }
 
 .social-icon img {
-    width: 18px;
-    height: 18px;
+    width: 24px;
+    height: 24px;
     object-fit: contain;
     display: block;
 }
 
 .social-icon:hover {
-    transform: translateY(-2px);
+    transform: translateY(-3px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
 }
 
 /* ================= MAP ================= */
@@ -151,34 +167,70 @@ body {
     border-radius: 10px;
     overflow: hidden;
     box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    min-height: 450px;
 }
 
 .map-section iframe {
     width: 100%;
     height: 100%;
-    min-height: 400px;
+    min-height: 450px;
     border: 0;
+    display: block;
 }
 
-/* ================= MOBILE ================= */
-@media (max-width: 768px) {
+/* ================= MOBILE RESPONSIVENESS ================= */
+@media (max-width: 991px) {
     .contact-info-section {
-        text-align: center;
+        margin-bottom: 2rem;
+    }
+
+    .map-section {
+        min-height: 350px;
+    }
+
+    .map-section iframe {
+        min-height: 350px;
+    }
+}
+
+@media (max-width: 768px) {
+    .contact-title {
+        font-size: 1.75rem;
+    }
+
+    .contact-item {
+        font-size: 1rem;
     }
 
     .social-icons-wrapper {
-        justify-content: center;
+        justify-content: flex-start;
     }
 }
 
 @media (max-width: 576px) {
+    .contact-info-section {
+        padding: 1.5rem;
+    }
+
+    .contact-title {
+        font-size: 1.5rem;
+    }
+
     .social-icon {
-        width: 32px;
-        height: 32px;
+        width: 38px;
+        height: 38px;
     }
 
     .social-icon img {
-        width: 16px;
-        height: 16px;
+        width: 20px;
+        height: 20px;
+    }
+
+    .map-section {
+        min-height: 300px;
+    }
+
+    .map-section iframe {
+        min-height: 300px;
     }
 }
