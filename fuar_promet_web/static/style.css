@@ -25,30 +25,83 @@ body {
     text-decoration: underline;
 }
 
-
 .home_img {
     width: 100%;
     height: auto;
     display: block;
 }
 
-
 .navbar {
     border-bottom: 2px solid #38240D;
 }
 
+/* ===== HAMBURGER MENU FIX ===== */
+/* Ensure the navbar toggler is visible on mobile */
+.navbar-toggler {
+    display: block;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    padding: 0.25rem 0.75rem;
+    font-size: 1.25rem;
+    line-height: 1;
+    background-color: transparent;
+    border-radius: 0.25rem;
+}
+
+.navbar-toggler:focus {
+    box-shadow: 0 0 0 0.25rem rgba(0, 0, 0, 0.1);
+    outline: 0;
+}
+
+.navbar-toggler-icon {
+    display: inline-block;
+    width: 1.5em;
+    height: 1.5em;
+    vertical-align: middle;
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%280, 0, 0, 0.75%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 100%;
+}
+
+/* Show hamburger only on mobile */
+@media (min-width: 992px) {
+    .navbar-toggler {
+        display: none;
+    }
+}
+
+/* Make sure collapsed menu is hidden */
+.navbar-collapse:not(.show) {
+    display: none;
+}
+
+/* Show menu when toggled */
+.navbar-collapse.show {
+    display: block;
+}
+
+@media (min-width: 992px) {
+    .navbar-collapse {
+        display: flex !important;
+    }
+}
+/* ===== END HAMBURGER MENU FIX ===== */
+
+/* Language selector sizing */
 .language-selector {
-    background-color: white; /* White background */
-    color: black; /* Black text */
-    border: 1px solid #ccc; /* Optional: subtle border */
-    padding: 4px 8px; /* Optional: spacing inside the dropdown */
-    border-radius: 4px; /* Optional: rounded corners */
+    background-color: white;
+    color: black;
+    border: 1px solid #ccc;
+    padding: 4px 8px;
+    border-radius: 4px;
+    width: auto; /* Let it shrink to content */
+    max-width: 80px; /* Limit maximum width */
+    min-width: 60px; /* Minimum width for usability */
 }
 
 .language-selector option {
-    color: black; /* Ensure options text is black */
+    color: black;
 }
-
 
 .language-selector:hover {
     border-color: #adb5bd;
@@ -65,17 +118,17 @@ body {
         margin-top: 1rem;
         padding-top: 1rem;
         border-top: 1px solid #dee2e6;
+        justify-content: flex-start !important; /* Align left on mobile */
+    }
+
+    .language-selector {
+        margin-left: 0 !important; /* Remove left margin on mobile */
+        max-width: 70px; /* Even smaller on mobile */
     }
 }
 
-
 .language-form .language-selector {
-    margin-left: 48px;
-}
-
-
-.display-4 {
-    letter-spacing: 1px;
+    margin-left: 0;
 }
 
 /* 2. Card Refinements */
@@ -172,22 +225,19 @@ body {
 }
 
 /* Carousel */
-/* Define the starting point of the animation (e.g., move 50px down and make it invisible) */
 .slide-in {
-    opacity: 0; /* Start invisible */
-    transform: translateY(50px); /* Start 50px lower */
-    animation: slideUp 0.8s ease-out forwards; /* Apply the animation */
+    opacity: 0;
+    transform: translateY(50px);
+    animation: slideUp 0.8s ease-out forwards;
 }
 
-/* Define the animation keyframes */
 @keyframes slideUp {
     to {
-        opacity: 1; /* End visible */
-        transform: translateY(0); /* End at original position */
+        opacity: 1;
+        transform: translateY(0);
     }
 }
 
-/* Optional: Add a delay for subsequent elements to make the page load feel smoother */
 .delay-1 {
     animation-delay: 0.2s;
 }
@@ -196,37 +246,28 @@ body {
     animation-delay: 0.4s;
 }
 
-
-
-
-
-
 .reveal-section {
-    display: flex; /* Allows the image-block and empty-space to sit side-by-side */
+    display: flex;
     width: 100%;
-    min-height: 300px; /* Adjust height as needed, 80vh is 80% of viewport height */
-    overflow: hidden; /* Important to hide the starting position of the image */
-    margin-bottom: 2rem; /* Spacing between sections */
-
+    min-height: 300px;
+    overflow: hidden;
+    margin-bottom: 2rem;
     opacity: 0;
-    transition: opacity 0.5s ease-out; /* Fade in the entire section */
+    transition: opacity 0.5s ease-out;
 }
 
-/* Base style for both the image and the white space */
 .image-block, .empty-space {
-    width: 50%; /* Takes exactly half of the container width */
+    width: 50%;
     height: 300px;
     box-sizing: border-box;
 }
 
-/* The Image Block */
 .image-block {
     position: relative;
     padding: 0;
-    transition: transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94); /* Smooth animation */
+    transition: transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
-/* Image styling */
 .image-block img {
     width: 100%;
     height: 300px;
@@ -234,9 +275,8 @@ body {
     display: block;
 }
 
-/* The White Space */
 .empty-space {
-    background-color: white; /* Explicitly white for contrast */
+    background-color: white;
 }
 
 .image-block.from-left {
@@ -247,22 +287,17 @@ body {
     transform: translateX(100%);
 }
 
-
 .reveal-section.visible {
-    opacity: 1; /* Fade in the whole section */
+    opacity: 1;
 }
 
 .reveal-section.visible .image-block.from-left {
     transform: translateX(0);
 }
 
-/* Move right-starting image to its final position */
 .reveal-section.visible .image-block.from-right {
     transform: translateX(0);
 }
-
-
-
 
 /* Services */
 .service-card {
@@ -294,27 +329,7 @@ body {
     line-height: 1.6;
 }
 
-
-/* Service details */
-.service-card {
-    transition: all .3s ease;
-    cursor: pointer;
-}
-
-.service-card:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 10px 25px rgba(0,0,0,.15);
-}
-
-.service-img {
-    height: 250px;
-    width: 100%;
-    object-fit: cover;
-}
-
-
 /* Product Detail */
-
 .product-detail-image-container {
     height: 400px;
     overflow: hidden;
@@ -324,9 +339,4 @@ body {
     width: 100%;
     height: 100%;
     object-fit: cover;
-}
-
-.product-card:hover {
-    transform: translateY(-6px);
-    transition: all 0.3s ease;
 }
