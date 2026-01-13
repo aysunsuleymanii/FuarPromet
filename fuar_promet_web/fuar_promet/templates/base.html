@@ -1,0 +1,69 @@
+{% load static i18n %}
+<!DOCTYPE html>
+<html lang="{{ LANGUAGE_CODE }}">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Fuar Promet{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.css' %}">
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+
+    <script src="{% static 'bootstrap/js/bootstrap.bundle.js' %}"></script>
+</head>
+
+<body>
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg bg-body-tertiary">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="{% url 'home' %}">
+            <img src="{% static 'fuar_logo.png' %}" alt="logo" width="100">
+        </a>
+
+        <!-- Navbar Toggler -->
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="{% trans 'Toggle navigation' %}">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <!-- Navbar Links + Language Dropdown -->
+        <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+            <ul class="navbar-nav me-3">
+                <li class="nav-item"><a class="nav-link" href="{% url 'home' %}">{% trans "Home" %}</a></li>
+                <li class="nav-item"><a class="nav-link" href="{% url 'about' %}">{% trans "About" %}</a></li>
+                <li class="nav-item"><a class="nav-link" href="{% url 'products' %}">{% trans "Products" %}</a></li>
+                <li class="nav-item"><a class="nav-link" href="{% url 'services' %}">{% trans "Services" %}</a></li>
+                <li class="nav-item"><a class="nav-link" href="{% url 'our_work' %}">{% trans "Our Work" %}</a></li>
+                <li class="nav-item"><a class="nav-link" href="{% url 'contact' %}">{% trans "Contact" %}</a></li>
+            </ul>
+
+            <!-- Language Switcher -->
+            <form action="{% url 'set_language' %}" method="post" class="d-flex language-form">
+                {% csrf_token %}
+                {% get_current_language as LANGUAGE_CODE %}
+                <select name="language" onchange="this.form.submit()" class="language-selector form-select me-5">
+                    <option value="mk" {% if LANGUAGE_CODE == 'mk' %}selected{% endif %}>MK</option>
+                    <option value="en" {% if LANGUAGE_CODE == 'en' %}selected{% endif %}>EN</option>
+                    <option value="sq" {% if LANGUAGE_CODE == 'sq' %}selected{% endif %}>AL</option>
+                    <option value="tr" {% if LANGUAGE_CODE == 'tr' %}selected{% endif %}>TR</option>
+                </select>
+            </form>
+        </div>
+    </div>
+</nav>
+
+<!-- Main Content -->
+<div>
+    {% block content %}
+    {% endblock %}
+</div>
+
+<!-- Footer -->
+<footer class="bg-dark d-flex justify-content-center p-3 mt-5">
+    <p class="text-bold mb-0">© Fuar Promet 2025/2026</p>
+</footer>
+
+</body>
+</html>

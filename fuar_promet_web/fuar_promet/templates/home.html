@@ -1,0 +1,81 @@
+{% extends 'base.html' %}
+{% load static i18n %}
+
+{% block title %}{% trans "Home" %} - Fuar Promet{% endblock %}
+
+{% block content %}
+
+<div class="row justify-content-center slide-in">
+    <div class="col-12 text-center mb-5 mt-5">
+        <h1 class="display-4 fw-light text-dark" style="font-weight:400;">Where Quality Wood Meets</br> Timeless
+            Furniture Design</h1>
+    </div>
+</div>
+
+<img class="home_img slide-in delay-1" src="{% static 'index_img.jpg' %}" alt="{% trans 'Home' %}">
+
+<div class="row justify-content-start slide-in delay-2">
+    <div class="col-12 text-start mb-5 mt-5">
+        <h1>Featured Work</h1>
+    </div>
+</div>
+
+<hr>
+
+<div class="reveal-section">
+    <div class="image-block from-left">
+        <img src="{% static '1.jpg' %}" alt="Image 1">
+    </div>
+    <div class="empty-space from-right"></div>
+</div>
+
+<div class="reveal-section">
+    <div class="empty-space from-left"></div>
+    <div class="image-block from-right">
+        <img src="{% static '2.jpg' %}" alt="Image 2">
+    </div>
+</div>
+
+<div class="reveal-section">
+    <div class="image-block from-left">
+        <img src="{% static '3.jpg' %}" alt="Image 3">
+    </div>
+    <div class="empty-space from-right"></div>
+</div>
+
+<div class="reveal-section">
+    <div class="empty-space from-left"></div>
+    <div class="image-block from-right">
+        <img src="{% static '4.jpg' %}" alt="Image 4">
+    </div>
+</div>
+
+
+{% block extra_js %}
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+        // We will target the .reveal-section elements
+        const blocks = document.querySelectorAll(".reveal-section");
+
+        // Define the visibility threshold (e.g., 100 pixels from the bottom of the viewport)
+        const visibilityThreshold = 100;
+
+        const revealOnScroll = () => {
+            blocks.forEach(section => {
+                const rect = section.getBoundingClientRect();
+                // Check if the top of the section is visible (above window height - threshold)
+                if (rect.top < window.innerHeight - visibilityThreshold) {
+                    section.classList.add("visible");
+                }
+            });
+        };
+
+        window.addEventListener("scroll", revealOnScroll);
+        // Initial check in case the elements are already in view on load
+        revealOnScroll();
+    });
+</script>
+{% endblock %}
+
+
+{% endblock %}

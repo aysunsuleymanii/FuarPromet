@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+{% load static i18n %}
+
+{% block title %}{{ product.name }} - Fuar Promet{% endblock %}
+
+{% block content %}
+<div class="container my-5 py-4">
+    <div class="row justify-content-center">
+
+        <!-- Product Image -->
+        <div class="col-lg-6">
+            <div class="shadow-sm rounded overflow-hidden product-detail-image-container">
+                {% if product.image %}
+                <img src="{{ product.image.url }}" class="img-fluid product-detail-img" alt="{{ product.name }}">
+                {% else %}
+                <img src="{% static 'placeholder-elegant.png' %}" class="img-fluid product-detail-img" alt="No image">
+                {% endif %}
+            </div>
+        </div>
+
+        <!-- Product Info -->
+        <div class="col-lg-6">
+            <h1 class="fw-light display-6 mb-4">{{ product.name }}</h1>
+
+            <p class="text-secondary">{{ product.description }}</p>
+
+            <div class="mt-4 border-top pt-3">
+                <p><strong>{% trans "Category" %}:</strong> {{ product.category.name }}</p>
+                <p><strong>{% trans "Dimensions" %}:</strong> {{ product.width }} × {{ product.height }} × {{
+                    product.depth }} cm</p>
+                <p><strong>{% trans "Color" %}:</strong> {{ product.color }}</p>
+
+                {% if product.stock > 0 %}
+                <span class="badge bg-success-subtle text-success rounded-pill px-3 py-2">{% trans "In Stock" %}</span>
+                {% else %}
+                <span class="badge bg-danger-subtle text-danger rounded-pill px-3 py-2">{% trans "Out of Stock" %}</span>
+                {% endif %}
+            </div>
+
+            <h2 class="fw-bold mt-4">{{ product.price }} €</h2>
+
+            <a href="{% url 'products' %}" class="btn btn-outline-dark rounded-pill mt-4 px-4">
+                ← {% trans "Back to Products" %}
+            </a>
+        </div>
+    </div>
+</div>
+{% endblock %}

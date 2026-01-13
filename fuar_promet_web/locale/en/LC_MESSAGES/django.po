@@ -1,0 +1,131 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-12-12 18:40+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+#: fuar_promet/templates/base.html:27
+msgid "Toggle navigation"
+msgstr ""
+
+#: fuar_promet/templates/base.html:34 fuar_promet/templates/home.html:4
+#: fuar_promet/templates/home.html:15
+msgid "Home"
+msgstr ""
+
+#: fuar_promet/templates/base.html:35
+msgid "About"
+msgstr ""
+
+#: fuar_promet/templates/base.html:36
+msgid "Products"
+msgstr ""
+
+#: fuar_promet/templates/base.html:37 fuar_promet/templates/services.html:4
+msgid "Services"
+msgstr ""
+
+#: fuar_promet/templates/base.html:38
+msgid "Our Work"
+msgstr ""
+
+#: fuar_promet/templates/base.html:39 fuar_promet/templates/contact.html:4
+msgid "Contact"
+msgstr ""
+
+#: fuar_promet/templates/contact.html:12
+msgid "Contact Us"
+msgstr ""
+
+#: fuar_promet/templates/contact.html:13
+msgid "Email"
+msgstr ""
+
+#: fuar_promet/templates/contact.html:14
+msgid "Phone"
+msgstr ""
+
+#: fuar_promet/templates/contact.html:15 fuar_promet/templates/contact.html:31
+msgid "Address"
+msgstr ""
+
+#: fuar_promet/templates/contact.html:30
+msgid "View on map"
+msgstr ""
+
+#: fuar_promet/templates/product_detail.html:28
+#: fuar_promet/templates/products.html:40
+msgid "Category"
+msgstr ""
+
+#: fuar_promet/templates/product_detail.html:29
+#: fuar_promet/templates/products.html:41
+msgid "Dimensions"
+msgstr ""
+
+#: fuar_promet/templates/product_detail.html:31
+#: fuar_promet/templates/products.html:42
+msgid "Color"
+msgstr ""
+
+#: fuar_promet/templates/product_detail.html:34
+#: fuar_promet/templates/products.html:49
+msgid "In Stock"
+msgstr ""
+
+#: fuar_promet/templates/product_detail.html:36
+#: fuar_promet/templates/products.html:51
+msgid "Out of Stock"
+msgstr ""
+
+#: fuar_promet/templates/product_detail.html:43
+msgid "Back to Products"
+msgstr ""
+
+#: fuar_promet/templates/products.html:15
+msgid "All"
+msgstr ""
+
+#: fuar_promet/templates/service_detail.html:21
+msgid "Back to Services"
+msgstr ""
+
+#: fuar_promet/templates/services.html:12
+msgid "Our Professional Services"
+msgstr ""
+
+#: fuar_promet/templates/services.html:44
+msgid "No services available at the moment."
+msgstr ""
+
+#: fuar_promet_web/settings.py:99
+msgid "English"
+msgstr ""
+
+#: fuar_promet_web/settings.py:100
+msgid "Albanian"
+msgstr ""
+
+#: fuar_promet_web/settings.py:101
+msgid "Macedonian"
+msgstr ""
+
+#: fuar_promet_web/settings.py:102
+msgid "Turkish"
+msgstr ""
+
+msgid "Explore our carefully selected range of high-quality products"
+msgstr ""

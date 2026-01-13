@@ -1,0 +1,133 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-12-12 19:50+0100\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+#: fuar_promet/templates/base.html:27
+msgid "Toggle navigation"
+msgstr "Gezinmeyi değiştir"
+
+#: fuar_promet/templates/base.html:34 fuar_promet/templates/home.html:4
+#: fuar_promet/templates/home.html:15
+msgid "Home"
+msgstr "Ana Sayfa"
+
+#: fuar_promet/templates/base.html:35
+msgid "About"
+msgstr "Hakkımızda"
+
+#: fuar_promet/templates/base.html:36
+msgid "Products"
+msgstr "Ürünler"
+
+#: fuar_promet/templates/base.html:37 fuar_promet/templates/services.html:4
+msgid "Services"
+msgstr "Hizmetler"
+
+#: fuar_promet/templates/base.html:38
+msgid "Our Work"
+msgstr "Çalışmalarımız"
+
+#: fuar_promet/templates/base.html:39 fuar_promet/templates/contact.html:4
+msgid "Contact"
+msgstr "İletişim"
+
+#: fuar_promet/templates/contact.html:12
+msgid "Contact Us"
+msgstr "Bizimle iletişime geçin"
+
+#: fuar_promet/templates/contact.html:13
+msgid "Email"
+msgstr "E-posta"
+
+#: fuar_promet/templates/contact.html:14
+msgid "Phone"
+msgstr "Telefon"
+
+#: fuar_promet/templates/contact.html:15 fuar_promet/templates/contact.html:31
+msgid "Address"
+msgstr "Adres"
+
+#: fuar_promet/templates/contact.html:30
+msgid "View on map"
+msgstr "Haritada göster"
+
+#: fuar_promet/templates/product_detail.html:28
+#: fuar_promet/templates/products.html:39
+msgid "Category"
+msgstr "Kategori"
+
+#: fuar_promet/templates/product_detail.html:29
+#: fuar_promet/templates/products.html:40
+msgid "Dimensions"
+msgstr "Boyutlar"
+
+#: fuar_promet/templates/product_detail.html:31
+#: fuar_promet/templates/products.html:41
+msgid "Color"
+msgstr "Renk"
+
+#: fuar_promet/templates/product_detail.html:34
+#: fuar_promet/templates/products.html:48
+msgid "In Stock"
+msgstr "Stokta var"
+
+#: fuar_promet/templates/product_detail.html:36
+#: fuar_promet/templates/products.html:50
+msgid "Out of Stock"
+msgstr "Stokta yok"
+
+#: fuar_promet/templates/product_detail.html:43
+msgid "Back to Products"
+msgstr "Ürünlere dön"
+
+#: fuar_promet/templates/products.html:9
+msgid "Explore our carefully selected range of high-quality products."
+msgstr "Özenle seçilmiş yüksek kaliteli ürün yelpazemizi keşfedin."
+
+#: fuar_promet/templates/products.html:14
+msgid "All"
+msgstr "Tümü"
+
+#: fuar_promet/templates/service_detail.html:21
+msgid "Back to Services"
+msgstr "Hizmetlere dön"
+
+#: fuar_promet/templates/services.html:12
+msgid "Our Professional Services"
+msgstr "Profesyonel Hizmetlerimiz"
+
+#: fuar_promet/templates/services.html:44
+msgid "No services available at the moment."
+msgstr "Şu anda mevcut hizmet yok."
+
+#: fuar_promet_web/settings.py:99
+msgid "English"
+msgstr "İngilizce"
+
+#: fuar_promet_web/settings.py:100
+msgid "Albanian"
+msgstr "Arnavutça"
+
+#: fuar_promet_web/settings.py:101
+msgid "Macedonian"
+msgstr "Makedonca"
+
+#: fuar_promet_web/settings.py:102
+msgid "Turkish"
+msgstr "Türkçe"

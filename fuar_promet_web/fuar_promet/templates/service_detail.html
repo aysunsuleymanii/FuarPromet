@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% load static i18n %}
+
+{% block title %}{{ service.name }} - Fuar Promet{% endblock %}
+
+{% block content %}
+<div class="container my-5 py-4">
+
+    <div class="row justify-content-center">
+        <div class="col-lg-8 text-center">
+
+            <h1 class="display-5 mb-4">{{ service.name }}</h1>
+
+            {% if service.image %}
+            <img src="{{ service.image.url }}" class="img-fluid rounded shadow-sm mb-4" alt="{{ service.name }}">
+            {% endif %}
+
+            <p class="lead text-muted">{{ service.description }}</p>
+
+            <a href="{% url 'services' %}" class="btn btn-outline-dark mt-4 rounded-pill">
+                ← {% trans "Back to Services" %}
+            </a>
+
+        </div>
+    </div>
+</div>
+{% endblock %}
