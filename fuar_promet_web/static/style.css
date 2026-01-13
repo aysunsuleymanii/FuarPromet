@@ -52,11 +52,85 @@ body {
     font-size: 0.875rem !important;
     font-weight: 600 !important;
     cursor: pointer !important;
+    transition: all 0.3s ease !important;
 }
 
 .language-selector:hover {
     background-color: #122942 !important;
     color: white !important;
+}
+
+/* ================= SEARCH FUNCTIONALITY ================= */
+/* Search Input */
+.search-input {
+    background-color: white !important;
+    color: #122942 !important;
+    border: 2px solid #122942 !important;
+    padding: 8px 16px !important;
+    border-radius: 6px !important;
+    font-size: 0.875rem !important;
+    font-weight: 600 !important;
+}
+
+.search-input:focus {
+    outline: none !important;
+    box-shadow: 0 0 0 0.2rem rgba(18, 41, 66, 0.25) !important;
+    border-color: #122942 !important;
+}
+
+/* Search Button */
+.search-btn {
+    background-color: white !important;
+    color: #122942 !important;
+    border: 2px solid #122942 !important;
+    padding: 8px 16px !important;
+    border-radius: 6px !important;
+    font-size: 0.875rem !important;
+    font-weight: 600 !important;
+    cursor: pointer !important;
+    transition: all 0.3s ease !important;
+}
+
+.search-btn:hover {
+    background-color: #122942 !important;
+    color: white !important;
+}
+
+.search-btn svg {
+    transition: all 0.3s ease;
+}
+
+.search-btn:hover svg {
+    fill: white;
+}
+
+/* Mobile Search Icon Button */
+.mobile-search-btn {
+    background-color: white !important;
+    color: #122942 !important;
+    border: 2px solid #122942 !important;
+    padding: 8px 12px !important;
+    border-radius: 6px !important;
+    transition: all 0.3s ease !important;
+}
+
+.mobile-search-btn:hover {
+    background-color: #122942 !important;
+    color: white !important;
+}
+
+.mobile-search-btn svg {
+    transition: all 0.3s ease;
+}
+
+.mobile-search-btn:hover svg {
+    fill: white;
+}
+
+/* Search Collapse Section */
+#searchCollapse {
+    background-color: #f8f9fa;
+    border-top: 1px solid #dee2e6;
 }
 
 /* ================= CARDS ================= */
