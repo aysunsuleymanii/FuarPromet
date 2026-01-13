@@ -1,10 +1,72 @@
 /* ================= BASE ================= */
+
+/* Force mobile viewport and prevent scaling issues */
+* {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+html {
+    width: 100%;
+    max-width: 100%;
+    overflow-x: hidden;
+    -webkit-text-size-adjust: 100%;
+    -ms-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+}
+
 body {
     font-family: 'Montserrat', sans-serif;
     font-size: 16px;
     font-weight: 600;
     margin: 0;
     padding: 0;
+    width: 100%;
+    max-width: 100%;
+    overflow-x: hidden;
+    -webkit-text-size-adjust: 100%;
+    -ms-text-size-adjust: 100%;
+    position: relative;
+}
+
+/* Force form elements to inherit font properties */
+input, select, button, textarea {
+    font-family: inherit;
+    font-weight: inherit;
+}
+
+/* Prevent zoom on input focus for iOS - CRITICAL FIX */
+input[type="text"],
+input[type="search"],
+select,
+textarea {
+    font-size: 16px !important;
+}
+
+/* Prevent horizontal overflow on all containers */
+.container,
+.container-fluid,
+.row {
+    max-width: 100%;
+    overflow-x: hidden;
+}
+
+/* Ensure images don't overflow */
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+/* Fix Bootstrap container widths on mobile */
+@media (max-width: 991px) {
+    .container,
+    .container-fluid {
+        padding-left: 15px;
+        padding-right: 15px;
+        width: 100% !important;
+        max-width: 100% !important;
+    }
 }
 
 /* ================= NAVBAR ================= */
@@ -12,7 +74,14 @@ body {
     border-bottom: 2px solid #38240D;
     padding: 0.5rem 1rem;
     background-color: #fefefe !important;
+    width: 100%;
+    max-width: 100%;
+}
 
+.navbar .container-fluid {
+    width: 100%;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
 }
 
 .navbar-brand {
@@ -71,7 +140,7 @@ body {
     padding: 6px 12px !important;
     border-radius: 6px !important;
     width: 80px !important;
-    font-size: 0.8rem !important;
+    font-size: 16px !important;
     font-weight: 600 !important;
     cursor: pointer !important;
     transition: all 0.3s ease !important;
@@ -84,47 +153,53 @@ body {
 
 /* ================= SEARCH FUNCTIONALITY ================= */
 /* Search Input */
-.search-input {
+.search-input,
+.form-control[type="search"] {
     background-color: white !important;
     color: #122942 !important;
     border: 2px solid #122942 !important;
     padding: 6px 12px !important;
     border-radius: 6px !important;
-    font-size: 0.8rem !important;
+    font-size: 16px !important;
     font-weight: 600 !important;
 }
 
-.search-input:focus {
+.search-input:focus,
+.form-control[type="search"]:focus {
     outline: none !important;
     box-shadow: 0 0 0 0.2rem rgba(18, 41, 66, 0.25) !important;
     border-color: #122942 !important;
 }
 
 /* Search Button */
-.search-btn {
+.search-btn,
+.btn-outline-secondary {
     background-color: white !important;
     color: #122942 !important;
     border: 2px solid #122942 !important;
     padding: 6px 12px !important;
     border-radius: 6px !important;
-    font-size: 0.8rem !important;
+    font-size: 16px !important;
     font-weight: 600 !important;
     cursor: pointer !important;
     transition: all 0.3s ease !important;
 }
 
-.search-btn:hover {
+.search-btn:hover,
+.btn-outline-secondary:hover {
     background-color: #122942 !important;
     color: white !important;
 }
 
-.search-btn svg {
+.search-btn svg,
+.btn-outline-secondary svg {
     transition: all 0.3s ease;
     width: 14px;
     height: 14px;
 }
 
-.search-btn:hover svg {
+.search-btn:hover svg,
+.btn-outline-secondary:hover svg {
     fill: white;
 }
 
