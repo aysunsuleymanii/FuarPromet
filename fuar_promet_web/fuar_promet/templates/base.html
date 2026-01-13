@@ -31,24 +31,23 @@
         <!-- Navbar Links + Language Dropdown -->
         <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
             <ul class="navbar-nav me-3">
-                <li class="nav-item"><a class="nav-link" href="/">Home</a></li>
-                <li class="nav-item"><a class="nav-link" href="/about/">About</a></li>
-                <li class="nav-item"><a class="nav-link" href="/products/">Products</a></li>
-                <li class="nav-item"><a class="nav-link" href="/services/">Services</a></li>
-                <li class="nav-item"><a class="nav-link" href="/our_work/">Our Work</a></li>
-                <li class="nav-item"><a class="nav-link" href="/contact/">Contact</a></li>
+                <li class="nav-item"><a class="nav-link" href="{% url 'home' %}">{% trans "Home" %}</a></li>
+                <li class="nav-item"><a class="nav-link" href="{% url 'about' %}">{% trans "About" %}</a></li>
+                <li class="nav-item"><a class="nav-link" href="{% url 'products' %}">{% trans "Products" %}</a></li>
+                <li class="nav-item"><a class="nav-link" href="{% url 'services' %}">{% trans "Services" %}</a></li>
+                <li class="nav-item"><a class="nav-link" href="{% url 'our_work' %}">{% trans "Our Work" %}</a></li>
+                <li class="nav-item"><a class="nav-link" href="{% url 'contact' %}">{% trans "Contact" %}</a></li>
             </ul>
 
             <!-- Language Switcher -->
-            <form action="/i18n/setlang/" method="post" class="d-flex language-form">
-                <input type="hidden" name="csrfmiddlewaretoken"
-                       value="acdDyGhrN34247qjwOoZlhzYSXanXj9qeXiSklp5SLODtUfqGqFWbQqeb1YasAAR">
-
-                <select name="language" onchange="this.form.submit()" class="language-selector form-select me-5">
-                    <option value="mk">MK</option>
-                    <option value="en" selected="">EN</option>
-                    <option value="sq">AL</option>
-                    <option value="tr">TR</option>
+            <form action="{% url 'set_language' %}" method="post" class="d-flex language-form">
+                {% csrf_token %}
+                {% get_current_language as LANGUAGE_CODE %}
+                <select name="language" onchange="this.form.submit()" class="language-selector">
+                    <option value="mk" {% if LANGUAGE_CODE == 'mk' %}selected{% endif %}>MK</option>
+                    <option value="en" {% if LANGUAGE_CODE == 'en' %}selected{% endif %}>EN</option>
+                    <option value="sq" {% if LANGUAGE_CODE == 'sq' %}selected{% endif %}>AL</option>
+                    <option value="tr" {% if LANGUAGE_CODE == 'tr' %}selected{% endif %}>TR</option>
                 </select>
             </form>
         </div>

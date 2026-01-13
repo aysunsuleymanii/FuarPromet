@@ -88,47 +88,40 @@ body {
 /* ===== END HAMBURGER MENU FIX ===== */
 
 /* Language selector sizing */
+/* Language selector - compact and clean */
 .language-selector {
-    background-color: white;
-    color: black;
-    border: 1px solid #ccc;
-    padding: 4px 8px;
-    border-radius: 4px;
-    width: auto; /* Let it shrink to content */
-    max-width: 80px; /* Limit maximum width */
-    min-width: 60px; /* Minimum width for usability */
-}
-
-.language-selector option {
-    color: black;
+    background-color: white !important;
+    color: #122942 !important;
+    border: 2px solid #122942 !important;
+    padding: 8px 12px !important;
+    border-radius: 6px !important;
+    width: 60px !important;
+    font-size: 0.875rem !important;
+    font-weight: 600 !important;
+    text-align: center !important;
+    cursor: pointer !important;
+    transition: all 0.3s ease !important;
+    appearance: none !important;
+    background-image: none !important;
+    background-size: 0 !important;
+    margin: 0 !important;
 }
 
 .language-selector:hover {
-    border-color: #adb5bd;
+    background-color: #122942 !important;
+    color: white !important;
+    border-color: #122942 !important;
 }
 
 .language-selector:focus {
-    border-color: #86b7fe;
-    outline: 0;
-    box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
+    border-color: #FF8800 !important;
+    outline: 0 !important;
+    box-shadow: 0 0 0 0.2rem rgba(255, 136, 0, 0.25) !important;
 }
 
-@media (max-width: 991px) {
-    .language-form {
-        margin-top: 1rem;
-        padding-top: 1rem;
-        border-top: 1px solid #dee2e6;
-        justify-content: flex-start !important; /* Align left on mobile */
-    }
-
-    .language-selector {
-        margin-left: 0 !important; /* Remove left margin on mobile */
-        max-width: 70px; /* Even smaller on mobile */
-    }
-}
-
-.language-form .language-selector {
-    margin-left: 0;
+.language-form {
+    margin: 0 !important;
+    padding: 0 !important;
 }
 
 /* 2. Card Refinements */
