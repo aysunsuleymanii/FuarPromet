@@ -13,8 +13,8 @@ class Category(models.Model):
 class Product(models.Model):
     name = models.CharField(max_length=150)
     width = models.DecimalField(max_digits=10, decimal_places=2, null=False, blank=False)
-    height = models.DecimalField(max_digits=10, decimal_places=2, null=False, blank=False)
-    depth = models.DecimalField(max_digits=10, decimal_places=2, null=False, blank=False)
+    length = models.DecimalField(max_digits=10, decimal_places=2, null=False, blank=False)
+    thickness = models.DecimalField(max_digits=10, decimal_places=2, null=False, blank=False)
     price = models.DecimalField(max_digits=10, decimal_places=2, null=False, blank=False)
     stock = models.PositiveIntegerField(default=0, null=False, blank=False)
 
