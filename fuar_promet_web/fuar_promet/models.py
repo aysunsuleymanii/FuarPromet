@@ -29,20 +29,6 @@ class Product(models.Model):
     surface = models.CharField(max_length=200, choices=surfaces, null=True, blank=True)
     price = models.DecimalField(max_digits=10, decimal_places=2, null=False, blank=False)
     stock = models.PositiveIntegerField(default=0, null=False, blank=False)
-
-    colors = {
-        "Red": "red",
-        "Green": "green",
-        "Blue": "blue",
-        "White": "White",
-        "Black": "black",
-        "Grey": "grey",
-        "Yellow": "yellow",
-        "Brown": "brown",
-        "Beige": "beige"
-    }
-
-    color = models.CharField(max_length=200, choices=colors, null=False, blank=False)
     category = models.ForeignKey(Category, on_delete=models.CASCADE, related_name="products")
     created_at = models.DateTimeField(auto_now_add=True)
     image = models.ImageField(upload_to='products/', blank=True, null=True)
