@@ -12,6 +12,147 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;700;900&display=swap"
           rel="stylesheet">
+
+    <style>
+        /* Mega Dropdown Styles */
+        .mega-dropdown {
+            position: static !important;
+        }
+
+        .mega-dropdown-menu {
+            width: 100%;
+            max-width: 900px;
+            left: 50% !important;
+            transform: translateX(-50%);
+            border: none;
+            border-radius: 8px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.12);
+            padding: 30px;
+            margin-top: 0;
+            display: none;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .mega-dropdown:hover .mega-dropdown-menu {
+            display: block;
+            opacity: 1;
+        }
+
+        .mega-dropdown-menu .dropdown-header {
+            font-size: 12px;
+            font-weight: 600;
+            color: #6b7280;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 15px;
+            padding: 0;
+        }
+
+        .category-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .category-item {
+            display: flex;
+            flex-direction: column;
+            padding: 20px;
+            border-radius: 8px;
+            background: #f9fafb;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            border: 1px solid transparent;
+        }
+
+        .category-item:hover {
+            background: #fff;
+            border-color: #e5e7eb;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            transform: translateY(-2px);
+        }
+
+        .category-icon {
+            width: 40px;
+            height: 40px;
+            background: #111827;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 12px;
+            overflow: hidden;
+        }
+
+        .category-icon svg {
+            width: 20px;
+            height: 20px;
+            fill: white;
+        }
+
+        .category-icon img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .category-name {
+            font-size: 15px;
+            font-weight: 600;
+            color: #111827;
+            margin-bottom: 6px;
+        }
+
+        .category-description {
+            font-size: 12px;
+            color: #6b7280;
+            margin: 0;
+        }
+
+        /* Remove dropdown arrow rotation */
+        .mega-dropdown .dropdown-toggle::after {
+            transition: transform 0.3s ease;
+        }
+
+        .mega-dropdown:hover .dropdown-toggle::after {
+            transform: rotate(180deg);
+        }
+
+        /* Mobile adjustments - Click behavior on mobile */
+        @media (max-width: 991px) {
+            .mega-dropdown:hover .mega-dropdown-menu {
+                display: none;
+            }
+
+            .mega-dropdown .mega-dropdown-menu.show {
+                display: block;
+                opacity: 1;
+            }
+
+            .mega-dropdown-menu {
+                position: relative !important;
+                transform: none;
+                left: 0 !important;
+                max-width: 100%;
+            }
+
+            .category-grid {
+                grid-template-columns: 1fr;
+                gap: 10px;
+            }
+
+            .category-item {
+                padding: 15px;
+            }
+        }
+
+        @media (min-width: 992px) and (max-width: 1199px) {
+            .category-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+    </style>
 </head>
 
 <body>
@@ -42,7 +183,74 @@
             <ul class="navbar-nav me-3">
                 <li class="nav-item"><a class="nav-link" href="{% url 'home' %}">{% trans "Home" %}</a></li>
                 <li class="nav-item"><a class="nav-link" href="{% url 'about' %}">{% trans "About" %}</a></li>
-                <li class="nav-item"><a class="nav-link" href="{% url 'products' %}">{% trans "Products" %}</a></li>
+
+                <!-- Products Mega Dropdown -->
+                <li class="nav-item dropdown mega-dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="productsDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        {% trans "Products" %}
+                    </a>
+                    <div class="dropdown-menu mega-dropdown-menu" aria-labelledby="productsDropdown">
+                        <div class="dropdown-header">{% trans "Product Categories" %}</div>
+                        <div class="category-grid">
+                            {% for category in product_categories %}
+                            <a href="{% url 'products' %}?category={{ category.id }}" class="category-item">
+                                <div class="category-icon">
+                                    {% if category.image %}
+                                        <img src="{{ category.image.url }}" alt="{{ category.name }}">
+                                    {% else %}
+                                        <svg viewBox="0 0 24 24" fill="currentColor">
+                                            <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V5h14v14z"/>
+                                        </svg>
+                                    {% endif %}
+                                </div>
+                                <div class="category-name">{{ category.name }}</div>
+                                {% if category.description %}
+                                    <p class="category-description">{{ category.description|truncatewords:5 }}</p>
+                                {% else %}
+                                    <p class="category-description">{% trans "View products" %}</p>
+                                {% endif %}
+                            </a>
+                            {% empty %}
+                            <div class="text-muted p-3">{% trans "No categories available" %}</div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </li>
+
+                <!-- Decorative Products Mega Dropdown -->
+                <li class="nav-item dropdown mega-dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="decorativeDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        {% trans "Decorative Products" %}
+                    </a>
+                    <div class="dropdown-menu mega-dropdown-menu" aria-labelledby="decorativeDropdown">
+                        <div class="dropdown-header">{% trans "Decorative Categories" %}</div>
+                        <div class="category-grid">
+                            {% for category in decorative_categories %}
+                            <a href="{% url 'decorative_products' %}?category={{ category.id }}" class="category-item">
+                                <div class="category-icon">
+                                    {% if category.image %}
+                                        <img src="{{ category.image.url }}" alt="{{ category.name }}">
+                                    {% else %}
+                                        <svg viewBox="0 0 24 24" fill="currentColor">
+                                            <path d="M19 4H5c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 14H5V6h14v12z"/>
+                                            <path d="M7 8h10v2H7zm0 4h10v2H7z"/>
+                                        </svg>
+                                    {% endif %}
+                                </div>
+                                <div class="category-name">{{ category.name }}</div>
+                                {% if category.description %}
+                                    <p class="category-description">{{ category.description|truncatewords:5 }}</p>
+                                {% else %}
+                                    <p class="category-description">{% trans "View products" %}</p>
+                                {% endif %}
+                            </a>
+                            {% empty %}
+                            <div class="text-muted p-3">{% trans "No categories available" %}</div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </li>
+
                 <li class="nav-item"><a class="nav-link" href="{% url 'services' %}">{% trans "Services" %}</a></li>
                 <li class="nav-item"><a class="nav-link" href="{% url 'contact' %}">{% trans "Contact" %}</a></li>
             </ul>

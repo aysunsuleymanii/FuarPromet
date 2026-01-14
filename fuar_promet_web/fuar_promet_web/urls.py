@@ -32,5 +32,6 @@ urlpatterns = [
                   path('services/<int:pk>/', ServiceDetailView.as_view(), name='service_detail'),
                   path('products/<int:pk>/', ProductDetailView.as_view(), name='product_detail'),
                   path('kitchen/', kitchen_view, name='kitchen'),
+                  path('decorative_products', decorative_products, name='decorative_products'),
 
               ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
