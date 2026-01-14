@@ -1,51 +1,148 @@
 {% extends 'base.html' %}
 {% load static i18n %}
 
-{% block title %}{% trans "Services" %} - Fuar Promet{% endblock %}
+{% block title %}{% trans "Our Services" %} - Fuar Promet{% endblock %}
 
 {% block content %}
 <div class="container my-5 py-3">
 
-    <!-- Header -->
-    <header class="text-center mb-5 pb-3 border-bottom">
-        <h1 class="display-4 fw-light text-dark" style="font-weight:400;">
-            {% trans "Our Professional Services" %}
+    <header class="text-center mb-5 pb-4">
+        <h1 class="display-3 fw-bold mb-3" style="color: #ff8c00;">
+            {% trans "OUR SERVICES" %}
         </h1>
-        <p class="text-secondary mt-3">
-            {% trans "We offer precision manufacturing, cutting, edging, drilling and CNC fabrication tailored to your
-            project needs." %}
+        <div style="width: 100px; height: 3px; background: #ff8c00; margin: 0 auto 20px;"></div>
+        <p class="lead text-muted" style="max-width: 750px; margin: 0 auto; line-height: 1.6;">
+        {% trans "Precision Solutions & Expert Processing: We leverage advanced technology and industry expertise to deliver high-quality results tailored to your specific project requirements." %}
         </p>
     </header>
 
-    <!-- Services Grid -->
-    <div class="row g-4">
+    <div class="row g-4 mb-5">
         {% for service in services %}
-        <div class="col-xl-4 col-lg-6 col-md-6 col-sm-12">
-            <a href="{% url 'service_detail' service.pk %}" class="text-decoration-none text-dark">
-                <div class="card h-100 shadow-sm border-0 rounded-3 overflow-hidden service-card">
-                    <div class="service-image-container">
-                        {% if service.image %}
-                        <img src="{{ service.image.url }}" class="card-img-top service-img" alt="{{ service.name }}">
-                        {% else %}
-                        <img src="{% static 'placeholder-elegant.png' %}" class="card-img-top service-img"
-                             alt="No image">
-                        {% endif %}
-                    </div>
+        <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12">
+            <a href="{% url 'service_detail' service.pk %}" class="text-decoration-none">
+                <div class="card h-100 border-0 rounded-4 overflow-hidden shadow-sm service-card position-relative">
 
-                    <div class="card-body p-4">
-                        <h4 class="fw-semibold mb-2">{{ service.name }}</h4>
-                        <p class="text-secondary small description-text">{{ service.description }}</p>
+                    {% if service.image %}
+                    <div class="service-image-container position-relative overflow-hidden">
+                        <img src="{{ service.image.url }}" class="card-img-top service-img w-100"
+                             alt="{{ service.name }}" style="height: 250px; object-fit: cover;">
+                        <div class="image-overlay position-absolute top-0 start-0 w-100 h-100"></div>
+
+                        <div class="service-badge position-absolute top-0 end-0 m-3">
+                            <div class="bg-white rounded-circle p-2 shadow-sm">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="#ff8c00" viewBox="0 0 16 16">
+                                    <path d="M10.97 4.97a.75.75 0 0 1 1.07 1.05l-3.99 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425a.267.267 0 0 1 .02-.022z"/>
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+                    {% endif %}
+
+                    <div class="card-body p-4 bg-white d-flex flex-column">
+                        <h4 class="fw-bold mb-3" style="color: #ff8c00;">
+                            {{ service.name|upper }}
+                        </h4>
+                        <p class="text-secondary mb-3" style="line-height: 1.6;">
+                            {{ service.description|truncatewords:25 }}
+                        </p>
+                        <div class="mt-auto">
+                            <span class="text-primary fw-bold" style="color: #ff8c00 !important;">{% trans "Read More" %} →</span>
+                        </div>
                     </div>
                 </div>
+            </a>
         </div>
         {% empty %}
-        <div class="col-12">
-            <div class="alert alert-info text-center">
-                {% trans "No services available at the moment." %}
-            </div>
+        <div class="col-12 text-center">
+            <p class="text-muted">{% trans "No services available at the moment." %}</p>
         </div>
         {% endfor %}
     </div>
 
+    <div class="row g-4 mt-5">
+        <div class="col-12 text-center mb-4">
+            <h2 class="fw-bold" style="color: #ff8c00;">{% trans "WHY CHOOSE US?" %}</h2>
+        </div>
+
+        <div class="col-md-3 col-sm-6">
+            <div class="text-center p-4 rounded-3 feature-box h-100">
+                <div class="mb-3">
+                    <i class="bi bi-patch-check" style="font-size: 2rem; color: #ff8c00;"></i>
+                </div>
+                <h5 class="fw-bold mb-2">{% trans "Professional Service" %}</h5>
+                <p class="text-secondary small mb-0">{% trans "Expertise you can trust" %}</p>
+            </div>
+        </div>
+
+        <div class="col-md-3 col-sm-6">
+            <div class="text-center p-4 rounded-3 feature-box h-100">
+                <div class="mb-3">
+                    <i class="bi bi-chat-left-dots" style="font-size: 2rem; color: #ff8c00;"></i>
+                </div>
+                <h5 class="fw-bold mb-2">{% trans "Fast Response" %}</h5>
+                <p class="text-secondary small mb-0">{% trans "Always here to help" %}</p>
+            </div>
+        </div>
+
+        <div class="col-md-3 col-sm-6">
+            <div class="text-center p-4 rounded-3 feature-box h-100">
+                <div class="mb-3">
+                    <i class="bi bi-heart" style="font-size: 2rem; color: #ff8c00;"></i>
+                </div>
+                <h5 class="fw-bold mb-2">{% trans "Customer Focus" %}</h5>
+                <p class="text-secondary small mb-0">{% trans "Your satisfaction is our priority" %}</p>
+            </div>
+        </div>
+
+        <div class="col-md-3 col-sm-6">
+            <div class="text-center p-4 rounded-3 feature-box h-100">
+                <div class="mb-3">
+                    <i class="bi bi-truck" style="font-size: 2rem; color: #ff8c00;"></i>
+                </div>
+                <h5 class="fw-bold mb-2">{% trans "Reliable Delivery" %}</h5>
+                <p class="text-secondary small mb-0">{% trans "On time and hassle-free" %}</p>
+            </div>
+        </div>
+    </div>
 </div>
+
+<style>
+    .service-card {
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .service-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 15px 30px rgba(0,0,0,0.1) !important;
+    }
+
+    .service-img {
+        transition: transform 0.5s ease;
+    }
+
+    .service-card:hover .service-img {
+        transform: scale(1.05);
+    }
+
+    .image-overlay {
+        background: rgba(0,0,0,0.1);
+        opacity: 0;
+        transition: opacity 0.3s ease;
+    }
+
+    .service-card:hover .image-overlay {
+        opacity: 1;
+    }
+
+    .feature-box {
+        background: #fff;
+        border: 1px solid #eee;
+        transition: all 0.3s ease;
+    }
+
+    .feature-box:hover {
+        border-color: #ff8c00;
+        box-shadow: 0 5px 15px rgba(255, 140, 0, 0.1);
+    }
+</style>
 {% endblock %}

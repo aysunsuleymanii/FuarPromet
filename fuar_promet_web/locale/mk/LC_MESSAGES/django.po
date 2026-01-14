@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-12-12 19:50+0100\n"
+"POT-Creation-Date: 2026-01-14 10:20+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,54 +18,59 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n % 10 == 1 && n % 100 != 11) ? 0 : 1;\n"
 
-#: fuar_promet/templates/base.html:27
+#: fuar_promet/templates/base.html:23
 msgid "Toggle navigation"
 msgstr "Промени навигација"
 
-#: fuar_promet/templates/base.html:34 fuar_promet/templates/home.html:4
+#: fuar_promet/templates/base.html:43 fuar_promet/templates/home.html:4
 #: fuar_promet/templates/home.html:15
 msgid "Home"
 msgstr "Почетна"
 
-#: fuar_promet/templates/base.html:35
+#: fuar_promet/templates/base.html:44
 msgid "About"
 msgstr "За нас"
 
-#: fuar_promet/templates/base.html:36
+#: fuar_promet/templates/base.html:45
 msgid "Products"
 msgstr "Производи"
 
-#: fuar_promet/templates/base.html:37 fuar_promet/templates/services.html:4
+#: fuar_promet/templates/base.html:46
 msgid "Services"
 msgstr "Услуги"
 
-#: fuar_promet/templates/base.html:38
+#: fuar_promet/templates/base.html:47
 msgid "Our Work"
 msgstr "Нашата работа"
 
-#: fuar_promet/templates/base.html:39 fuar_promet/templates/contact.html:4
+#: fuar_promet/templates/base.html:48 fuar_promet/templates/contact.html:4
 msgid "Contact"
 msgstr "Контакт"
 
+#: fuar_promet/templates/base.html:65 fuar_promet/templates/base.html:77
+#: fuar_promet/templates/base.html:78
+msgid "Search"
+msgstr "Пребарај"
+
 #: fuar_promet/templates/contact.html:12
-msgid "Contact Us"
+msgid "Get in Touch"
 msgstr "Контактирајте нè"
 
-#: fuar_promet/templates/contact.html:13
+#: fuar_promet/templates/contact.html:18
 msgid "Email"
 msgstr "Е-пошта"
 
-#: fuar_promet/templates/contact.html:14
+#: fuar_promet/templates/contact.html:26
 msgid "Phone"
 msgstr "Телефон"
 
-#: fuar_promet/templates/contact.html:15 fuar_promet/templates/contact.html:31
+#: fuar_promet/templates/contact.html:34
 msgid "Address"
 msgstr "Адреса"
 
-#: fuar_promet/templates/contact.html:30
-msgid "View on map"
-msgstr "Погледни на мапа"
+#: fuar_promet/templates/contact.html:42
+msgid "FOLLOW US"
+msgstr ""
 
 #: fuar_promet/templates/product_detail.html:28
 #: fuar_promet/templates/products.html:39
@@ -109,26 +114,97 @@ msgstr "Сите"
 msgid "Back to Services"
 msgstr "Назад кон услугите"
 
-#: fuar_promet/templates/services.html:12
-msgid "Our Professional Services"
-msgstr "Нашите професионални услуги"
+#: fuar_promet/templates/services.html:4
+#, fuzzy
+#| msgid "Services"
+msgid "Our Services"
+msgstr "Услуги"
 
-#: fuar_promet/templates/services.html:44
+#: fuar_promet/templates/services.html:11
+msgid "OUR SERVICES"
+msgstr "НАШИТЕ УСЛУГИ"
+
+#: fuar_promet/templates/services.html:15
+msgid ""
+"Precision Solutions & Expert Processing: We leverage advanced technology and "
+"industry expertise to deliver high-quality results tailored to your specific "
+"project requirements."
+msgstr ""
+"Прецизни решенија и експертска обработка: Користиме напредна технологија и "
+"индустриско искуство за да испорачаме висококвалитетни резултати прилагодени "
+"на вашите специфични потреби."
+
+#: fuar_promet/templates/services.html:49
+msgid "Read More"
+msgstr "Прочитај повеќе"
+
+#: fuar_promet/templates/services.html:57
 msgid "No services available at the moment."
 msgstr "Моментално нема достапни услуги."
 
-#: fuar_promet_web/settings.py:99
+#: fuar_promet/templates/services.html:64
+msgid "WHY CHOOSE US?"
+msgstr "ЗОШТО ДА НЀ ИЗБЕРЕТЕ НАС?"
+
+#: fuar_promet/templates/services.html:72
+msgid "Professional Service"
+msgstr "Професионална услуга"
+
+#: fuar_promet/templates/services.html:73
+msgid "Expertise you can trust"
+msgstr "Експертиза на која можете да и верувате"
+
+#: fuar_promet/templates/services.html:82
+msgid "Fast Response"
+msgstr "Брз одговор"
+
+#: fuar_promet/templates/services.html:83
+msgid "Always here to help"
+msgstr "Секогаш тука да помогнеме"
+
+#: fuar_promet/templates/services.html:92
+msgid "Customer Focus"
+msgstr "Фокус кон клиентот"
+
+#: fuar_promet/templates/services.html:93
+msgid "Your satisfaction is our priority"
+msgstr "Вашето задоволство е наш приоритет"
+
+#: fuar_promet/templates/services.html:102
+msgid "Reliable Delivery"
+msgstr "Сигурна испорака"
+
+#: fuar_promet/templates/services.html:103
+msgid "On time and hassle-free"
+msgstr "Навремено и без проблеми"
+
+#: fuar_promet_web/settings.py:118
 msgid "English"
 msgstr "Англиски"
 
-#: fuar_promet_web/settings.py:100
+#: fuar_promet_web/settings.py:119
 msgid "Albanian"
 msgstr "Албански"
 
-#: fuar_promet_web/settings.py:101
+#: fuar_promet_web/settings.py:120
 msgid "Macedonian"
 msgstr "Македонски"
 
-#: fuar_promet_web/settings.py:102
+#: fuar_promet_web/settings.py:121
 msgid "Turkish"
 msgstr "Турски"
+
+#~ msgid ""
+#~ "Professional Material Optimization: We process all types of Chipboard, "
+#~ "MDF, and Plywood dimensions using advanced software to ensure maximum "
+#~ "yield with minimum waste."
+#~ msgstr ""
+#~ "Професионална оптимизација на материјали: Ги обработуваме димензиите на "
+#~ "сите видови иверка, медијапан и шперплоча со софистициран софтвер за да "
+#~ "обезбедиме максимално искористување со минимален отпад."
+
+#~ msgid "Contact Us"
+#~ msgstr "Контактирајте нè"
+
+#~ msgid "View on map"
+#~ msgstr "Погледни на мапа"

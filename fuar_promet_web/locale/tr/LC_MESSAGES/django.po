@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-12-12 19:50+0100\n"
+"POT-Creation-Date: 2026-01-14 10:20+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,54 +18,59 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: fuar_promet/templates/base.html:27
+#: fuar_promet/templates/base.html:23
 msgid "Toggle navigation"
 msgstr "Gezinmeyi değiştir"
 
-#: fuar_promet/templates/base.html:34 fuar_promet/templates/home.html:4
+#: fuar_promet/templates/base.html:43 fuar_promet/templates/home.html:4
 #: fuar_promet/templates/home.html:15
 msgid "Home"
 msgstr "Ana Sayfa"
 
-#: fuar_promet/templates/base.html:35
+#: fuar_promet/templates/base.html:44
 msgid "About"
 msgstr "Hakkımızda"
 
-#: fuar_promet/templates/base.html:36
+#: fuar_promet/templates/base.html:45
 msgid "Products"
 msgstr "Ürünler"
 
-#: fuar_promet/templates/base.html:37 fuar_promet/templates/services.html:4
+#: fuar_promet/templates/base.html:46
 msgid "Services"
 msgstr "Hizmetler"
 
-#: fuar_promet/templates/base.html:38
+#: fuar_promet/templates/base.html:47
 msgid "Our Work"
 msgstr "Çalışmalarımız"
 
-#: fuar_promet/templates/base.html:39 fuar_promet/templates/contact.html:4
+#: fuar_promet/templates/base.html:48 fuar_promet/templates/contact.html:4
 msgid "Contact"
 msgstr "İletişim"
 
-#: fuar_promet/templates/contact.html:12
-msgid "Contact Us"
-msgstr "Bizimle iletişime geçin"
+#: fuar_promet/templates/base.html:65 fuar_promet/templates/base.html:77
+#: fuar_promet/templates/base.html:78
+msgid "Search"
+msgstr ""
 
-#: fuar_promet/templates/contact.html:13
+#: fuar_promet/templates/contact.html:12
+msgid "Get in Touch"
+msgstr "Bizimle İletişime Geçin"
+
+#: fuar_promet/templates/contact.html:18
 msgid "Email"
 msgstr "E-posta"
 
-#: fuar_promet/templates/contact.html:14
+#: fuar_promet/templates/contact.html:26
 msgid "Phone"
 msgstr "Telefon"
 
-#: fuar_promet/templates/contact.html:15 fuar_promet/templates/contact.html:31
+#: fuar_promet/templates/contact.html:34
 msgid "Address"
 msgstr "Adres"
 
-#: fuar_promet/templates/contact.html:30
-msgid "View on map"
-msgstr "Haritada göster"
+#: fuar_promet/templates/contact.html:42
+msgid "FOLLOW US"
+msgstr ""
 
 #: fuar_promet/templates/product_detail.html:28
 #: fuar_promet/templates/products.html:39
@@ -108,26 +113,97 @@ msgstr "Tümü"
 msgid "Back to Services"
 msgstr "Hizmetlere dön"
 
-#: fuar_promet/templates/services.html:12
-msgid "Our Professional Services"
-msgstr "Profesyonel Hizmetlerimiz"
+#: fuar_promet/templates/services.html:4
+#, fuzzy
+#| msgid "Services"
+msgid "Our Services"
+msgstr "Hizmetler"
 
-#: fuar_promet/templates/services.html:44
+#: fuar_promet/templates/services.html:11
+msgid "OUR SERVICES"
+msgstr "Hizmetlerimiz"
+
+#: fuar_promet/templates/services.html:15
+msgid ""
+"Precision Solutions & Expert Processing: We leverage advanced technology and "
+"industry expertise to deliver high-quality results tailored to your specific "
+"project requirements."
+msgstr ""
+"Hassas Çözümler ve Uzman İşleme: Projenize özel gereksinimlere göre "
+"uyarlanmış yüksek kaliteli sonuçlar sunmak için ileri teknoloji ve sektör "
+"uzmanlığımızdan yararlanıyoruz."
+
+#: fuar_promet/templates/services.html:49
+msgid "Read More"
+msgstr "Devamını Oku"
+
+#: fuar_promet/templates/services.html:57
 msgid "No services available at the moment."
 msgstr "Şu anda mevcut hizmet yok."
 
-#: fuar_promet_web/settings.py:99
+#: fuar_promet/templates/services.html:64
+msgid "WHY CHOOSE US?"
+msgstr "NEDEN BİZ?"
+
+#: fuar_promet/templates/services.html:72
+msgid "Professional Service"
+msgstr "Profesyonel Hizmetlerimiz"
+
+#: fuar_promet/templates/services.html:73
+msgid "Expertise you can trust"
+msgstr "Güvenebileceğiniz uzmanlık"
+
+#: fuar_promet/templates/services.html:82
+msgid "Fast Response"
+msgstr "Hızlı Geri Dönüş"
+
+#: fuar_promet/templates/services.html:83
+msgid "Always here to help"
+msgstr "Her zaman yardıma hazırız"
+
+#: fuar_promet/templates/services.html:92
+msgid "Customer Focus"
+msgstr "Müşteri Odaklılık"
+
+#: fuar_promet/templates/services.html:93
+msgid "Your satisfaction is our priority"
+msgstr "Memnuniyetiniz bizim önceliğimizdir"
+
+#: fuar_promet/templates/services.html:102
+msgid "Reliable Delivery"
+msgstr "Güvenilir Teslimat"
+
+#: fuar_promet/templates/services.html:103
+msgid "On time and hassle-free"
+msgstr "Zamanında ve sorunsuz"
+
+#: fuar_promet_web/settings.py:118
 msgid "English"
 msgstr "İngilizce"
 
-#: fuar_promet_web/settings.py:100
+#: fuar_promet_web/settings.py:119
 msgid "Albanian"
 msgstr "Arnavutça"
 
-#: fuar_promet_web/settings.py:101
+#: fuar_promet_web/settings.py:120
 msgid "Macedonian"
 msgstr "Makedonca"
 
-#: fuar_promet_web/settings.py:102
+#: fuar_promet_web/settings.py:121
 msgid "Turkish"
 msgstr "Türkçe"
+
+#~ msgid ""
+#~ "Professional Material Optimization: We process all types of Chipboard, "
+#~ "MDF, and Plywood dimensions using advanced software to ensure maximum "
+#~ "yield with minimum waste."
+#~ msgstr ""
+#~ "Profesyonel Malzeme Optimizasyonu: Her türlü Sunta, MDF ve Kontraplak "
+#~ "ölçülerini gelişmiş yazılımlarımızla işleyerek, minimum fire ve maksimum "
+#~ "verimlilikle hesaplıyoruz."
+
+#~ msgid "Contact Us"
+#~ msgstr "Bizimle iletişime geçin"
+
+#~ msgid "View on map"
+#~ msgstr "Haritada göster"
