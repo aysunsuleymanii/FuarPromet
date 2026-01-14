@@ -26,7 +26,7 @@ msgstr "Rreth nesh"
 
 #: fuar_promet/templates/about.html:11
 msgid "ABOUT US"
-msgstr ""
+msgstr "RRETH NESH"
 
 #: fuar_promet/templates/about.html:15
 #: fuar_promet/templates/about.html:15

@@ -26,7 +26,7 @@ msgstr "Hakkımızda"
 
 #: fuar_promet/templates/about.html:11
 msgid "ABOUT US"
-msgstr ""
+msgstr "HAKKIMIZDA"
 
 #: fuar_promet/templates/about.html:15
 msgid "A legacy of precision and quality in the furniture industry since 1993."
