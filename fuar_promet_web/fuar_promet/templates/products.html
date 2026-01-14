@@ -4,85 +4,512 @@
 {% block title %}Products - Fuar Promet{% endblock %}
 
 {% block content %}
-<div class="container my-5 py-3">
-    <header class="text-center mb-5 pb-3 border-bottom">
-        <h1 class="display-4 fw-light text-dark" style="font-weight:400;">{% trans "Explore our carefully selected range of high-quality products." %}</h1>
+<div class="container-fluid my-5 py-3">
+    <header class="text-center mb-5 pb-3">
+        <h1 class="display-5 fw-light text-dark mb-0">{% trans "Explore our carefully selected range of high-quality products." %}</h1>
     </header>
 
-    <!-- Categories on top -->
-    <div class="mb-5 d-flex flex-wrap justify-content-center gap-3 category-container">
-        <a href="#" class="category-btn active" data-category="all">{% trans "All" %}</a>
-        {% for category in categories %}
-        <a href="#" class="category-btn" data-category="{{ category.id }}">{{ category.name }}</a>
-        {% endfor %}
-    </div>
+    <div class="row">
+        <!-- Left Sidebar Filters -->
+        <div class="col-lg-3 col-md-4 mb-4">
+            <div class="filter-sidebar sticky-top" style="top: 20px;">
+                <div class="filter-header mb-4">
+                    <h5 class="filter-title mb-0">{% trans "Filters" %}</h5>
+                    <button class="btn-reset" id="reset-filters">{% trans "Clear all" %}</button>
+                </div>
 
-    <div class="row g-4">
-        {% for product in products %}
-        <div class="col-xl-4 col-lg-6 col-md-6 col-sm-12 product-item" data-category="{{ product.category.id }}">
-            <a href="{% url 'product_detail' product.pk %}" class="text-decoration-none text-dark">
-                <div class="card h-100 product-card shadow-sm border-0 rounded-3 overflow-hidden">
-
-                    <div class="product-image-container">
-                        {% if product.image %}
-                        <img src="{{ product.image.url }}" class="card-img-top product-img" alt="{{ product.name }}">
-                        {% else %}
-                        <img src="{% static 'placeholder-elegant.png' %}" class="card-img-top product-img"
-                             alt="No image">
-                        {% endif %}
-                    </div>
-
-                    <div class="card-body d-flex flex-column p-4">
-                        <h5 class="card-title mb-2 text-truncate">{{ product.name }}</h5>
-
-                        <div class="text-secondary small mb-3 product-details">
-                            <span class="d-block"><strong>{% trans "Category" %}</strong>: {{ product.category.name }}</span>
-                            <span class="d-block"><strong>{% trans "Dimensions" %}</strong>: {{ product.width }} x {{ product.length }} x {{ product.thickness }}</span>
-                            <span class="d-block"><strong>{% trans "Color" %}</strong>: {{ product.color }}</span>
+                <!-- Category Filter -->
+                <div class="filter-section">
+                    <button class="filter-toggle" type="button" data-bs-toggle="collapse" data-bs-target="#categoryCollapse" aria-expanded="true">
+                        <span>{% trans "Category" %}</span>
+                        <svg width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                            <path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/>
+                        </svg>
+                    </button>
+                    <div class="collapse show" id="categoryCollapse">
+                        <div class="filter-options">
+                            <label class="filter-option">
+                                <input type="checkbox" class="category-filter" value="all" id="cat-all" checked>
+                                <span class="filter-label">{% trans "All Categories" %}</span>
+                            </label>
+                            {% for category in categories %}
+                            <label class="filter-option">
+                                <input type="checkbox" class="category-filter" value="{{ category.id }}" id="cat-{{ category.id }}">
+                                <span class="filter-label">{{ category.name }}</span>
+                            </label>
+                            {% endfor %}
                         </div>
-
-                        <div class="d-flex justify-content-between align-items-center mb-4 mt-auto pt-2 border-top">
-                            <p class="h4 fw-bold text-dark mb-0 product-price">{{ product.price }} MKD</p>
-
-                            {% if product.stock > 0 %}
-                            <span class="badge rounded-pill bg-success-subtle text-success py-2 px-3 product-stock-badge">{% trans "In Stock" %}</span>
-                            {% else %}
-                            <span class="badge rounded-pill bg-danger-subtle text-danger py-2 px-3 product-stock-badge">{% trans "Out of Stock" %}</span>
-                            {% endif %}
-                        </div>
-
                     </div>
                 </div>
-            </a>
-        </div>
-        {% endfor %}
-    </div>
 
+                <!-- Brand Filter -->
+                <div class="filter-section">
+                    <button class="filter-toggle" type="button" data-bs-toggle="collapse" data-bs-target="#brandCollapse" aria-expanded="true">
+                        <span>{% trans "Brand" %}</span>
+                        <svg width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                            <path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/>
+                        </svg>
+                    </button>
+                    <div class="collapse show" id="brandCollapse">
+                        <div class="filter-options">
+                            <label class="filter-option">
+                                <input type="checkbox" class="brand-filter" value="Kastamonu Entegre" id="brand-kastamonu">
+                                <span class="filter-label">Kastamonu Entegre</span>
+                            </label>
+                            <label class="filter-option">
+                                <input type="checkbox" class="brand-filter" value="Starwood" id="brand-starwood">
+                                <span class="filter-label">Starwood</span>
+                            </label>
+                            <label class="filter-option">
+                                <input type="checkbox" class="brand-filter" value="Swiss Krono" id="brand-swiss">
+                                <span class="filter-label">Swiss Krono</span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Surface Filter -->
+                <div class="filter-section">
+                    <button class="filter-toggle" type="button" data-bs-toggle="collapse" data-bs-target="#surfaceCollapse" aria-expanded="true">
+                        <span>{% trans "Surface" %}</span>
+                        <svg width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                            <path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/>
+                        </svg>
+                    </button>
+                    <div class="collapse show" id="surfaceCollapse">
+                        <div class="filter-options">
+                            <label class="filter-option">
+                                <input type="checkbox" class="surface-filter" value="Soft Touch" id="surface-soft">
+                                <span class="filter-label">Soft Touch</span>
+                            </label>
+                            <label class="filter-option">
+                                <input type="checkbox" class="surface-filter" value="Glossy" id="surface-glossy">
+                                <span class="filter-label">Glossy</span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Stock Filter -->
+                <div class="filter-section">
+                    <button class="filter-toggle" type="button" data-bs-toggle="collapse" data-bs-target="#stockCollapse" aria-expanded="true">
+                        <span>{% trans "Availability" %}</span>
+                        <svg width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                            <path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/>
+                        </svg>
+                    </button>
+                    <div class="collapse show" id="stockCollapse">
+                        <div class="filter-options">
+                            <label class="filter-option">
+                                <input type="checkbox" class="stock-filter" value="in-stock" id="stock-available">
+                                <span class="filter-label">{% trans "In Stock" %}</span>
+                            </label>
+                            <label class="filter-option">
+                                <input type="checkbox" class="stock-filter" value="out-of-stock" id="stock-unavailable">
+                                <span class="filter-label">{% trans "Out of Stock" %}</span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Products Grid - 4 per row -->
+        <div class="col-lg-9 col-md-8">
+            <div class="row g-4" id="products-container">
+                {% for product in products %}
+                <div class="col-xl-3 col-lg-4 col-md-6 col-sm-12 product-item"
+                     data-category="{{ product.category.id }}"
+                     data-brand="{{ product.brand }}"
+                     data-surface="{{ product.surface }}"
+                     data-stock="{% if product.stock > 0 %}in-stock{% else %}out-of-stock{% endif %}">
+                    <a href="{% url 'product_detail' product.pk %}" class="text-decoration-none text-dark">
+                        <div class="card h-100 product-card border-0 overflow-hidden">
+                            <div class="product-image-container">
+                                {% if product.image %}
+                                <img src="{{ product.image.url }}" class="card-img-top product-img" alt="{{ product.name }}">
+                                {% else %}
+                                <img src="{% static 'placeholder-elegant.png' %}" class="card-img-top product-img" alt="No image">
+                                {% endif %}
+                            </div>
+
+                            <div class="card-body d-flex flex-column p-3">
+                                <h6 class="card-title mb-2 fw-medium">{{ product.name }}</h6>
+
+                                <div class="product-meta mb-2">
+                                    <span class="meta-item">{{ product.category.name }}</span>
+                                    {% if product.brand %}
+                                    <span class="meta-item">{{ product.brand }}</span>
+                                    {% endif %}
+                                    <span class="meta-item">{{ product.code }}</span>
+                                </div>
+
+                                <div class="d-flex justify-content-between align-items-center mt-auto pt-2">
+                                    <p class="product-price mb-0">{{ product.price }} MKD</p>
+                                    {% if product.stock > 0 %}
+                                    <span class="stock-badge in-stock">{% trans "In Stock" %}</span>
+                                    {% else %}
+                                    <span class="stock-badge out-of-stock">{% trans "Out of Stock" %}</span>
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                {% endfor %}
+            </div>
+
+            <!-- No Results Message -->
+            <div id="no-results" class="text-center py-5 d-none">
+                <svg width="64" height="64" fill="currentColor" class="text-muted mb-3" viewBox="0 0 16 16">
+                    <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+                </svg>
+                <h5 class="text-muted mb-2">{% trans "No products found" %}</h5>
+                <p class="text-secondary small">{% trans "Try adjusting your filters" %}</p>
+            </div>
+        </div>
+    </div>
 </div>
-</div>
+
+<style>
+/* Minimal Filter Sidebar */
+.filter-sidebar {
+    max-height: calc(100vh - 120px);
+    overflow-y: auto;
+    padding-right: 8px;
+}
+
+.filter-sidebar::-webkit-scrollbar {
+    width: 4px;
+}
+
+.filter-sidebar::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.filter-sidebar::-webkit-scrollbar-thumb {
+    background: #d1d5db;
+    border-radius: 4px;
+}
+
+.filter-sidebar::-webkit-scrollbar-thumb:hover {
+    background: #9ca3af;
+}
+
+/* Filter Header */
+.filter-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 16px;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+.filter-title {
+    font-size: 18px;
+    font-weight: 600;
+    color: #111827;
+    letter-spacing: -0.02em;
+}
+
+.btn-reset {
+    background: none;
+    border: none;
+    color: #6b7280;
+    font-size: 13px;
+    padding: 4px 8px;
+    cursor: pointer;
+    transition: color 0.2s;
+}
+
+.btn-reset:hover {
+    color: #111827;
+}
+
+/* Filter Sections */
+.filter-section {
+    border-bottom: 1px solid #f3f4f6;
+    padding: 16px 0;
+}
+
+.filter-section:last-child {
+    border-bottom: none;
+}
+
+.filter-toggle {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: none;
+    border: none;
+    padding: 0;
+    font-size: 14px;
+    font-weight: 500;
+    color: #111827;
+    cursor: pointer;
+    transition: color 0.2s;
+}
+
+.filter-toggle:hover {
+    color: #374151;
+}
+
+.filter-toggle svg {
+    transition: transform 0.2s;
+}
+
+.filter-toggle[aria-expanded="false"] svg {
+    transform: rotate(-90deg);
+}
+
+.filter-options {
+    padding-top: 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+/* Custom Checkbox Style */
+.filter-option {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    padding: 6px 0;
+    transition: background-color 0.2s;
+    margin: 0;
+}
+
+.filter-option:hover {
+    background-color: #f9fafb;
+}
+
+.filter-option input[type="checkbox"] {
+    appearance: none;
+    width: 18px;
+    height: 18px;
+    border: 1.5px solid #d1d5db;
+    border-radius: 4px;
+    margin-right: 10px;
+    cursor: pointer;
+    position: relative;
+    transition: all 0.2s;
+    flex-shrink: 0;
+}
+
+.filter-option input[type="checkbox"]:hover {
+    border-color: #9ca3af;
+}
+
+.filter-option input[type="checkbox"]:checked {
+    background-color: #111827;
+    border-color: #111827;
+}
+
+.filter-option input[type="checkbox"]:checked::after {
+    content: '';
+    position: absolute;
+    left: 5px;
+    top: 2px;
+    width: 5px;
+    height: 9px;
+    border: solid white;
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg);
+}
+
+.filter-label {
+    font-size: 14px;
+    color: #374151;
+    user-select: none;
+}
+
+/* Product Cards - Minimal Style */
+.product-card {
+    background: #fff;
+    border: 1px solid #f3f4f6;
+    border-radius: 8px;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.product-card:hover {
+    border-color: #e5e7eb;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    transform: translateY(-2px);
+}
+
+.product-image-container {
+    height: 220px;
+    overflow: hidden;
+    background-color: #f9fafb;
+    border-bottom: 1px solid #f3f4f6;
+}
+
+.product-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.product-card:hover .product-img {
+    transform: scale(1.05);
+}
+
+.card-title {
+    font-size: 15px;
+    color: #111827;
+    line-height: 1.4;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.product-meta {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.meta-item {
+    font-size: 12px;
+    color: #6b7280;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.product-price {
+    font-size: 16px;
+    font-weight: 600;
+    color: #111827;
+}
+
+.stock-badge {
+    font-size: 11px;
+    font-weight: 500;
+    padding: 4px 10px;
+    border-radius: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+}
+
+.stock-badge.in-stock {
+    background-color: #d1fae5;
+    color: #065f46;
+}
+
+.stock-badge.out-of-stock {
+    background-color: #fee2e2;
+    color: #991b1b;
+}
+
+/* Responsive */
+@media (max-width: 991px) {
+    .filter-sidebar {
+        max-height: none;
+        position: relative !important;
+        top: 0 !important;
+    }
+}
+</style>
 
 <script>
-    const categoryButtons = document.querySelectorAll('.category-btn');
+document.addEventListener('DOMContentLoaded', function() {
+    const categoryFilters = document.querySelectorAll('.category-filter');
+    const brandFilters = document.querySelectorAll('.brand-filter');
+    const surfaceFilters = document.querySelectorAll('.surface-filter');
+    const stockFilters = document.querySelectorAll('.stock-filter');
     const productItems = document.querySelectorAll('.product-item');
+    const resetButton = document.getElementById('reset-filters');
+    const noResults = document.getElementById('no-results');
 
-    categoryButtons.forEach(btn => {
-        btn.addEventListener('click', e => {
-            e.preventDefault();
+    function applyFilters() {
+        const selectedCategories = Array.from(categoryFilters)
+            .filter(cb => cb.checked && cb.value !== 'all')
+            .map(cb => cb.value);
 
-            // Remove active class from all buttons
-            categoryButtons.forEach(b => b.classList.remove('active'));
-            btn.classList.add('active');
+        const selectedBrands = Array.from(brandFilters)
+            .filter(cb => cb.checked)
+            .map(cb => cb.value);
 
-            const category = btn.dataset.category;
+        const selectedSurfaces = Array.from(surfaceFilters)
+            .filter(cb => cb.checked)
+            .map(cb => cb.value);
 
-            productItems.forEach(item => {
-                if(category === 'all' || item.dataset.category === category){
-                    item.style.display = '';
-                } else {
-                    item.style.display = 'none';
-                }
-            });
+        const selectedStock = Array.from(stockFilters)
+            .filter(cb => cb.checked)
+            .map(cb => cb.value);
+
+        const allCategoriesChecked = document.getElementById('cat-all').checked;
+
+        let visibleCount = 0;
+
+        productItems.forEach(item => {
+            const itemCategory = item.dataset.category;
+            const itemBrand = item.dataset.brand;
+            const itemSurface = item.dataset.surface;
+            const itemStock = item.dataset.stock;
+
+            const categoryMatch = allCategoriesChecked || selectedCategories.length === 0 ||
+                                  selectedCategories.includes(itemCategory);
+
+            const brandMatch = selectedBrands.length === 0 ||
+                              selectedBrands.includes(itemBrand);
+
+            const surfaceMatch = selectedSurfaces.length === 0 ||
+                                selectedSurfaces.includes(itemSurface);
+
+            const stockMatch = selectedStock.length === 0 ||
+                              selectedStock.includes(itemStock);
+
+            if (categoryMatch && brandMatch && surfaceMatch && stockMatch) {
+                item.style.display = '';
+                visibleCount++;
+            } else {
+                item.style.display = 'none';
+            }
         });
+
+        if (visibleCount === 0) {
+            noResults.classList.remove('d-none');
+        } else {
+            noResults.classList.add('d-none');
+        }
+    }
+
+    document.getElementById('cat-all').addEventListener('change', function() {
+        if (this.checked) {
+            categoryFilters.forEach(cb => {
+                if (cb.value !== 'all') cb.checked = false;
+            });
+        }
+        applyFilters();
     });
+
+    categoryFilters.forEach(checkbox => {
+        if (checkbox.value !== 'all') {
+            checkbox.addEventListener('change', function() {
+                if (this.checked) {
+                    document.getElementById('cat-all').checked = false;
+                }
+                applyFilters();
+            });
+        }
+    });
+
+    brandFilters.forEach(cb => cb.addEventListener('change', applyFilters));
+    surfaceFilters.forEach(cb => cb.addEventListener('change', applyFilters));
+    stockFilters.forEach(cb => cb.addEventListener('change', applyFilters));
+
+    resetButton.addEventListener('click', function() {
+        categoryFilters.forEach(cb => cb.checked = cb.value === 'all');
+        brandFilters.forEach(cb => cb.checked = false);
+        surfaceFilters.forEach(cb => cb.checked = false);
+        stockFilters.forEach(cb => cb.checked = false);
+        applyFilters();
+    });
+});
 </script>
 {% endblock %}
