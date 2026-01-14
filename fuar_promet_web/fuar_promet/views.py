@@ -81,12 +81,9 @@ def decorative_products(request):
     """View for decorative products page with filtering"""
     # Use the EXACT category names from your database
     decorative_category_names = [
-        'Edge Band',
-        'Masa Ayağı',
         'PVC Duvar Paneli',
         'BAMBOO PANEL',
         'PVC UV',
-        'COMPACT',
     ]
 
     decorative_categories = Category.objects.filter(

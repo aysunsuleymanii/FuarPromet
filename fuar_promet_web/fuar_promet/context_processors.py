@@ -9,12 +9,9 @@ def navbar_categories(request):
     """
     # Define decorative category names - MUST MATCH EXACTLY with database
     decorative_names = [
-        'Edge Band',
-        'Masa Ayağı',
         'PVC Duvar Paneli',
         'BAMBOO PANEL',
         'PVC UV',
-        'COMPACT',
     ]
 
     # Get regular product categories (exclude decorative ones)
