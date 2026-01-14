@@ -29,12 +29,13 @@ msgid "ABOUT US"
 msgstr "HAKKIMIZDA"
 
 #: fuar_promet/templates/about.html:15
+#: fuar_promet/templates/about.html:15
 msgid "A legacy of precision and quality in the furniture industry since 1993."
-msgstr ""
+msgstr "1993'ten beri mobilya sektöründe hassasiyet ve kalite mirası."
 
 #: fuar_promet/templates/about.html:22
 msgid "Our Story & Mission"
-msgstr ""
+msgstr "Hikayemiz ve Misyonumuz"
 
 #: fuar_promet/templates/about.html:24
 msgid ""
@@ -43,6 +44,9 @@ msgid ""
 "facility situated on a 7,500 m² site, we provide high-capacity contract "
 "cutting and mass production services with meticulous attention to detail."
 msgstr ""
+"1993 yılında kurulan Fuar Promet, hassas kenar bantlama ve panel işleme konusunda önde gelen bir uzmandır. "
+"7.500 m²’lik bir alanda yer alan 2.500 m² modern üretim tesisimizde, yüksek kapasiteli sözleşmeli kesim "
+"ve seri üretim hizmetlerini titizlikle sunuyoruz."
 
 #: fuar_promet/templates/about.html:27
 msgid ""
@@ -52,6 +56,10 @@ msgid ""
 "systems that streamline their workflows, enabling them to deliver superior "
 "quality to their own clients."
 msgstr ""
+"İşlemenin ötesinde, yüksek nitelikli ekibimiz mobilya tasarımı ve üretiminde kapsamlı uzmanlık sunmaktadır. "
+"Fuar Promet olarak, mobilya üreticilerini ve sektör profesyonellerini iş akışlarını kolaylaştıran sistemler uygulayarak güçlendirmeye ve "
+"onların kendi müşterilerine üstün kalite sunabilmelerini sağlamaya adanmış durumdayız."
+
 
 #: fuar_promet/templates/about.html:40
 #: fuar_promet/templates/about.html:40
