@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-01-14 10:20+0000\n"
+"POT-Creation-Date: 2026-01-14 12:45+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,6 +17,72 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+#: fuar_promet/templates/about.html:4
+#, fuzzy
+#| msgid "About"
+msgid "About Us"
+msgstr "Hakkımızda"
+
+#: fuar_promet/templates/about.html:11
+msgid "ABOUT US"
+msgstr ""
+
+#: fuar_promet/templates/about.html:15
+msgid "A legacy of precision and quality in the furniture industry since 1993."
+msgstr ""
+
+#: fuar_promet/templates/about.html:22
+msgid "Our Story & Mission"
+msgstr ""
+
+#: fuar_promet/templates/about.html:24
+msgid ""
+"Established in 1993, Fuar Promet is a leading specialist in precision edge "
+"banding and panel processing. Operating within a 2,500 m² modern production "
+"facility situated on a 7,500 m² site, we provide high-capacity contract "
+"cutting and mass production services with meticulous attention to detail."
+msgstr ""
+
+#: fuar_promet/templates/about.html:27
+msgid ""
+"Beyond processing, our highly skilled team offers comprehensive expertise in "
+"furniture design and manufacturing. At Fuar Promet, we are dedicated to "
+"empowering furniture makers and industry professionals by implementing "
+"systems that streamline their workflows, enabling them to deliver superior "
+"quality to their own clients."
+msgstr ""
+
+#: fuar_promet/templates/about.html:40
+#: fuar_promet/templates/about.html:40
+msgid "OUR CORE EXPERTISE"
+msgstr "TEMEL UZMANLIĞIMIZ"
+
+#: fuar_promet/templates/about.html:48
+msgid "Precision Processing"
+msgstr "Hassas İşleme"
+
+#: fuar_promet/templates/about.html:49
+msgid ""
+"Advanced edge banding, cutting, and shaping for MDF, Chipboard, and more."
+msgstr "MDF, yonga levha ve diğerleri için gelişmiş kenar bantlama, kesim ve şekillendirme."
+
+#: fuar_promet/templates/about.html:58
+msgid "Premium Supply"
+msgstr "Premium Tedarik"
+
+#: fuar_promet/templates/about.html:59
+msgid "High-quality UV PVC, Bamboo Panels, Compact Laminates, and Table Bases."
+msgstr "Yüksek kaliteli UV PVC, bambu paneller, kompakt laminatlar ve masa ayakları."
+
+#: fuar_promet/templates/about.html:68
+msgid "Design Solutions"
+msgstr "Tasarım Çözümleri"
+
+#: fuar_promet/templates/about.html:69
+msgid ""
+"Expert interior decoration and furniture design tailored to your project."
+msgstr "Projenize özel uzman iç dekorasyon ve mobilya tasarımı."
 
 #: fuar_promet/templates/base.html:23
 msgid "Toggle navigation"
@@ -39,16 +105,12 @@ msgstr "Ürünler"
 msgid "Services"
 msgstr "Hizmetler"
 
-#: fuar_promet/templates/base.html:47
-msgid "Our Work"
-msgstr "Çalışmalarımız"
-
-#: fuar_promet/templates/base.html:48 fuar_promet/templates/contact.html:4
+#: fuar_promet/templates/base.html:47 fuar_promet/templates/contact.html:4
 msgid "Contact"
 msgstr "İletişim"
 
-#: fuar_promet/templates/base.html:65 fuar_promet/templates/base.html:77
-#: fuar_promet/templates/base.html:78
+#: fuar_promet/templates/base.html:64 fuar_promet/templates/base.html:76
+#: fuar_promet/templates/base.html:77
 msgid "Search"
 msgstr ""
 
@@ -133,47 +195,47 @@ msgstr ""
 "uyarlanmış yüksek kaliteli sonuçlar sunmak için ileri teknoloji ve sektör "
 "uzmanlığımızdan yararlanıyoruz."
 
-#: fuar_promet/templates/services.html:49
+#: fuar_promet/templates/services.html:41
 msgid "Read More"
 msgstr "Devamını Oku"
 
-#: fuar_promet/templates/services.html:57
+#: fuar_promet/templates/services.html:49
 msgid "No services available at the moment."
 msgstr "Şu anda mevcut hizmet yok."
 
-#: fuar_promet/templates/services.html:64
+#: fuar_promet/templates/services.html:56
 msgid "WHY CHOOSE US?"
 msgstr "NEDEN BİZ?"
 
-#: fuar_promet/templates/services.html:72
+#: fuar_promet/templates/services.html:64
 msgid "Professional Service"
 msgstr "Profesyonel Hizmetlerimiz"
 
-#: fuar_promet/templates/services.html:73
+#: fuar_promet/templates/services.html:65
 msgid "Expertise you can trust"
 msgstr "Güvenebileceğiniz uzmanlık"
 
-#: fuar_promet/templates/services.html:82
+#: fuar_promet/templates/services.html:74
 msgid "Fast Response"
 msgstr "Hızlı Geri Dönüş"
 
-#: fuar_promet/templates/services.html:83
+#: fuar_promet/templates/services.html:75
 msgid "Always here to help"
 msgstr "Her zaman yardıma hazırız"
 
-#: fuar_promet/templates/services.html:92
+#: fuar_promet/templates/services.html:84
 msgid "Customer Focus"
 msgstr "Müşteri Odaklılık"
 
-#: fuar_promet/templates/services.html:93
+#: fuar_promet/templates/services.html:85
 msgid "Your satisfaction is our priority"
 msgstr "Memnuniyetiniz bizim önceliğimizdir"
 
-#: fuar_promet/templates/services.html:102
+#: fuar_promet/templates/services.html:94
 msgid "Reliable Delivery"
 msgstr "Güvenilir Teslimat"
 
-#: fuar_promet/templates/services.html:103
+#: fuar_promet/templates/services.html:95
 msgid "On time and hassle-free"
 msgstr "Zamanında ve sorunsuz"
 
@@ -192,6 +254,9 @@ msgstr "Makedonca"
 #: fuar_promet_web/settings.py:121
 msgid "Turkish"
 msgstr "Türkçe"
+
+#~ msgid "Our Work"
+#~ msgstr "Çalışmalarımız"
 
 #~ msgid ""
 #~ "Professional Material Optimization: We process all types of Chipboard, "

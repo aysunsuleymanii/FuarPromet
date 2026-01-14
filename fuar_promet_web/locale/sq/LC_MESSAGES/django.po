@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-01-14 10:20+0000\n"
+"POT-Creation-Date: 2026-01-14 12:45+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,6 +17,82 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: fuar_promet/templates/about.html:4
+#, fuzzy
+#| msgid "About"
+msgid "About Us"
+msgstr "Rreth nesh"
+
+#: fuar_promet/templates/about.html:11
+msgid "ABOUT US"
+msgstr ""
+
+#: fuar_promet/templates/about.html:15
+#: fuar_promet/templates/about.html:15
+msgid "A legacy of precision and quality in the furniture industry since 1993."
+msgstr "Një trashëgimi e saktësisë dhe cilësisë në industrinë e mobiljeve që nga viti 1993."
+
+#: fuar_promet/templates/about.html:22
+msgid "Our Story & Mission"
+msgstr "Historia dhe Misioni ynë"
+
+#: fuar_promet/templates/about.html:24
+msgid ""
+"Established in 1993, Fuar Promet is a leading specialist in precision edge "
+"banding and panel processing. Operating within a 2,500 m² modern production "
+"facility situated on a 7,500 m² site, we provide high-capacity contract "
+"cutting and mass production services with meticulous attention to detail."
+msgstr ""
+"E themeluar në 1993, Fuar Promet është një specialist kryesor në bandimin e saktë "
+"të skajeve dhe përpunimin e paneleve. Duke operuar brenda një fabrike moderne "
+"prodhuese prej 2,500 m² në një truall prej 7,500 m², ne ofrojmë shërbime prerjeje "
+"dhe prodhimi masiv me kapacitet të lartë, me vëmendje të madhe ndaj detajeve."
+
+#: fuar_promet/templates/about.html:27
+msgid ""
+"Beyond processing, our highly skilled team offers comprehensive expertise in "
+"furniture design and manufacturing. At Fuar Promet, we are dedicated to "
+"empowering furniture makers and industry professionals by implementing "
+"systems that streamline their workflows, enabling them to deliver superior "
+"quality to their own clients."
+msgstr ""
+"Përtej përpunimit, ekipi ynë i aftë ofron ekspertizë të plotë në dizajnin dhe "
+"prodhimin e mobiljeve. Tek Fuar Promet, jemi të përkushtuar për të fuqizuar "
+"prodhuesit e mobiljeve dhe profesionistët e industrisë duke zbatuar sisteme që "
+"thjeshtëzojnë proceset e tyre, duke u mundësuar atyre të ofrojnë cilësi të lartë "
+"për klientët e tyre."
+
+#: fuar_promet/templates/about.html:40
+msgid "OUR CORE EXPERTISE"
+msgstr "EKSPERTIZA JONË KRYESORE"
+
+#: fuar_promet/templates/about.html:48
+msgid "Precision Processing"
+msgstr "Përpunim i Saktë"
+
+#: fuar_promet/templates/about.html:49
+msgid ""
+"Advanced edge banding, cutting, and shaping for MDF, Chipboard, and more."
+msgstr "Bandim, prerje dhe formësim i avancuar për MDF, tabla kompakte dhe të tjera."
+
+#: fuar_promet/templates/about.html:58
+msgid "Premium Supply"
+msgstr "Furnizim Premium"
+
+#: fuar_promet/templates/about.html:59
+msgid "High-quality UV PVC, Bamboo Panels, Compact Laminates, and Table Bases."
+msgstr "PVC UV me cilësi të lartë, panele bambuje, laminata kompakte dhe baza tavoline."
+
+#: fuar_promet/templates/about.html:68
+msgid "Design Solutions"
+msgstr "Zgjidhje Dizajni"
+
+#: fuar_promet/templates/about.html:69
+msgid ""
+"Expert interior decoration and furniture design tailored to your project."
+msgstr "Dekorim i brendshëm ekspert dhe dizajn mobiljesh të përshtatur për projektin tuaj."
+
 
 #: fuar_promet/templates/base.html:23
 msgid "Toggle navigation"
@@ -39,16 +115,12 @@ msgstr "Produktet"
 msgid "Services"
 msgstr "Shërbimet"
 
-#: fuar_promet/templates/base.html:47
-msgid "Our Work"
-msgstr "Puna jonë"
-
-#: fuar_promet/templates/base.html:48 fuar_promet/templates/contact.html:4
+#: fuar_promet/templates/base.html:47 fuar_promet/templates/contact.html:4
 msgid "Contact"
 msgstr "Kontakti"
 
-#: fuar_promet/templates/base.html:65 fuar_promet/templates/base.html:77
-#: fuar_promet/templates/base.html:78
+#: fuar_promet/templates/base.html:64 fuar_promet/templates/base.html:76
+#: fuar_promet/templates/base.html:77
 msgid "Search"
 msgstr ""
 
@@ -131,51 +203,51 @@ msgid ""
 "industry expertise to deliver high-quality results tailored to your specific "
 "project requirements."
 msgstr ""
-"Zgjidhje Precize dhe Përpunim Ekspert: Ne shfrytëzojmë teknologjinë e avancuar "
-"dhe përvojën e industrisë për të ofruar rezultate të cilësisë së lartë të "
-"përshtatura për kërkesat specifike të projektit tuaj."
+"Zgjidhje Precize dhe Përpunim Ekspert: Ne shfrytëzojmë teknologjinë e "
+"avancuar dhe përvojën e industrisë për të ofruar rezultate të cilësisë së "
+"lartë të përshtatura për kërkesat specifike të projektit tuaj."
 
-#: fuar_promet/templates/services.html:49
+#: fuar_promet/templates/services.html:41
 msgid "Read More"
 msgstr "Lexo më shumë"
 
-#: fuar_promet/templates/services.html:57
+#: fuar_promet/templates/services.html:49
 msgid "No services available at the moment."
 msgstr "Nuk ka shërbime të disponueshme për momentin."
 
-#: fuar_promet/templates/services.html:64
+#: fuar_promet/templates/services.html:56
 msgid "WHY CHOOSE US?"
 msgstr "PSE TË NA ZGJIDHNI NE?"
 
-#: fuar_promet/templates/services.html:72
+#: fuar_promet/templates/services.html:64
 msgid "Professional Service"
 msgstr "Shërbim Profesional"
 
-#: fuar_promet/templates/services.html:73
+#: fuar_promet/templates/services.html:65
 msgid "Expertise you can trust"
 msgstr "Ekspertizë tek e cila mund të besoni"
 
-#: fuar_promet/templates/services.html:82
+#: fuar_promet/templates/services.html:74
 msgid "Fast Response"
 msgstr "Përgjigje e shpejtë"
 
-#: fuar_promet/templates/services.html:83
+#: fuar_promet/templates/services.html:75
 msgid "Always here to help"
 msgstr "Gjithmonë këtu për t'ju ndihmuar"
 
-#: fuar_promet/templates/services.html:92
+#: fuar_promet/templates/services.html:84
 msgid "Customer Focus"
 msgstr "Fokus te klienti"
 
-#: fuar_promet/templates/services.html:93
+#: fuar_promet/templates/services.html:85
 msgid "Your satisfaction is our priority"
 msgstr "Kënaqësia juaj është prioriteti ynë"
 
-#: fuar_promet/templates/services.html:102
+#: fuar_promet/templates/services.html:94
 msgid "Reliable Delivery"
 msgstr "Dërgesë e besueshme"
 
-#: fuar_promet/templates/services.html:103
+#: fuar_promet/templates/services.html:95
 msgid "On time and hassle-free"
 msgstr "Në kohë dhe pa probleme"
 
@@ -194,6 +266,9 @@ msgstr "Maqedonisht"
 #: fuar_promet_web/settings.py:121
 msgid "Turkish"
 msgstr "Turqisht"
+
+#~ msgid "Our Work"
+#~ msgstr "Puna jonë"
 
 #~ msgid ""
 #~ "Professional Material Optimization: We process all types of Chipboard, "

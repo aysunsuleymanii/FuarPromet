@@ -1,10 +1,98 @@
 {% extends 'base.html' %}
-{% load static %}
+{% load static i18n %}
+
+{% block title %}{% trans "About Us" %} - Fuar Promet{% endblock %}
+
 {% block content %}
+<div class="container my-5 py-3">
 
+    <header class="text-center mb-5 pb-4">
+        <h1 class="display-3 mb-3" style="color: #000000;">
+            {% trans "ABOUT US" %}
+        </h1>
+        <div style="width: 100px; height: 3px; background: #000000; margin: 0 auto 20px;"></div>
+        <p class="lead text-muted" style="max-width: 800px; margin: 0 auto; line-height: 1.6;">
+            {% trans "A legacy of precision and quality in the furniture industry since 1993." %}
+        </p>
+    </header>
 
+    <div class="row g-5 align-items-center mb-5">
+        <div class="col-lg-6">
+            <div class="pe-lg-4">
+                <h2 class="mb-4" style="color: #000000;">{% trans "Our Story & Mission" %}</h2>
+                <p class="text-secondary mb-4" style="line-height: 1.8;">
+                    {% trans "Established in 1993, Fuar Promet is a leading specialist in precision edge banding and panel processing. Operating within a 2,500 m² modern production facility situated on a 7,500 m² site, we provide high-capacity contract cutting and mass production services with meticulous attention to detail." %}
+                </p>
+                <p class="text-secondary mb-4" style="line-height: 1.8;">
+                    {% trans "Beyond processing, our highly skilled team offers comprehensive expertise in furniture design and manufacturing. At Fuar Promet, we are dedicated to empowering furniture makers and industry professionals by implementing systems that streamline their workflows, enabling them to deliver superior quality to their own clients." %}
+                </p>
+            </div>
+        </div>
+        <div class="col-lg-6">
+            <div class="rounded-4 overflow-hidden shadow-sm border-0">
+                <img src="{% static 'images/factory-about.jpg' %}" class="img-fluid w-100" alt="Fuar Promet Facility" style="min-height: 400px; object-fit: cover;">
+            </div>
+        </div>
+    </div>
 
+    <div class="row g-4 mt-5">
+        <div class="col-12 text-center mb-4">
+            <h2 style="color: #000000;">{% trans "OUR CORE EXPERTISE" %}</h2>
+        </div>
 
+        <div class="col-md-4">
+            <div class="p-4 rounded-3 feature-box h-100 text-center">
+                <div class="mb-3">
+                    <i class="bi bi-gear-wide-connected" style="font-size: 2.5rem; color: #000000;"></i>
+                </div>
+                <h5>{% trans "Precision Processing" %}</h5>
+                <p class="text-secondary small">{% trans "Advanced edge banding, cutting, and shaping for MDF, Chipboard, and more." %}</p>
+            </div>
+        </div>
 
+        <div class="col-md-4">
+            <div class="p-4 rounded-3 feature-box h-100 text-center">
+                <div class="mb-3">
+                    <i class="bi bi-box-seam" style="font-size: 2.5rem; color: #000000;"></i>
+                </div>
+                <h5>{% trans "Premium Supply" %}</h5>
+                <p class="text-secondary small">{% trans "High-quality UV PVC, Bamboo Panels, Compact Laminates, and Table Bases." %}</p>
+            </div>
+        </div>
 
+        <div class="col-md-4">
+            <div class="p-4 rounded-3 feature-box h-100 text-center">
+                <div class="mb-3">
+                    <i class="bi bi-pencil-square" style="font-size: 2.5rem; color: #000000;"></i>
+                </div>
+                <h5>{% trans "Design Solutions" %}</h5>
+                <p class="text-secondary small">{% trans "Expert interior decoration and furniture design tailored to your project." %}</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    p {
+        font-weight: 400 !important;
+    }
+
+    .feature-box {
+        background: #fff;
+        border: 1px solid #eee;
+        transition: all 0.3s ease;
+    }
+
+    .feature-box:hover {
+        border-color: #ff8c00;
+        box-shadow: 0 5px 15px rgba(255, 140, 0, 0.1);
+        transform: translateY(-5px);
+    }
+
+    /* Professional highlight on headings */
+    h2 {
+        position: relative;
+        display: inline-block;
+    }
+</style>
 {% endblock %}
