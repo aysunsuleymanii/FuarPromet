@@ -12,9 +12,21 @@ class Category(models.Model):
 
 class Product(models.Model):
     name = models.CharField(max_length=150)
+    code = models.CharField(max_length=150, default="", null=True, blank=True)
+    brands = {
+        "Kastamonu Entegre" :  "Kastamonu Entegre",
+        "Starwood"  : "Starwood",
+        "Swiss Krono" : "Swiss Krono"
+    }
+    brand = models.CharField(max_length=200, choices=brands, null=True, blank=True, default="Kastamonu Entegre")
     width = models.DecimalField(max_digits=10, decimal_places=2, null=False, blank=False)
     length = models.DecimalField(max_digits=10, decimal_places=2, null=False, blank=False)
     thickness = models.DecimalField(max_digits=10, decimal_places=2, null=False, blank=False)
+    surfaces = {
+        "Soft Touch" : "Soft Touch",
+        "Glossy" : "Glossy"
+    }
+    surface = models.CharField(max_length=200, choices=surfaces, null=True, blank=True)
     price = models.DecimalField(max_digits=10, decimal_places=2, null=False, blank=False)
     stock = models.PositiveIntegerField(default=0, null=False, blank=False)
 
