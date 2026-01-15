@@ -21,17 +21,28 @@ from django.urls import path, include
 from fuar_promet.views import *
 
 urlpatterns = [
+                  # Language switcher
                   path('i18n/', include('django.conf.urls.i18n')),
+
+                  # Core pages
                   path('', home, name='home'),
-                  path('admin/', admin.site.urls),
+                  path('about/', about, name='about'),
                   path('contact/', contact, name='contact'),
                   path('our_work/', our_work, name='our_work'),
-                  path('products/', products, name='products'),
+
+                  # Admin
+                  path('admin/', admin.site.urls),
+
+                  # Products
+                  path('products/', products_list, name='products'),
+                  path('category/<int:category_id>/', category_products, name='category_products'),
+                  path('product/<int:pk>/', ProductDetailView.as_view(), name='product_detail'),
+
+                  # Services
                   path('services/', services, name='services'),
-                  path('about/', about, name='about'),
                   path('services/<int:pk>/', ServiceDetailView.as_view(), name='service_detail'),
-                  path('products/<int:pk>/', ProductDetailView.as_view(), name='product_detail'),
+
+                  # Other
                   path('kitchen/', kitchen_view, name='kitchen'),
-                  path('decorative_products', decorative_products, name='decorative_products'),
 
               ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

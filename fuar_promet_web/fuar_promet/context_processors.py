@@ -1,30 +1,23 @@
-# fuar_promet/context_processors.py
 from .models import Category
 
 
 def navbar_categories(request):
     """
-    Context processor to make categories available in all templates
-    for the navbar mega menu
+    Provides navbar categories based on category hierarchy.
+    Products and Decorative Products are main categories.
     """
-    # Define decorative category names - MUST MATCH EXACTLY with database
-    decorative_names = [
-        'PVC Duvar Paneli',
-        'BAMBOO PANEL',
-        'PVC UV',
-    ]
 
-    # Get regular product categories (exclude decorative ones)
-    product_categories = Category.objects.exclude(
-        name__in=decorative_names
-    ).order_by('name')
+    products_main = Category.objects.filter(
+        parent__isnull=True,
+        name="Products"
+    ).first()
 
-    # Get decorative categories (only these specific ones)
-    decorative_categories = Category.objects.filter(
-        name__in=decorative_names
-    ).order_by('name')
+    decorative_main = Category.objects.filter(
+        parent__isnull=True,
+        name="Decorative Products"
+    ).first()
 
     return {
-        'product_categories': product_categories,
-        'decorative_categories': decorative_categories,
+        "product_categories": products_main.subcategories.all() if products_main else [],
+        "decorative_categories": decorative_main.subcategories.all() if decorative_main else [],
     }
