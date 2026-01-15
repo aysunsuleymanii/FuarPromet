@@ -1,10 +1,28 @@
 from django.db import models
+from django.core.exceptions import ValidationError
+
 
 
 class Category(models.Model):
     name = models.CharField(max_length=100, unique=True)
     description = models.TextField(blank=True, null=True)
     image = models.ImageField(upload_to='categories/', blank=True, null=True)
+
+    parent = models.ForeignKey(
+        'self',
+        on_delete=models.CASCADE,
+        null=True,
+        blank=True,
+        related_name='subcategories'
+    )
+
+    def __str__(self):
+        if self.parent:
+            return f"{self.parent.name} → {self.name}"
+        return self.name
+
+class Brand(models.Model):
+    name = models.CharField(max_length=150)
 
     def __str__(self):
         return self.name
@@ -13,20 +31,10 @@ class Category(models.Model):
 class Product(models.Model):
     name = models.CharField(max_length=150)
     code = models.CharField(max_length=150, default="", null=True, blank=True)
-    brands = {
-        "Kastamonu Entegre" :  "Kastamonu Entegre",
-        "Starwood"  : "Starwood",
-        "Swiss Krono" : "Swiss Krono"
-    }
-    brand = models.CharField(max_length=200, choices=brands, null=True, blank=True, default="Kastamonu Entegre")
-    width = models.DecimalField(max_digits=10, decimal_places=2, null=False, blank=False)
+    brand = models.ForeignKey(Brand, on_delete=models.CASCADE)
     length = models.DecimalField(max_digits=10, decimal_places=2, null=False, blank=False)
+    width = models.DecimalField(max_digits=10, decimal_places=2, null=False, blank=False)
     thickness = models.DecimalField(max_digits=10, decimal_places=2, null=False, blank=False)
-    surfaces = {
-        "Soft Touch" : "Soft Touch",
-        "Glossy" : "Glossy"
-    }
-    surface = models.CharField(max_length=200, choices=surfaces, null=True, blank=True)
     price = models.DecimalField(max_digits=10, decimal_places=2, null=False, blank=False)
     stock = models.PositiveIntegerField(default=0, null=False, blank=False)
     category = models.ForeignKey(Category, on_delete=models.CASCADE, related_name="products")
@@ -35,6 +43,10 @@ class Product(models.Model):
 
     def __str__(self):
         return self.name
+
+    def clean(self):
+        if self.category.parent is None:
+            raise ValidationError("Products must be assigned to a sub-category.")
 
 
 class Service(models.Model):

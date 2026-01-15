@@ -6,6 +6,9 @@ from fuar_promet.models import *
 # Register your models here.
 
 class CategoryAdmin(admin.ModelAdmin):
+    list_display = ('name', 'parent')
+    list_filter = ('parent',)
+
     def has_view_permission(self, request, obj=None):
         return True
 
@@ -20,6 +23,15 @@ class CategoryAdmin(admin.ModelAdmin):
 
 
 class ProductAdmin(admin.ModelAdmin):
+    list_display = ('name', 'category', 'brand', 'price', 'stock')
+    list_filter = ('category', 'brand')
+    search_fields = ('name', 'code')
+
+    def formfield_for_foreignkey(self, db_field, request, **kwargs):
+        if db_field.name == "category":
+            kwargs["queryset"] = Category.objects.filter(parent__isnull=False)
+        return super().formfield_for_foreignkey(db_field, request, **kwargs)
+
     def has_view_permission(self, request, obj=None):
         return True
 
@@ -31,6 +43,7 @@ class ProductAdmin(admin.ModelAdmin):
 
     def has_delete_permission(self, request, obj=None):
         return request.user.is_superuser
+
 
 
 class ServiceAdmin(admin.ModelAdmin):
