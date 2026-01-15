@@ -37,19 +37,17 @@ def products_list(request):
 
 
 def category_products(request, category_id):
-    """
-    Show products for a SINGLE category (used by navbar & category pages)
-    """
     category = get_object_or_404(Category, id=category_id)
 
-    # Only allow leaf categories
+    # If category has subcategories → show products from ALL subcategories
     if category.subcategories.exists():
-        # Optional: redirect or show empty page
-        products = Product.objects.none()
+        subcategories = category.subcategories.all()
+        products = Product.objects.filter(category__in=subcategories)
     else:
+        # Leaf category → show its own products
         products = Product.objects.filter(category=category)
 
-    # Filters
+    # Optional filters
     brand_param = request.GET.get("brand")
     stock_param = request.GET.get("stock")
 
@@ -66,8 +64,10 @@ def category_products(request, category_id):
     context = {
         "category": category,
         "products": products,
+        "is_parent": category.subcategories.exists(),
     }
-    return render(request, "category_products.html", context)
+
+    return render(request, "products.html", context)
 
 
 # ---------- SERVICES ----------
