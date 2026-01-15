@@ -5,23 +5,26 @@
 
 {% block content %}
 <div class="container-fluid my-5 py-3">
+
+    <!-- PAGE HEADER -->
     <header class="text-center mb-5 pb-3">
         <h1 class="display-5 fw-light text-dark mb-0">
             {{ page_title }}
         </h1>
-
     </header>
 
     <div class="row">
-        <!-- Left Sidebar Filters -->
+
+        <!-- ================= LEFT SIDEBAR FILTERS ================= -->
         <div class="col-lg-3 col-md-4 mb-4">
             <div class="filter-sidebar sticky-top" style="top: 20px;">
+
                 <div class="filter-header mb-4">
                     <h5 class="filter-title mb-0">{% trans "Filters" %}</h5>
                     <button class="btn-reset" id="reset-filters">{% trans "Clear all" %}</button>
                 </div>
 
-                <!-- Category Filter -->
+                <!-- CATEGORY FILTER -->
                 <div class="filter-section">
                     <button class="filter-toggle" type="button" data-bs-toggle="collapse" data-bs-target="#categoryCollapse" aria-expanded="true">
                         <span>{% trans "Category" %}</span>
@@ -29,15 +32,17 @@
                             <path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/>
                         </svg>
                     </button>
+
                     <div class="collapse show" id="categoryCollapse">
                         <div class="filter-options">
                             <label class="filter-option">
-                                <input type="checkbox" class="category-filter" value="all" id="cat-all" checked>
+                                <input type="checkbox" class="category-filter" id="cat-all" value="all" checked>
                                 <span class="filter-label">{% trans "All Categories" %}</span>
                             </label>
+
                             {% for category in categories %}
                             <label class="filter-option">
-                                <input type="checkbox" class="category-filter" value="{{ category.id }}" id="cat-{{ category.id }}">
+                                <input type="checkbox" class="category-filter" value="{{ category.id }}">
                                 <span class="filter-label">{{ category.name }}</span>
                             </label>
                             {% endfor %}
@@ -45,7 +50,7 @@
                     </div>
                 </div>
 
-                <!-- Brand Filter -->
+                <!-- BRAND FILTER -->
                 <div class="filter-section">
                     <button class="filter-toggle" type="button" data-bs-toggle="collapse" data-bs-target="#brandCollapse" aria-expanded="true">
                         <span>{% trans "Brand" %}</span>
@@ -53,25 +58,26 @@
                             <path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/>
                         </svg>
                     </button>
+
                     <div class="collapse show" id="brandCollapse">
                         <div class="filter-options">
                             <label class="filter-option">
-                                <input type="checkbox" class="brand-filter" value="Kastamonu Entegre" id="brand-kastamonu">
+                                <input type="checkbox" class="brand-filter" value="kastamonu entegre">
                                 <span class="filter-label">Kastamonu Entegre</span>
                             </label>
                             <label class="filter-option">
-                                <input type="checkbox" class="brand-filter" value="Starwood" id="brand-starwood">
+                                <input type="checkbox" class="brand-filter" value="starwood">
                                 <span class="filter-label">Starwood</span>
                             </label>
                             <label class="filter-option">
-                                <input type="checkbox" class="brand-filter" value="Swiss Krono" id="brand-swiss">
+                                <input type="checkbox" class="brand-filter" value="swiss krono">
                                 <span class="filter-label">Swiss Krono</span>
                             </label>
                         </div>
                     </div>
                 </div>
 
-                <!-- Surface Filter -->
+                <!-- SURFACE FILTER -->
                 <div class="filter-section">
                     <button class="filter-toggle" type="button" data-bs-toggle="collapse" data-bs-target="#surfaceCollapse" aria-expanded="true">
                         <span>{% trans "Surface" %}</span>
@@ -79,21 +85,22 @@
                             <path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/>
                         </svg>
                     </button>
+
                     <div class="collapse show" id="surfaceCollapse">
                         <div class="filter-options">
                             <label class="filter-option">
-                                <input type="checkbox" class="surface-filter" value="Soft Touch" id="surface-soft">
+                                <input type="checkbox" class="surface-filter" value="soft touch">
                                 <span class="filter-label">Soft Touch</span>
                             </label>
                             <label class="filter-option">
-                                <input type="checkbox" class="surface-filter" value="Glossy" id="surface-glossy">
+                                <input type="checkbox" class="surface-filter" value="glossy">
                                 <span class="filter-label">Glossy</span>
                             </label>
                         </div>
                     </div>
                 </div>
 
-                <!-- Stock Filter -->
+                <!-- STOCK FILTER -->
                 <div class="filter-section">
                     <button class="filter-toggle" type="button" data-bs-toggle="collapse" data-bs-target="#stockCollapse" aria-expanded="true">
                         <span>{% trans "Availability" %}</span>
@@ -101,107 +108,170 @@
                             <path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/>
                         </svg>
                     </button>
+
                     <div class="collapse show" id="stockCollapse">
                         <div class="filter-options">
                             <label class="filter-option">
-                                <input type="checkbox" class="stock-filter" value="in-stock" id="stock-available">
+                                <input type="checkbox" class="stock-filter" value="in-stock">
                                 <span class="filter-label">{% trans "In Stock" %}</span>
                             </label>
                             <label class="filter-option">
-                                <input type="checkbox" class="stock-filter" value="out-of-stock" id="stock-unavailable">
+                                <input type="checkbox" class="stock-filter" value="out-of-stock">
                                 <span class="filter-label">{% trans "Out of Stock" %}</span>
                             </label>
                         </div>
                     </div>
                 </div>
+
             </div>
         </div>
 
-        <!-- Products Grid - 4 per row -->
+        <!-- ================= PRODUCTS GRID ================= -->
         <div class="col-lg-9 col-md-8">
-            {% if products|length > 0 %}
-    <div class="row g-4" id="products-container">
-        {% for product in products %}
-        <div class="col-xl-3 col-lg-4 col-md-6 col-sm-12 product-item"
-             data-category="{{ product.category.id }}"
-             data-brand="{{ product.brand }}"
-             data-stock="{% if product.stock > 0 %}in-stock{% else %}out-of-stock{% endif %}">
 
-            <a href="{% url 'product_detail' product.pk %}" class="text-decoration-none text-dark">
-                <div class="card h-100 product-card border-0 overflow-hidden">
-                    <div class="product-image-container">
-                        {% if product.image %}
-                            <img src="{{ product.image.url }}" class="card-img-top product-img">
-                        {% else %}
-                            <img src="{% static 'placeholder-elegant.png' %}" class="card-img-top product-img">
-                        {% endif %}
-                    </div>
+            <div class="row g-4" id="products-container">
+                {% for product in products %}
+                <div class="col-xl-3 col-lg-4 col-md-6 col-sm-12 product-item"
+                     data-category="{{ product.category.id }}"
+                     data-brand="{{ product.brand.name|lower }}"
+                     data-surface="{{ product.surface|default:''|lower }}"
+                     data-stock="{% if product.stock > 0 %}in-stock{% else %}out-of-stock{% endif %}">
 
-                    <div class="card-body d-flex flex-column p-3">
-                        <h6 class="card-title mb-2 fw-medium">{{ product.name }}</h6>
+                    <a href="{% url 'product_detail' product.pk %}" class="text-decoration-none text-dark">
+                        <div class="card h-100 product-card border-0 overflow-hidden">
 
-                        <div class="product-meta mb-2">
-                            <span class="meta-item">{{ product.category.name }}</span>
-                            {% if product.brand %}
-                                <span class="meta-item">{{ product.brand.name }}</span>
-                            {% endif %}
-                            <span class="meta-item">{{ product.code }}</span>
+                            <div class="product-image-container">
+                                {% if product.image %}
+                                    <img src="{{ product.image.url }}" class="card-img-top product-img">
+                                {% else %}
+                                    <img src="{% static 'placeholder-elegant.png' %}" class="card-img-top product-img">
+                                {% endif %}
+                            </div>
+
+                            <div class="card-body d-flex flex-column p-3">
+                                <h6 class="card-title mb-2 fw-medium">{{ product.name }}</h6>
+
+                                <div class="product-meta mb-2">
+                                    <span class="meta-item">{{ product.category.name }}</span>
+                                    <span class="meta-item">{{ product.brand.name }}</span>
+                                    <span class="meta-item">{{ product.code }}</span>
+                                </div>
+
+                                <div class="d-flex justify-content-between align-items-center mt-auto pt-2">
+                                    <p class="product-price mb-0">{{ product.price }} MKD</p>
+                                    {% if product.stock > 0 %}
+                                        <span class="stock-badge in-stock">{% trans "In Stock" %}</span>
+                                    {% else %}
+                                        <span class="stock-badge out-of-stock">{% trans "Out of Stock" %}</span>
+                                    {% endif %}
+                                </div>
+                            </div>
+
                         </div>
-
-                        <div class="d-flex justify-content-between align-items-center mt-auto pt-2">
-                            <p class="product-price mb-0">{{ product.price }} MKD</p>
-                            {% if product.stock > 0 %}
-                                <span class="stock-badge in-stock">{% trans "In Stock" %}</span>
-                            {% else %}
-                                <span class="stock-badge out-of-stock">{% trans "Out of Stock" %}</span>
-                            {% endif %}
-                        </div>
-                    </div>
+                    </a>
                 </div>
-            </a>
-        </div>
-        {% endfor %}
-    </div>
-{% else %}
-    <div class="text-center py-5">
-        <h5 class="text-muted">{% trans "No products in this category." %}</h5>
-    </div>
-{% endif %}
+                {% endfor %}
+            </div>
 
+            <!-- NO RESULTS -->
+            <div id="no-results" class="text-center py-5 d-none">
+                <h5 class="text-muted">{% trans "No products match your filters." %}</h5>
+            </div>
+
+        </div>
     </div>
 </div>
 
+<!-- ================= FILTER SCRIPT ================= -->
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    const allCategories = document.getElementById('cat-all');
+    const categoryFilters = [...document.querySelectorAll('.category-filter')];
+    const brandFilters = [...document.querySelectorAll('.brand-filter')];
+    const surfaceFilters = [...document.querySelectorAll('.surface-filter')];
+    const stockFilters = [...document.querySelectorAll('.stock-filter')];
+    const productItems = [...document.querySelectorAll('.product-item')];
+    const resetButton = document.getElementById('reset-filters');
+    const noResults = document.getElementById('no-results');
+
+    const getChecked = (els) => els.filter(e => e.checked).map(e => e.value);
+
+    function applyFilters() {
+        const categories = getChecked(categoryFilters).filter(v => v !== 'all');
+        const brands = getChecked(brandFilters);
+        const surfaces = getChecked(surfaceFilters);
+        const stock = getChecked(stockFilters);
+
+        let visible = 0;
+
+        productItems.forEach(item => {
+            const show =
+                (allCategories.checked || categories.length === 0 || categories.includes(item.dataset.category)) &&
+                (brands.length === 0 || brands.includes(item.dataset.brand)) &&
+                (surfaces.length === 0 || surfaces.includes(item.dataset.surface)) &&
+                (stock.length === 0 || stock.includes(item.dataset.stock));
+
+            item.style.display = show ? '' : 'none';
+            if (show) visible++;
+        });
+
+        noResults.classList.toggle('d-none', visible !== 0);
+    }
+
+    allCategories.addEventListener('change', () => {
+        if (allCategories.checked) {
+            categoryFilters.forEach(cb => cb.checked = cb === allCategories);
+        }
+        applyFilters();
+    });
+
+    categoryFilters.forEach(cb => {
+        if (cb !== allCategories) {
+            cb.addEventListener('change', () => {
+                allCategories.checked = false;
+                applyFilters();
+            });
+        }
+    });
+
+    [...brandFilters, ...surfaceFilters, ...stockFilters]
+        .forEach(cb => cb.addEventListener('change', applyFilters));
+
+    resetButton.addEventListener('click', () => {
+        categoryFilters.forEach(cb => cb.checked = cb === allCategories);
+        brandFilters.forEach(cb => cb.checked = false);
+        surfaceFilters.forEach(cb => cb.checked = false);
+        stockFilters.forEach(cb => cb.checked = false);
+        applyFilters();
+    });
+});
+</script>
+
 <style>
-/* Minimal Filter Sidebar */
+/* ================= FILTER SIDEBAR ================= */
 .filter-sidebar {
-    max-height: calc(100vh - 120px);
+    background: #ffffff;
+    border: 1px solid #e5e7eb;
+    border-radius: 10px;
+    padding: 20px;
+    max-height: calc(100vh - 140px);
     overflow-y: auto;
-    padding-right: 8px;
 }
 
 .filter-sidebar::-webkit-scrollbar {
     width: 4px;
 }
-
-.filter-sidebar::-webkit-scrollbar-track {
-    background: transparent;
-}
-
 .filter-sidebar::-webkit-scrollbar-thumb {
     background: #d1d5db;
     border-radius: 4px;
 }
 
-.filter-sidebar::-webkit-scrollbar-thumb:hover {
-    background: #9ca3af;
-}
-
-/* Filter Header */
+/* Header */
 .filter-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding-bottom: 16px;
+    padding-bottom: 14px;
     border-bottom: 1px solid #e5e7eb;
 }
 
@@ -209,29 +279,24 @@
     font-size: 18px;
     font-weight: 600;
     color: #111827;
-    letter-spacing: -0.02em;
 }
 
 .btn-reset {
     background: none;
     border: none;
-    color: #6b7280;
     font-size: 13px;
-    padding: 4px 8px;
+    color: #6b7280;
     cursor: pointer;
-    transition: color 0.2s;
 }
-
 .btn-reset:hover {
     color: #111827;
 }
 
-/* Filter Sections */
+/* Sections */
 .filter-section {
-    border-bottom: 1px solid #f3f4f6;
     padding: 16px 0;
+    border-bottom: 1px solid #f3f4f6;
 }
-
 .filter-section:last-child {
     border-bottom: none;
 }
@@ -240,74 +305,55 @@
     width: 100%;
     display: flex;
     justify-content: space-between;
-    align-items: center;
     background: none;
     border: none;
-    padding: 0;
     font-size: 14px;
     font-weight: 500;
     color: #111827;
     cursor: pointer;
-    transition: color 0.2s;
-}
-
-.filter-toggle:hover {
-    color: #374151;
 }
 
 .filter-toggle svg {
-    transition: transform 0.2s;
+    transition: transform 0.2s ease;
 }
-
 .filter-toggle[aria-expanded="false"] svg {
     transform: rotate(-90deg);
 }
 
+/* Options */
 .filter-options {
-    padding-top: 12px;
+    margin-top: 10px;
     display: flex;
     flex-direction: column;
     gap: 8px;
 }
 
-/* Custom Checkbox Style */
 .filter-option {
     display: flex;
     align-items: center;
+    gap: 10px;
     cursor: pointer;
-    padding: 6px 0;
-    transition: background-color 0.2s;
-    margin: 0;
+    padding: 6px 4px;
+    border-radius: 6px;
 }
-
 .filter-option:hover {
-    background-color: #f9fafb;
+    background: #f9fafb;
 }
 
-.filter-option input[type="checkbox"] {
+.filter-option input {
     appearance: none;
     width: 18px;
     height: 18px;
     border: 1.5px solid #d1d5db;
     border-radius: 4px;
-    margin-right: 10px;
-    cursor: pointer;
     position: relative;
-    transition: all 0.2s;
-    flex-shrink: 0;
 }
-
-.filter-option input[type="checkbox"]:hover {
-    border-color: #9ca3af;
-}
-
-.filter-option input[type="checkbox"]:checked {
-    background-color: #111827;
+.filter-option input:checked {
+    background: #111827;
     border-color: #111827;
 }
-
-.filter-option input[type="checkbox"]:checked::after {
-    content: '';
+.filter-option input:checked::after {
+    content: "";
     position: absolute;
     left: 5px;
     top: 2px;
@@ -321,37 +367,33 @@
 .filter-label {
     font-size: 14px;
     color: #374151;
-    user-select: none;
 }
 
-/* Product Cards - Minimal Style */
+/* ================= PRODUCT CARDS ================= */
 .product-card {
-    background: #fff;
+    border-radius: 10px;
+    background: #ffffff;
     border: 1px solid #f3f4f6;
-    border-radius: 8px;
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: all 0.25s ease;
 }
-
 .product-card:hover {
     border-color: #e5e7eb;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-    transform: translateY(-2px);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+    transform: translateY(-4px);
 }
 
 .product-image-container {
     height: 220px;
+    background: #f9fafb;
     overflow: hidden;
-    background-color: #f9fafb;
     border-bottom: 1px solid #f3f4f6;
 }
-
 .product-img {
     width: 100%;
     height: 100%;
     object-fit: cover;
     transition: transform 0.3s ease;
 }
-
 .product-card:hover .product-img {
     transform: scale(1.05);
 }
@@ -359,25 +401,16 @@
 .card-title {
     font-size: 15px;
     color: #111827;
-    line-height: 1.4;
-    display: -webkit-box;
-    -webkit-line-clamp: 2;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
 }
 
 .product-meta {
     display: flex;
     flex-direction: column;
-    gap: 4px;
+    gap: 3px;
 }
-
 .meta-item {
     font-size: 12px;
     color: #6b7280;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
 }
 
 .product-price {
@@ -388,128 +421,28 @@
 
 .stock-badge {
     font-size: 11px;
-    font-weight: 500;
     padding: 4px 10px;
     border-radius: 12px;
-    text-transform: uppercase;
-    letter-spacing: 0.02em;
+    font-weight: 600;
 }
-
 .stock-badge.in-stock {
-    background-color: #d1fae5;
-    color: #065f46;
+    background: #dcfce7;
+    color: #166534;
 }
-
 .stock-badge.out-of-stock {
-    background-color: #fee2e2;
+    background: #fee2e2;
     color: #991b1b;
 }
 
 /* Responsive */
 @media (max-width: 991px) {
     .filter-sidebar {
-        max-height: none;
         position: relative !important;
-        top: 0 !important;
+        max-height: none;
     }
 }
 </style>
 
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-    const categoryFilters = document.querySelectorAll('.category-filter');
-    const brandFilters = document.querySelectorAll('.brand-filter');
-    const surfaceFilters = document.querySelectorAll('.surface-filter');
-    const stockFilters = document.querySelectorAll('.stock-filter');
-    const productItems = document.querySelectorAll('.product-item');
-    const resetButton = document.getElementById('reset-filters');
-    const noResults = document.getElementById('no-results');
-
-    function applyFilters() {
-        const selectedCategories = Array.from(categoryFilters)
-            .filter(cb => cb.checked && cb.value !== 'all')
-            .map(cb => cb.value);
-
-        const selectedBrands = Array.from(brandFilters)
-            .filter(cb => cb.checked)
-            .map(cb => cb.value);
-
-        const selectedSurfaces = Array.from(surfaceFilters)
-            .filter(cb => cb.checked)
-            .map(cb => cb.value);
-
-        const selectedStock = Array.from(stockFilters)
-            .filter(cb => cb.checked)
-            .map(cb => cb.value);
-
-        const allCategoriesChecked = document.getElementById('cat-all').checked;
-
-        let visibleCount = 0;
-
-        productItems.forEach(item => {
-            const itemCategory = item.dataset.category;
-            const itemBrand = item.dataset.brand;
-            const itemSurface = item.dataset.surface;
-            const itemStock = item.dataset.stock;
-
-            const categoryMatch = allCategoriesChecked || selectedCategories.length === 0 ||
-                                  selectedCategories.includes(itemCategory);
-
-            const brandMatch = selectedBrands.length === 0 ||
-                              selectedBrands.includes(itemBrand);
-
-            const surfaceMatch = selectedSurfaces.length === 0 ||
-                                selectedSurfaces.includes(itemSurface);
-
-            const stockMatch = selectedStock.length === 0 ||
-                              selectedStock.includes(itemStock);
-
-            if (categoryMatch && brandMatch && surfaceMatch && stockMatch) {
-                item.style.display = '';
-                visibleCount++;
-            } else {
-                item.style.display = 'none';
-            }
-        });
-
-        if (visibleCount === 0) {
-            noResults.classList.remove('d-none');
-        } else {
-            noResults.classList.add('d-none');
-        }
-    }
-
-    document.getElementById('cat-all').addEventListener('change', function() {
-        if (this.checked) {
-            categoryFilters.forEach(cb => {
-                if (cb.value !== 'all') cb.checked = false;
-            });
-        }
-        applyFilters();
-    });
-
-    categoryFilters.forEach(checkbox => {
-        if (checkbox.value !== 'all') {
-            checkbox.addEventListener('change', function() {
-                if (this.checked) {
-                    document.getElementById('cat-all').checked = false;
-                }
-                applyFilters();
-            });
-        }
-    });
-
-    brandFilters.forEach(cb => cb.addEventListener('change', applyFilters));
-    surfaceFilters.forEach(cb => cb.addEventListener('change', applyFilters));
-    stockFilters.forEach(cb => cb.addEventListener('change', applyFilters));
-
-    resetButton.addEventListener('click', function() {
-        categoryFilters.forEach(cb => cb.checked = cb.value === 'all');
-        brandFilters.forEach(cb => cb.checked = false);
-        surfaceFilters.forEach(cb => cb.checked = false);
-        stockFilters.forEach(cb => cb.checked = false);
-        applyFilters();
-    });
-});
-</script>
 {% endblock %}
+
+
