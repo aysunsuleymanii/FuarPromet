@@ -45,8 +45,11 @@ class Product(models.Model):
         return self.name
 
     def clean(self):
-        if self.category.parent is None:
-            raise ValidationError("Products must be assigned to a sub-category.")
+        if self.category:
+            if self.category.subcategories.exists():
+                raise ValidationError({
+                    "category": "You must select a sub-category or a category without sub-categories."
+                })
 
 
 class Service(models.Model):
