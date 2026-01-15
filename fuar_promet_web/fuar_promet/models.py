@@ -31,7 +31,7 @@ class Brand(models.Model):
 class Product(models.Model):
     name = models.CharField(max_length=150)
     code = models.CharField(max_length=150, default="", null=True, blank=True)
-    brand = models.ForeignKey(Brand, on_delete=models.CASCADE)
+    brand = models.ForeignKey(Brand,on_delete=models.CASCADE,null=True,blank=True)
     length = models.DecimalField(max_digits=10, decimal_places=2, null=False, blank=False)
     width = models.DecimalField(max_digits=10, decimal_places=2, null=False, blank=False)
     thickness = models.DecimalField(max_digits=10, decimal_places=2, null=False, blank=False)
