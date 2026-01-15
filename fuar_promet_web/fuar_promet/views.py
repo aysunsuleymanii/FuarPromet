@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from django.views.generic import ListView, DetailView
 from fuar_promet.models import *
 from django.conf import settings
@@ -67,7 +67,7 @@ def category_products(request, category_id):
         "category": category,
         "products": products,
     }
-    return render(request, "products/category_products.html", context)
+    return render(request, "category_products.html", context)
 
 
 # ---------- SERVICES ----------
