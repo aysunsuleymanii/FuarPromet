@@ -23,51 +23,61 @@ def our_work(request):
 
 # ---------- PRODUCTS ----------
 
+# ALL PRODUCTS
 def products_list(request):
-    """
-    Optional: show ALL products (no category pre-selected)
-    """
     products = Product.objects.all().order_by("-created_at")
+    categories = Category.objects.filter(parent__isnull=True)
 
-    context = {
+    return render(request, "products.html", {
         "products": products,
-        "categories": Category.objects.filter(subcategories__isnull=True),
-    }
-    return render(request, "products.html", context)
+        "categories": categories,
+        "page_title": "All Products",
+    })
+
+
+
+
+# ALL DECORATIVE PRODUCTS
+def decorative_products_list(request):
+    decorative_root = Category.objects.filter(
+        parent__isnull=True,
+        name__iexact="decorative products"
+    ).first()
+
+    products = Product.objects.filter(
+        category__in=decorative_root.subcategories.all()
+    ) if decorative_root else Product.objects.none()
+
+    categories = decorative_root.subcategories.all() if decorative_root else []
+
+    return render(request, "products.html", {
+        "products": products,
+        "categories": categories,
+        "page_title": "Decorative Products",
+    })
+
+
 
 
 def category_products(request, category_id):
     category = get_object_or_404(Category, id=category_id)
 
-    # If category has subcategories → show products from ALL subcategories
     if category.subcategories.exists():
-        subcategories = category.subcategories.all()
-        products = Product.objects.filter(category__in=subcategories)
+        products = Product.objects.filter(
+            category__in=category.subcategories.all()
+        )
+        categories = category.subcategories.all()
     else:
-        # Leaf category → show its own products
         products = Product.objects.filter(category=category)
+        categories = [category]
 
-    # Optional filters
-    brand_param = request.GET.get("brand")
-    stock_param = request.GET.get("stock")
-
-    if brand_param:
-        products = products.filter(brand_id=brand_param)
-
-    if stock_param == "in-stock":
-        products = products.filter(stock__gt=0)
-    elif stock_param == "out-of-stock":
-        products = products.filter(stock=0)
-
-    products = products.order_by("-created_at")
-
-    context = {
-        "category": category,
+    return render(request, "products.html", {
         "products": products,
-        "is_parent": category.subcategories.exists(),
-    }
+        "categories": categories,
+        "page_title": category.name,
+    })
 
-    return render(request, "products.html", context)
+
 
 
 # ---------- SERVICES ----------

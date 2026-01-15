@@ -186,7 +186,9 @@
 
                 <!-- Products Mega Dropdown -->
                 <li class="nav-item dropdown mega-dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="productsDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    <a class="nav-link dropdown-toggle"
+                       href="{% url 'products' %}"
+                       id="productsDropdown">
                         {% trans "Products" %}
                     </a>
                     <div class="dropdown-menu mega-dropdown-menu" aria-labelledby="productsDropdown">
@@ -219,9 +221,12 @@
 
                 <!-- Decorative Products Mega Dropdown -->
                 <li class="nav-item dropdown mega-dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="decorativeDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    <a class="nav-link dropdown-toggle"
+                       href="{% url 'decorative_products' %}"
+                       id="decorativeDropdown">
                         {% trans "Decorative Products" %}
                     </a>
+
                     <div class="dropdown-menu mega-dropdown-menu" aria-labelledby="decorativeDropdown">
                         <div class="dropdown-header">{% trans "Decorative Categories" %}</div>
                         <div class="category-grid">

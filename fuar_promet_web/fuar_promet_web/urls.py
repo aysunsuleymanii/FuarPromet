@@ -34,7 +34,8 @@ urlpatterns = [
                   path('admin/', admin.site.urls),
 
                   # Products
-                  path('products/', products_list, name='products'),
+                  path("products/", products_list, name="products"),
+                  path("decorative-products/", decorative_products_list, name="decorative_products"),
                   path('category/<int:category_id>/', category_products, name='category_products'),
                   path('product/<int:pk>/', ProductDetailView.as_view(), name='product_detail'),
 
