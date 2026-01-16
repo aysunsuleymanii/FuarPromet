@@ -77,6 +77,29 @@
                     </div>
                 </div>
 
+                <!-- SURFACE FILTER -->
+                <div class="filter-section">
+                    <button class="filter-toggle" type="button" data-bs-toggle="collapse" data-bs-target="#surfaceCollapse" aria-expanded="true">
+                        <span>{% trans "Surface" %}</span>
+                        <svg width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                            <path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/>
+                        </svg>
+                    </button>
+
+                    <div class="collapse show" id="surfaceCollapse">
+                        <div class="filter-options">
+                            <label class="filter-option">
+                                <input type="checkbox" class="surface-filter" value="soft touch">
+                                <span class="filter-label">Soft Touch</span>
+                            </label>
+                            <label class="filter-option">
+                                <input type="checkbox" class="surface-filter" value="glossy">
+                                <span class="filter-label">Glossy</span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
                 <!-- STOCK FILTER -->
                 <div class="filter-section">
                     <button class="filter-toggle" type="button" data-bs-toggle="collapse" data-bs-target="#stockCollapse" aria-expanded="true">
@@ -108,7 +131,7 @@
 
             <div class="row g-4" id="products-container">
                 {% for product in products %}
-                <div class="col-xl-3 col-lg-4 col-md-6 col-6 product-item"
+                <div class="col-xl-3 col-lg-4 col-md-6 col-sm-12 product-item"
                      data-category="{{ product.category.id }}"
                      data-brand="{{ product.brand.name|lower }}"
                      data-surface="{{ product.surface|default:''|lower }}"
@@ -223,6 +246,188 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 });
 </script>
+
+<style>
+/* =========================================================
+   PRODUCTS PAGE – ADVANCED FILTER SIDEBAR
+   (Scoped & Conflict-Proof)
+   ========================================================= */
+
+.products-page .filter-sidebar {
+    background: linear-gradient(180deg, #ffffff 0%, #f8fafc 100%);
+    border: 1px solid #e5e7eb;
+    border-radius: 16px;
+    padding: 24px 22px;
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.06);
+    max-height: calc(100vh - 140px);
+    overflow-y: auto;
+}
+
+/* HEADER */
+.products-page .filter-header {
+    padding-bottom: 18px;
+    margin-bottom: 8px;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+.products-page .filter-title {
+    font-size: 20px;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+}
+
+/* RESET */
+.products-page .btn-reset {
+    font-size: 13px;
+    font-weight: 600;
+    color: #6b7280;
+    padding: 6px 10px;
+    border-radius: 8px;
+}
+.products-page .btn-reset:hover {
+    background: #f1f5f9;
+}
+
+/* SECTIONS */
+.products-page .filter-section {
+    padding: 18px 0;
+    border-bottom: 1px solid #eef2f7;
+}
+.products-page .filter-section:last-child {
+    border-bottom: none;
+}
+
+/* SECTION HEADER */
+.products-page .filter-toggle {
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: #111827;
+}
+
+/* OPTIONS */
+.products-page .filter-options {
+    margin-top: 14px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+/* OPTION ROW */
+.products-page .filter-option {
+    padding: 10px 12px;
+    border-radius: 10px;
+    transition: all 0.25s ease;
+}
+.products-page .filter-option:hover {
+    background: #f8fafc;
+}
+
+/* CHECKBOX */
+.products-page .filter-option input {
+    width: 18px;
+    height: 18px;
+    border-radius: 6px;
+    border: 1.5px solid #cbd5e1;
+}
+
+/* CHECKED */
+.products-page .filter-option input:checked {
+    background: #122942;
+    border-color: #122942;
+}
+
+/* LABEL */
+.products-page .filter-label {
+    font-size: 14px;
+    font-weight: 500;
+    color: #334155;
+}
+
+/* ACTIVE STATE */
+.products-page .filter-option input:checked + .filter-label {
+    font-weight: 700;
+    color: #122942;
+}
+
+/* ================= PRODUCT CARDS ================= */
+.product-card {
+    border-radius: 10px;
+    background: #ffffff;
+    border: 1px solid #f3f4f6;
+    transition: all 0.25s ease;
+}
+.product-card:hover {
+    border-color: #e5e7eb;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+    transform: translateY(-4px);
+}
+
+.product-image-container {
+    height: 220px;
+    background: #f9fafb;
+    overflow: hidden;
+    border-bottom: 1px solid #f3f4f6;
+}
+.product-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+.product-card:hover .product-img {
+    transform: scale(1.05);
+}
+
+.card-title {
+    font-size: 15px;
+    color: #111827;
+}
+
+.product-meta {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+}
+.meta-item {
+    font-size: 12px;
+    color: #6b7280;
+}
+
+.product-price {
+    font-size: 16px;
+    font-weight: 600;
+    color: #111827;
+}
+
+.stock-badge {
+    font-size: 11px;
+    padding: 4px 10px;
+    border-radius: 12px;
+    font-weight: 600;
+}
+.stock-badge.in-stock {
+    background: #dcfce7;
+    color: #166534;
+}
+.stock-badge.out-of-stock {
+    background: #fee2e2;
+    color: #991b1b;
+}
+
+/* Responsive */
+@media (max-width: 991px) {
+    .filter-sidebar {
+        position: relative !important;
+        max-height: none;
+        border-radius: 12px;
+        padding: 18px;
+    }
+}
+
+</style>
+
 {% endblock %}
 
 
