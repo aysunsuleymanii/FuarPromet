@@ -26,12 +26,10 @@
 
                 <!-- CATEGORY FILTER -->
                 <div class="filter-section">
-                    <button class="filter-toggle" type="button" data-bs-toggle="collapse"
-                            data-bs-target="#categoryCollapse" aria-expanded="true">
+                    <button class="filter-toggle" type="button" data-bs-toggle="collapse" data-bs-target="#categoryCollapse" aria-expanded="true">
                         <span>{% trans "Category" %}</span>
                         <svg width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
-                            <path fill-rule="evenodd"
-                                  d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/>
+                            <path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/>
                         </svg>
                     </button>
 
@@ -54,40 +52,37 @@
 
                 <!-- BRAND FILTER -->
                 <div class="filter-section">
-                    <button class="filter-toggle" type="button" data-bs-toggle="collapse"
-                            data-bs-target="#brandCollapse" aria-expanded="true">
+                    <button class="filter-toggle" type="button" data-bs-toggle="collapse" data-bs-target="#brandCollapse" aria-expanded="true">
                         <span>{% trans "Brand" %}</span>
                         <svg width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
-                            <path fill-rule="evenodd"
-                                  d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/>
+                            <path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/>
                         </svg>
                     </button>
 
                     <div class="collapse show" id="brandCollapse">
                         <div class="filter-options">
-                            {% for brand in brands %}
                             <label class="filter-option">
-                                <input
-                                        type="checkbox"
-                                        class="brand-filter"
-                                        value="{{ brand.name|lower|trim }}"
-                                >
-                                <span class="filter-label">{{ brand.name }}</span>
+                                <input type="checkbox" class="brand-filter" value="kastamonu entegre">
+                                <span class="filter-label">Kastamonu Entegre</span>
                             </label>
-                            {% endfor %}
+                            <label class="filter-option">
+                                <input type="checkbox" class="brand-filter" value="starwood">
+                                <span class="filter-label">Starwood</span>
+                            </label>
+                            <label class="filter-option">
+                                <input type="checkbox" class="brand-filter" value="swiss krono">
+                                <span class="filter-label">Swiss Krono</span>
+                            </label>
                         </div>
                     </div>
                 </div>
 
-
                 <!-- STOCK FILTER -->
                 <div class="filter-section">
-                    <button class="filter-toggle" type="button" data-bs-toggle="collapse"
-                            data-bs-target="#stockCollapse" aria-expanded="true">
+                    <button class="filter-toggle" type="button" data-bs-toggle="collapse" data-bs-target="#stockCollapse" aria-expanded="true">
                         <span>{% trans "Availability" %}</span>
                         <svg width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
-                            <path fill-rule="evenodd"
-                                  d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/>
+                            <path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/>
                         </svg>
                     </button>
 
@@ -115,8 +110,8 @@
                 {% for product in products %}
                 <div class="col-xl-3 col-lg-4 col-md-6 col-6 product-item"
                      data-category="{{ product.category.id }}"
-                     data-parent="{{ product.category.parent.name|lower }}"
                      data-brand="{{ product.brand.name|lower }}"
+                     data-surface="{{ product.surface|default:''|lower }}"
                      data-stock="{% if product.stock > 0 %}in-stock{% else %}out-of-stock{% endif %}">
 
                     <a href="{% url 'product_detail' product.pk %}" class="text-decoration-none text-dark">
@@ -124,9 +119,9 @@
 
                             <div class="product-image-container">
                                 {% if product.image %}
-                                <img src="{{ product.image.url }}" class="card-img-top product-img">
+                                    <img src="{{ product.image.url }}" class="card-img-top product-img">
                                 {% else %}
-                                <img src="{% static 'placeholder-elegant.png' %}" class="card-img-top product-img">
+                                    <img src="{% static 'placeholder-elegant.png' %}" class="card-img-top product-img">
                                 {% endif %}
                             </div>
 
@@ -142,9 +137,9 @@
                                 <div class="d-flex justify-content-between align-items-center mt-auto pt-2">
                                     <p class="product-price mb-0">{{ product.price }} MKD</p>
                                     {% if product.stock > 0 %}
-                                    <span class="stock-badge in-stock">{% trans "In Stock" %}</span>
+                                        <span class="stock-badge in-stock">{% trans "In Stock" %}</span>
                                     {% else %}
-                                    <span class="stock-badge out-of-stock">{% trans "Out of Stock" %}</span>
+                                        <span class="stock-badge out-of-stock">{% trans "Out of Stock" %}</span>
                                     {% endif %}
                                 </div>
                             </div>
@@ -166,35 +161,31 @@
 
 <!-- ================= FILTER SCRIPT ================= -->
 <script>
-    document.addEventListener('DOMContentLoaded', () => {
-        const allCategories = document.getElementById('cat-all');
-        const categoryFilters = [...document.querySelectorAll('.category-filter')];
-        const brandFilters = [...document.querySelectorAll('.brand-filter')];
-        const surfaceFilters = [...document.querySelectorAll('.surface-filter')];
-        const stockFilters = [...document.querySelectorAll('.stock-filter')];
-        const productItems = [...document.querySelectorAll('.product-item')];
-        const resetButton = document.getElementById('reset-filters');
-        const noResults = document.getElementById('no-results');
+document.addEventListener('DOMContentLoaded', () => {
+    const allCategories = document.getElementById('cat-all');
+    const categoryFilters = [...document.querySelectorAll('.category-filter')];
+    const brandFilters = [...document.querySelectorAll('.brand-filter')];
+    const surfaceFilters = [...document.querySelectorAll('.surface-filter')];
+    const stockFilters = [...document.querySelectorAll('.stock-filter')];
+    const productItems = [...document.querySelectorAll('.product-item')];
+    const resetButton = document.getElementById('reset-filters');
+    const noResults = document.getElementById('no-results');
 
-        const getChecked = (els) => els.filter(e => e.checked).map(e => e.value);
+    const getChecked = (els) => els.filter(e => e.checked).map(e => e.value);
 
-        function applyFilters() {
-        const categories = getChecked(categoryFilters)
-            .filter(v => v !== 'all')
-            .map(String); // IMPORTANT
-
-        const brands = getChecked(brandFilters).map(String);
-        const surfaces = getChecked(surfaceFilters).map(String);
-        const stock = getChecked(stockFilters).map(String);
+    function applyFilters() {
+        const categories = getChecked(categoryFilters).filter(v => v !== 'all');
+        const brands = getChecked(brandFilters);
+        const surfaces = getChecked(surfaceFilters);
+        const stock = getChecked(stockFilters);
 
         let visible = 0;
 
         productItems.forEach(item => {
-            const itemCategory = String(item.dataset.category);
-
             const show =
-                (allCategories.checked || categories.length === 0 || categories.includes(itemCategory)) &&
+                (allCategories.checked || categories.length === 0 || categories.includes(item.dataset.category)) &&
                 (brands.length === 0 || brands.includes(item.dataset.brand)) &&
+                (surfaces.length === 0 || surfaces.includes(item.dataset.surface)) &&
                 (stock.length === 0 || stock.includes(item.dataset.stock));
 
             item.style.display = show ? '' : 'none';
@@ -204,34 +195,33 @@
         noResults.classList.toggle('d-none', visible !== 0);
     }
 
-
-        allCategories.addEventListener('change', () => {
-            if (allCategories.checked) {
-                categoryFilters.forEach(cb => cb.checked = cb === allCategories);
-            }
-            applyFilters();
-        });
-
-        categoryFilters.forEach(cb => {
-            if (cb !== allCategories) {
-                cb.addEventListener('change', () => {
-                    allCategories.checked = false;
-                    applyFilters();
-                });
-            }
-        });
-
-        [...brandFilters, ...surfaceFilters, ...stockFilters]
-            .forEach(cb => cb.addEventListener('change', applyFilters));
-
-        resetButton.addEventListener('click', () => {
+    allCategories.addEventListener('change', () => {
+        if (allCategories.checked) {
             categoryFilters.forEach(cb => cb.checked = cb === allCategories);
-            brandFilters.forEach(cb => cb.checked = false);
-            surfaceFilters.forEach(cb => cb.checked = false);
-            stockFilters.forEach(cb => cb.checked = false);
-            applyFilters();
-        });
+        }
+        applyFilters();
     });
+
+    categoryFilters.forEach(cb => {
+        if (cb !== allCategories) {
+            cb.addEventListener('change', () => {
+                allCategories.checked = false;
+                applyFilters();
+            });
+        }
+    });
+
+    [...brandFilters, ...surfaceFilters, ...stockFilters]
+        .forEach(cb => cb.addEventListener('change', applyFilters));
+
+    resetButton.addEventListener('click', () => {
+        categoryFilters.forEach(cb => cb.checked = cb === allCategories);
+        brandFilters.forEach(cb => cb.checked = false);
+        surfaceFilters.forEach(cb => cb.checked = false);
+        stockFilters.forEach(cb => cb.checked = false);
+        applyFilters();
+    });
+});
 </script>
 {% endblock %}
 
