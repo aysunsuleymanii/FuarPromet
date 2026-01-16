@@ -37,37 +37,17 @@
 
                     <div class="collapse show" id="categoryCollapse">
                         <div class="filter-options">
-
-                            <!-- ALL -->
                             <label class="filter-option">
-                                <input type="checkbox"
-                                       class="category-filter"
-                                       id="cat-all"
-                                       value="all"
-                                       checked>
+                                <input type="checkbox" class="category-filter" id="cat-all" value="all" checked>
                                 <span class="filter-label">{% trans "All Categories" %}</span>
                             </label>
 
-                            {% for parent in parent_categories %}
-                                <!-- Parent -->
-                                <label class="filter-option fw-semibold mt-2">
-                                    <input type="checkbox"
-                                           class="category-filter"
-                                           value="{{ parent.name|lower }}">
-                                    <span class="filter-label">{{ parent.name }}</span>
-                                </label>
-
-                                <!-- Children -->
-                                {% for child in parent.subcategories.all %}
-                                    <label class="filter-option ps-3">
-                                        <input type="checkbox"
-                                               class="category-filter"
-                                               value="{{ child.id }}">
-                                        <span class="filter-label">{{ child.name }}</span>
-                                    </label>
-                                {% endfor %}
+                            {% for category in categories %}
+                            <label class="filter-option">
+                                <input type="checkbox" class="category-filter" value="{{ category.id }}">
+                                <span class="filter-label">{{ category.name }}</span>
+                            </label>
                             {% endfor %}
-
                         </div>
                     </div>
                 </div>
@@ -86,16 +66,19 @@
                     <div class="collapse show" id="brandCollapse">
                         <div class="filter-options">
                             {% for brand in brands %}
-                                <label class="filter-option">
-                                    <input type="checkbox"
-                                           class="brand-filter"
-                                           value="{{ brand.name }}">
-                                    <span class="filter-label">{{ brand.name }}</span>
-                                </label>
+                            <label class="filter-option">
+                                <input
+                                        type="checkbox"
+                                        class="brand-filter"
+                                        value="{{ brand.name|lower|trim }}"
+                                >
+                                <span class="filter-label">{{ brand.name }}</span>
+                            </label>
                             {% endfor %}
                         </div>
                     </div>
                 </div>
+
 
                 <!-- STOCK FILTER -->
                 <div class="filter-section">
@@ -141,9 +124,9 @@
 
                             <div class="product-image-container">
                                 {% if product.image %}
-                                    <img src="{{ product.image.url }}" class="card-img-top product-img">
+                                <img src="{{ product.image.url }}" class="card-img-top product-img">
                                 {% else %}
-                                    <img src="{% static 'placeholder-elegant.png' %}" class="card-img-top product-img">
+                                <img src="{% static 'placeholder-elegant.png' %}" class="card-img-top product-img">
                                 {% endif %}
                             </div>
 
@@ -159,9 +142,9 @@
                                 <div class="d-flex justify-content-between align-items-center mt-auto pt-2">
                                     <p class="product-price mb-0">{{ product.price }} MKD</p>
                                     {% if product.stock > 0 %}
-                                        <span class="stock-badge in-stock">{% trans "In Stock" %}</span>
+                                    <span class="stock-badge in-stock">{% trans "In Stock" %}</span>
                                     {% else %}
-                                        <span class="stock-badge out-of-stock">{% trans "Out of Stock" %}</span>
+                                    <span class="stock-badge out-of-stock">{% trans "Out of Stock" %}</span>
                                     {% endif %}
                                 </div>
                             </div>
@@ -183,36 +166,34 @@
 
 <!-- ================= FILTER SCRIPT ================= -->
 <script>
-document.addEventListener('DOMContentLoaded', () => {
+    document.addEventListener('DOMContentLoaded', () => {
+        const allCategories = document.getElementById('cat-all');
+        const categoryFilters = [...document.querySelectorAll('.category-filter')];
+        const brandFilters = [...document.querySelectorAll('.brand-filter')];
+        const surfaceFilters = [...document.querySelectorAll('.surface-filter')];
+        const stockFilters = [...document.querySelectorAll('.stock-filter')];
+        const productItems = [...document.querySelectorAll('.product-item')];
+        const resetButton = document.getElementById('reset-filters');
+        const noResults = document.getElementById('no-results');
 
-    const allCategories = document.getElementById('cat-all');
-    const categoryFilters = [...document.querySelectorAll('.category-filter')];
-    const brandFilters = [...document.querySelectorAll('.brand-filter')];
-    const stockFilters = [...document.querySelectorAll('.stock-filter')];
-    const productItems = [...document.querySelectorAll('.product-item')];
-    const resetButton = document.getElementById('reset-filters');
-    const noResults = document.getElementById('no-results');
+        const getChecked = (els) => els.filter(e => e.checked).map(e => e.value);
 
-    const getChecked = (els) => els.filter(e => e.checked).map(e => e.value);
+        function applyFilters() {
+        const categories = getChecked(categoryFilters)
+            .filter(v => v !== 'all')
+            .map(String); // IMPORTANT
 
-    function applyFilters() {
-        const categories = getChecked(categoryFilters).filter(v => v !== 'all');
-        const brands = getChecked(brandFilters);
-        const stock = getChecked(stockFilters);
+        const brands = getChecked(brandFilters).map(String);
+        const surfaces = getChecked(surfaceFilters).map(String);
+        const stock = getChecked(stockFilters).map(String);
 
         let visible = 0;
 
         productItems.forEach(item => {
-            const itemCategoryId = item.dataset.category;
-            const itemParent = item.dataset.parent;
-
-            const categoryMatch =
-                categories.length === 0 ||
-                categories.includes(itemCategoryId) ||
-                categories.includes(itemParent);
+            const itemCategory = String(item.dataset.category);
 
             const show =
-                (allCategories.checked || categoryMatch) &&
+                (allCategories.checked || categories.length === 0 || categories.includes(itemCategory)) &&
                 (brands.length === 0 || brands.includes(item.dataset.brand)) &&
                 (stock.length === 0 || stock.includes(item.dataset.stock));
 
@@ -223,32 +204,35 @@ document.addEventListener('DOMContentLoaded', () => {
         noResults.classList.toggle('d-none', visible !== 0);
     }
 
-    allCategories.addEventListener('change', () => {
-        if (allCategories.checked) {
+
+        allCategories.addEventListener('change', () => {
+            if (allCategories.checked) {
+                categoryFilters.forEach(cb => cb.checked = cb === allCategories);
+            }
+            applyFilters();
+        });
+
+        categoryFilters.forEach(cb => {
+            if (cb !== allCategories) {
+                cb.addEventListener('change', () => {
+                    allCategories.checked = false;
+                    applyFilters();
+                });
+            }
+        });
+
+        [...brandFilters, ...surfaceFilters, ...stockFilters]
+            .forEach(cb => cb.addEventListener('change', applyFilters));
+
+        resetButton.addEventListener('click', () => {
             categoryFilters.forEach(cb => cb.checked = cb === allCategories);
-        }
-        applyFilters();
+            brandFilters.forEach(cb => cb.checked = false);
+            surfaceFilters.forEach(cb => cb.checked = false);
+            stockFilters.forEach(cb => cb.checked = false);
+            applyFilters();
+        });
     });
-
-    categoryFilters.forEach(cb => {
-        if (cb !== allCategories) {
-            cb.addEventListener('change', () => {
-                allCategories.checked = false;
-                applyFilters();
-            });
-        }
-    });
-
-    [...brandFilters, ...stockFilters]
-        .forEach(cb => cb.addEventListener('change', applyFilters));
-
-    resetButton.addEventListener('click', () => {
-        categoryFilters.forEach(cb => cb.checked = cb === allCategories);
-        brandFilters.forEach(cb => cb.checked = false);
-        stockFilters.forEach(cb => cb.checked = false);
-        applyFilters();
-    });
-
-});
 </script>
 {% endblock %}
+
+
