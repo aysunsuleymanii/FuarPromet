@@ -710,5 +710,47 @@ img {
     }
 }
 
+/* ================= MOBILE MEGA DROPDOWN FINAL FIX ================= */
+@media (max-width: 991px) {
+    /* 1. Force the 'fixed' menu to become 'relative' so it stacks */
+    .navbar .dropdown-menu.mega-dropdown-menu {
+        position: relative !important;
+        top: 0 !important;
+        left: 0 !important;
+        transform: none !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        box-shadow: none !important;
+        padding: 15px !important;
+        border: none !important;
+        display: none; /* Hidden by default */
+        opacity: 1 !important;
+        visibility: visible !important;
+        background-color: #f8f9fa !important;
+        z-index: 1000 !important;
+    }
+
+    /* 2. Show class for JS toggle */
+    .navbar .dropdown-menu.mega-dropdown-menu.show {
+        display: block !important;
+    }
+
+    /* 3. Stack the grid items */
+    .category-grid {
+        display: grid !important;
+        grid-template-columns: 1fr !important;
+        gap: 10px !important;
+    }
+
+    .category-item {
+        padding: 12px !important;
+    }
+
+    /* 4. Ensure the main navbar container can scroll */
+    .navbar-collapse {
+        max-height: 80vh;
+        overflow-y: auto;
+    }
+}
 
 
