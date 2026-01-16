@@ -119,33 +119,35 @@
             transform: rotate(180deg);
         }
 
-        /* Mobile adjustments - Click behavior on mobile */
-        @media (max-width: 991px) {
-            .mega-dropdown:hover .mega-dropdown-menu {
-                display: none;
-            }
-
-            .mega-dropdown .mega-dropdown-menu.show {
-                display: block;
-                opacity: 1;
-            }
-
-            .mega-dropdown-menu {
-                position: relative !important;
-                transform: none;
-                left: 0 !important;
-                max-width: 100%;
-            }
-
-            .category-grid {
-                grid-template-columns: 1fr;
-                gap: 10px;
-            }
-
-            .category-item {
-                padding: 15px;
-            }
+        /* Mobile adjustments */
+    @media (max-width: 991px) {
+        /* Prevent hover from interfering on mobile */
+        .mega-dropdown:hover .mega-dropdown-menu {
+            display: none;
         }
+
+        /* Standard Bootstrap 'show' class handled by JS */
+        .mega-dropdown-menu.show {
+            display: block !important;
+            opacity: 1 !important;
+            visibility: visible !important;
+        }
+
+        .mega-dropdown-menu {
+            position: relative !important;
+            transform: none !important;
+            left: 0 !important;
+            width: 100%;
+            max-width: 100%;
+            box-shadow: none;
+            padding: 15px;
+        }
+
+        .category-grid {
+            grid-template-columns: 1fr;
+            gap: 10px;
+        }
+    }
 
         @media (min-width: 992px) and (max-width: 1199px) {
             .category-grid {
@@ -188,7 +190,10 @@
                 <li class="nav-item dropdown mega-dropdown">
                     <a class="nav-link dropdown-toggle"
                        href="{% url 'products' %}"
-                       id="productsDropdown">
+                       id="productsDropdown"
+                       role="button"
+                       data-bs-toggle="dropdown"
+                       aria-expanded="false">
                         {% trans "Products" %}
                     </a>
                     <div class="dropdown-menu mega-dropdown-menu" aria-labelledby="productsDropdown">
@@ -223,7 +228,10 @@
                 <li class="nav-item dropdown mega-dropdown">
                     <a class="nav-link dropdown-toggle"
                        href="{% url 'decorative_products' %}"
-                       id="decorativeDropdown">
+                       id="decorativeDropdown"
+                       role="button"
+                       data-bs-toggle="dropdown"
+                       aria-expanded="false">
                         {% trans "Decorative Products" %}
                     </a>
 
@@ -326,7 +334,34 @@
 
 <!-- Bootstrap JS - Loaded at the end -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+    if (window.innerWidth <= 991) {
+
+        document.querySelectorAll(".dropdown-toggle-split").forEach(toggle => {
+            toggle.addEventListener("click", function (e) {
+                e.preventDefault();
+                e.stopPropagation();
+
+                const menu = this.closest(".dropdown").querySelector(".dropdown-menu");
+                menu.classList.toggle("show");
+            });
+        });
+
+        // Prevent Bootstrap from auto-closing immediately
+        document.querySelectorAll(".dropdown-menu").forEach(menu => {
+            menu.addEventListener("click", function (e) {
+                e.stopPropagation();
+            });
+        });
+    }
+});
+</script>
+
 {% block extra_js %}
 {% endblock %}
 </body>
+
+
 </html>
