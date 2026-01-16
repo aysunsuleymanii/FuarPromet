@@ -25,90 +25,57 @@ def our_work(request):
 
 # ALL PRODUCTS
 def products_list(request):
-    products = Product.objects.select_related(
-        'category',
-        'category__parent',
-        'brand'
-    ).order_by("-created_at")
-
-    categories = Category.objects.all()
-
-    brands = Brand.objects.order_by('name')
+    products = Product.objects.all().order_by("-created_at")
+    categories = Category.objects.filter(parent__isnull=True)
 
     return render(request, "products.html", {
         "products": products,
         "categories": categories,
-        "brands": brands,
         "page_title": "All Products",
     })
 
 
 
 
-
-
 # ALL DECORATIVE PRODUCTS
 def decorative_products_list(request):
-    decorative_root = get_object_or_404(
-        Category,
+    decorative_root = Category.objects.filter(
         parent__isnull=True,
         name__iexact="decorative products"
-    )
+    ).first()
 
     products = Product.objects.filter(
-        category__parent=decorative_root
-    ).select_related(
-        'category',
-        'category__parent',
-        'brand'
-    )
+        category__in=decorative_root.subcategories.all()
+    ) if decorative_root else Product.objects.none()
 
-    parent_categories = Category.objects.filter(
-        parent__isnull=True
-    ).prefetch_related('subcategories')
-
-    brands = Brand.objects.order_by('name')
+    categories = decorative_root.subcategories.all() if decorative_root else []
 
     return render(request, "products.html", {
         "products": products,
-        "parent_categories": parent_categories,
-        "brands": brands,
+        "categories": categories,
         "page_title": "Decorative Products",
     })
+
 
 
 
 def category_products(request, category_id):
     category = get_object_or_404(Category, id=category_id)
 
-    if category.parent is None:
-        # Parent category → show all children products
+    if category.subcategories.exists():
         products = Product.objects.filter(
-            category__parent=category
+            category__in=category.subcategories.all()
         )
+        categories = category.subcategories.all()
     else:
-        # Child category → show direct products
         products = Product.objects.filter(category=category)
-
-    products = products.select_related(
-        'category',
-        'category__parent',
-        'brand'
-    )
-
-    parent_categories = Category.objects.filter(
-        parent__isnull=True
-    ).prefetch_related('subcategories')
-
-    brands = Brand.objects.order_by('name')
+        categories = [category]
 
     return render(request, "products.html", {
         "products": products,
-        "parent_categories": parent_categories,
-        "brands": brands,
+        "categories": categories,
         "page_title": category.name,
     })
-
 
 
 
