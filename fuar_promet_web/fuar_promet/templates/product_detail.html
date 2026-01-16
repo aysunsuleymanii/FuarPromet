@@ -4,44 +4,80 @@
 {% block title %}{{ product.name }} - Fuar Promet{% endblock %}
 
 {% block content %}
-<div class="container my-5 py-4">
-    <div class="row justify-content-center">
+<div class="container my-5 py-4 product-detail-page">
 
-        <!-- Product Image -->
+    <div class="row align-items-start g-5">
+
+        <!-- PRODUCT IMAGE -->
         <div class="col-lg-6">
-            <div class="shadow-sm rounded overflow-hidden product-detail-image-container">
+            <div class="product-image-card">
                 {% if product.image %}
-                <img src="{{ product.image.url }}" class="img-fluid product-detail-img" alt="{{ product.name }}">
+                    <img src="{{ product.image.url }}" alt="{{ product.name }}">
                 {% else %}
-                <img src="{% static 'placeholder-elegant.png' %}" class="img-fluid product-detail-img" alt="No image">
+                    <img src="{% static 'placeholder-elegant.png' %}" alt="{% trans 'No image available' %}">
                 {% endif %}
             </div>
         </div>
 
-        <!-- Product Info -->
+        <!-- PRODUCT INFO -->
         <div class="col-lg-6">
-            <h1 class="fw-light display-6 mb-4">{{ product.name }}</h1>
 
-            <p class="text-secondary">{{ product.description }}</p>
+            <!-- Breadcrumb / Category -->
+            <p class="text-muted small mb-2">
+                {{ product.category.name }}
+            </p>
 
-            <div class="mt-4 border-top pt-3">
-                <p><strong>{% trans "Category" %}:</strong> {{ product.category.name }}</p>
-                <p><strong>{% trans "Dimensions" %}:</strong> {{ product.width }} × {{ product.height }} × {{
-                    product.depth }} cm</p>
-                <p><strong>{% trans "Color" %}:</strong> {{ product.color }}</p>
+            <!-- Title -->
+            <h1 class="product-title mb-3">
+                {{ product.name }}
+            </h1>
 
-                {% if product.stock > 0 %}
-                <span class="badge bg-success-subtle text-success rounded-pill px-3 py-2">{% trans "In Stock" %}</span>
-                {% else %}
-                <span class="badge bg-danger-subtle text-danger rounded-pill px-3 py-2">{% trans "Out of Stock" %}</span>
-                {% endif %}
+            <!-- Price -->
+            <div class="product-price mb-4">
+                {{ product.price }} <span>MKD</span>
             </div>
 
-            <h2 class="fw-bold mt-4">{{ product.price }} €</h2>
+            <!-- Stock -->
+            {% if product.stock > 0 %}
+                <span class="stock-badge in-stock">
+                    {% trans "In Stock" %}
+                </span>
+            {% else %}
+                <span class="stock-badge out-of-stock">
+                    {% trans "Out of Stock" %}
+                </span>
+            {% endif %}
 
-            <a href="{% url 'products' %}" class="btn btn-outline-dark rounded-pill mt-4 px-4">
+            <!-- Description -->
+            {% if product.description %}
+            <div class="product-description mt-4">
+                <p>{{ product.description }}</p>
+            </div>
+            {% endif %}
+
+            <!-- Divider -->
+            <hr class="my-4">
+
+            <!-- Specifications -->
+            <div class="product-specs">
+                <div>
+                    <span>{% trans "Code" %}</span>
+                    <strong>{{ product.code }}</strong>
+                </div>
+
+                <div>
+                    <span>{% trans "Dimensions" %}</span>
+                    <strong>
+                        {{ product.length }} × {{ product.width }} × {{ product.thickness }} mm
+                    </strong>
+                </div>
+            </div>
+
+            <!-- Back Button -->
+            <a href="{% url 'products' %}" class="btn btn-outline-dark rounded-pill mt-5 px-4">
                 ← {% trans "Back to Products" %}
             </a>
+
         </div>
     </div>
 </div>
