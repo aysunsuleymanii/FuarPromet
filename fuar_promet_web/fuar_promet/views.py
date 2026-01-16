@@ -115,13 +115,18 @@ def search(request):
     products = Product.objects.none()
 
     if query:
+        # Find matching categories first
+        matching_categories = Category.objects.filter(
+            name__icontains=query
+        )
+
         products = Product.objects.select_related(
             "category", "brand"
         ).filter(
             Q(name__icontains=query) |
             Q(code__icontains=query) |
-            Q(category__name__icontains=query) |
-            Q(brand__name__icontains=query)
+            Q(brand__name__icontains=query) |
+            Q(category__in=matching_categories)
         ).distinct()
 
     return render(request, "search_results.html", {
