@@ -26,63 +26,85 @@
 
                 <!-- CATEGORY FILTER -->
                 <div class="filter-section">
-                    <button class="filter-toggle" type="button" data-bs-toggle="collapse" data-bs-target="#categoryCollapse" aria-expanded="true">
+                    <button class="filter-toggle" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#categoryCollapse" aria-expanded="true">
                         <span>{% trans "Category" %}</span>
                         <svg width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
-                            <path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/>
+                            <path fill-rule="evenodd"
+                                  d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/>
                         </svg>
                     </button>
 
                     <div class="collapse show" id="categoryCollapse">
                         <div class="filter-options">
+
+                            <!-- ALL -->
                             <label class="filter-option">
-                                <input type="checkbox" class="category-filter" id="cat-all" value="all" checked>
+                                <input type="checkbox"
+                                       class="category-filter"
+                                       id="cat-all"
+                                       value="all"
+                                       checked>
                                 <span class="filter-label">{% trans "All Categories" %}</span>
                             </label>
 
-                            {% for category in categories %}
-                            <label class="filter-option">
-                                <input type="checkbox" class="category-filter" value="{{ category.id }}">
-                                <span class="filter-label">{{ category.name }}</span>
-                            </label>
+                            {% for parent in parent_categories %}
+                                <!-- Parent -->
+                                <label class="filter-option fw-semibold mt-2">
+                                    <input type="checkbox"
+                                           class="category-filter"
+                                           value="{{ parent.name|lower }}">
+                                    <span class="filter-label">{{ parent.name }}</span>
+                                </label>
+
+                                <!-- Children -->
+                                {% for child in parent.subcategories.all %}
+                                    <label class="filter-option ps-3">
+                                        <input type="checkbox"
+                                               class="category-filter"
+                                               value="{{ child.id }}">
+                                        <span class="filter-label">{{ child.name }}</span>
+                                    </label>
+                                {% endfor %}
                             {% endfor %}
+
                         </div>
                     </div>
                 </div>
 
                 <!-- BRAND FILTER -->
                 <div class="filter-section">
-                    <button class="filter-toggle" type="button" data-bs-toggle="collapse" data-bs-target="#brandCollapse" aria-expanded="true">
+                    <button class="filter-toggle" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#brandCollapse" aria-expanded="true">
                         <span>{% trans "Brand" %}</span>
                         <svg width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
-                            <path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/>
+                            <path fill-rule="evenodd"
+                                  d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/>
                         </svg>
                     </button>
 
                     <div class="collapse show" id="brandCollapse">
                         <div class="filter-options">
-                            <label class="filter-option">
-                                <input type="checkbox" class="brand-filter" value="kastamonu entegre">
-                                <span class="filter-label">Kastamonu Entegre</span>
-                            </label>
-                            <label class="filter-option">
-                                <input type="checkbox" class="brand-filter" value="starwood">
-                                <span class="filter-label">Starwood</span>
-                            </label>
-                            <label class="filter-option">
-                                <input type="checkbox" class="brand-filter" value="swiss krono">
-                                <span class="filter-label">Swiss Krono</span>
-                            </label>
+                            {% for brand in brands %}
+                                <label class="filter-option">
+                                    <input type="checkbox"
+                                           class="brand-filter"
+                                           value="{{ brand.name }}">
+                                    <span class="filter-label">{{ brand.name }}</span>
+                                </label>
+                            {% endfor %}
                         </div>
                     </div>
                 </div>
 
                 <!-- STOCK FILTER -->
                 <div class="filter-section">
-                    <button class="filter-toggle" type="button" data-bs-toggle="collapse" data-bs-target="#stockCollapse" aria-expanded="true">
+                    <button class="filter-toggle" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#stockCollapse" aria-expanded="true">
                         <span>{% trans "Availability" %}</span>
                         <svg width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
-                            <path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/>
+                            <path fill-rule="evenodd"
+                                  d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/>
                         </svg>
                     </button>
 
@@ -110,8 +132,8 @@
                 {% for product in products %}
                 <div class="col-xl-3 col-lg-4 col-md-6 col-6 product-item"
                      data-category="{{ product.category.id }}"
+                     data-parent="{{ product.category.parent.name|lower }}"
                      data-brand="{{ product.brand.name|lower }}"
-                     data-surface="{{ product.surface|default:''|lower }}"
                      data-stock="{% if product.stock > 0 %}in-stock{% else %}out-of-stock{% endif %}">
 
                     <a href="{% url 'product_detail' product.pk %}" class="text-decoration-none text-dark">
@@ -162,10 +184,10 @@
 <!-- ================= FILTER SCRIPT ================= -->
 <script>
 document.addEventListener('DOMContentLoaded', () => {
+
     const allCategories = document.getElementById('cat-all');
     const categoryFilters = [...document.querySelectorAll('.category-filter')];
     const brandFilters = [...document.querySelectorAll('.brand-filter')];
-    const surfaceFilters = [...document.querySelectorAll('.surface-filter')];
     const stockFilters = [...document.querySelectorAll('.stock-filter')];
     const productItems = [...document.querySelectorAll('.product-item')];
     const resetButton = document.getElementById('reset-filters');
@@ -176,16 +198,22 @@ document.addEventListener('DOMContentLoaded', () => {
     function applyFilters() {
         const categories = getChecked(categoryFilters).filter(v => v !== 'all');
         const brands = getChecked(brandFilters);
-        const surfaces = getChecked(surfaceFilters);
         const stock = getChecked(stockFilters);
 
         let visible = 0;
 
         productItems.forEach(item => {
+            const itemCategoryId = item.dataset.category;
+            const itemParent = item.dataset.parent;
+
+            const categoryMatch =
+                categories.length === 0 ||
+                categories.includes(itemCategoryId) ||
+                categories.includes(itemParent);
+
             const show =
-                (allCategories.checked || categories.length === 0 || categories.includes(item.dataset.category)) &&
+                (allCategories.checked || categoryMatch) &&
                 (brands.length === 0 || brands.includes(item.dataset.brand)) &&
-                (surfaces.length === 0 || surfaces.includes(item.dataset.surface)) &&
                 (stock.length === 0 || stock.includes(item.dataset.stock));
 
             item.style.display = show ? '' : 'none';
@@ -211,18 +239,16 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    [...brandFilters, ...surfaceFilters, ...stockFilters]
+    [...brandFilters, ...stockFilters]
         .forEach(cb => cb.addEventListener('change', applyFilters));
 
     resetButton.addEventListener('click', () => {
         categoryFilters.forEach(cb => cb.checked = cb === allCategories);
         brandFilters.forEach(cb => cb.checked = false);
-        surfaceFilters.forEach(cb => cb.checked = false);
         stockFilters.forEach(cb => cb.checked = false);
         applyFilters();
     });
+
 });
 </script>
 {% endblock %}
-
-
