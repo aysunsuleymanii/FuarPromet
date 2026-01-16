@@ -31,18 +31,17 @@ def products_list(request):
         'brand'
     ).order_by("-created_at")
 
-    parent_categories = Category.objects.filter(
-        parent__isnull=True
-    ).prefetch_related('subcategories')
+    categories = Category.objects.all()
 
     brands = Brand.objects.order_by('name')
 
     return render(request, "products.html", {
         "products": products,
-        "parent_categories": parent_categories,
+        "categories": categories,
         "brands": brands,
         "page_title": "All Products",
     })
+
 
 
 
