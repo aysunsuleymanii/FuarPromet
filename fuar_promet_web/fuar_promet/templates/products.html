@@ -4,7 +4,7 @@
 {% block title %}Products - Fuar Promet{% endblock %}
 
 {% block content %}
-<div class="container-fluid my-5 py-3">
+<div class="container-fluid my-5 py-3 products-page">
 
     <!-- PAGE HEADER -->
     <header class="text-center mb-5 pb-3">
@@ -131,7 +131,7 @@
 
             <div class="row g-4" id="products-container">
                 {% for product in products %}
-                <div class="col-xl-3 col-lg-4 col-md-6 col-sm-12 product-item"
+                <div class="col-xl-3 col-lg-4 col-md-6 col-6 product-item"
                      data-category="{{ product.category.id }}"
                      data-brand="{{ product.brand.name|lower }}"
                      data-surface="{{ product.surface|default:''|lower }}"
@@ -246,203 +246,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 });
 </script>
-
-<style>
-/* ================= FILTER SIDEBAR ================= */
-.filter-sidebar {
-    background: #ffffff;
-    border: 1px solid #e5e7eb;
-    border-radius: 10px;
-    padding: 20px;
-    max-height: calc(100vh - 140px);
-    overflow-y: auto;
-}
-
-.filter-sidebar::-webkit-scrollbar {
-    width: 4px;
-}
-.filter-sidebar::-webkit-scrollbar-thumb {
-    background: #d1d5db;
-    border-radius: 4px;
-}
-
-/* Header */
-.filter-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding-bottom: 14px;
-    border-bottom: 1px solid #e5e7eb;
-}
-
-.filter-title {
-    font-size: 18px;
-    font-weight: 600;
-    color: #111827;
-}
-
-.btn-reset {
-    background: none;
-    border: none;
-    font-size: 13px;
-    color: #6b7280;
-    cursor: pointer;
-}
-.btn-reset:hover {
-    color: #111827;
-}
-
-/* Sections */
-.filter-section {
-    padding: 16px 0;
-    border-bottom: 1px solid #f3f4f6;
-}
-.filter-section:last-child {
-    border-bottom: none;
-}
-
-.filter-toggle {
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    background: none;
-    border: none;
-    font-size: 14px;
-    font-weight: 500;
-    color: #111827;
-    cursor: pointer;
-}
-
-.filter-toggle svg {
-    transition: transform 0.2s ease;
-}
-.filter-toggle[aria-expanded="false"] svg {
-    transform: rotate(-90deg);
-}
-
-/* Options */
-.filter-options {
-    margin-top: 10px;
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-}
-
-.filter-option {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    cursor: pointer;
-    padding: 6px 4px;
-    border-radius: 6px;
-}
-.filter-option:hover {
-    background: #f9fafb;
-}
-
-.filter-option input {
-    appearance: none;
-    width: 18px;
-    height: 18px;
-    border: 1.5px solid #d1d5db;
-    border-radius: 4px;
-    position: relative;
-}
-.filter-option input:checked {
-    background: #111827;
-    border-color: #111827;
-}
-.filter-option input:checked::after {
-    content: "";
-    position: absolute;
-    left: 5px;
-    top: 2px;
-    width: 5px;
-    height: 9px;
-    border: solid white;
-    border-width: 0 2px 2px 0;
-    transform: rotate(45deg);
-}
-
-.filter-label {
-    font-size: 14px;
-    color: #374151;
-}
-
-/* ================= PRODUCT CARDS ================= */
-.product-card {
-    border-radius: 10px;
-    background: #ffffff;
-    border: 1px solid #f3f4f6;
-    transition: all 0.25s ease;
-}
-.product-card:hover {
-    border-color: #e5e7eb;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.08);
-    transform: translateY(-4px);
-}
-
-.product-image-container {
-    height: 220px;
-    background: #f9fafb;
-    overflow: hidden;
-    border-bottom: 1px solid #f3f4f6;
-}
-.product-img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transition: transform 0.3s ease;
-}
-.product-card:hover .product-img {
-    transform: scale(1.05);
-}
-
-.card-title {
-    font-size: 15px;
-    color: #111827;
-}
-
-.product-meta {
-    display: flex;
-    flex-direction: column;
-    gap: 3px;
-}
-.meta-item {
-    font-size: 12px;
-    color: #6b7280;
-}
-
-.product-price {
-    font-size: 16px;
-    font-weight: 600;
-    color: #111827;
-}
-
-.stock-badge {
-    font-size: 11px;
-    padding: 4px 10px;
-    border-radius: 12px;
-    font-weight: 600;
-}
-.stock-badge.in-stock {
-    background: #dcfce7;
-    color: #166534;
-}
-.stock-badge.out-of-stock {
-    background: #fee2e2;
-    color: #991b1b;
-}
-
-/* Responsive */
-@media (max-width: 991px) {
-    .filter-sidebar {
-        position: relative !important;
-        max-height: none;
-    }
-}
-</style>
-
 {% endblock %}
 
 
