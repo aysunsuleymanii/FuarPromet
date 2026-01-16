@@ -43,6 +43,9 @@ urlpatterns = [
                   path('services/', services, name='services'),
                   path('services/<int:pk>/', ServiceDetailView.as_view(), name='service_detail'),
 
+                  # Search
+                  path("search/", search, name="search"),
+
                   # Other
                   path('kitchen/', kitchen_view, name='kitchen'),
 

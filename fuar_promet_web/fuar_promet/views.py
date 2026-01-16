@@ -2,6 +2,8 @@ from django.shortcuts import render, get_object_or_404
 from django.views.generic import ListView, DetailView
 from fuar_promet.models import *
 from django.conf import settings
+from django.db.models import Q
+
 
 # ---------- BASIC PAGES ----------
 
@@ -79,7 +81,6 @@ def category_products(request, category_id):
 
 
 
-
 # ---------- SERVICES ----------
 
 def services(request):
@@ -106,6 +107,28 @@ class ProductDetailView(DetailView):
     template_name = "product_detail.html"
     context_object_name = "product"
 
+# ---------- SEARCH ----------
+
+def search(request):
+    query = request.GET.get("q", "").strip()
+
+    products = Product.objects.none()
+
+    if query:
+        products = Product.objects.select_related(
+            "category", "brand"
+        ).filter(
+            Q(name__icontains=query) |
+            Q(code__icontains=query) |
+            Q(category__name__icontains=query) |
+            Q(brand__name__icontains=query)
+        ).distinct()
+
+    return render(request, "search_results.html", {
+        "query": query,
+        "products": products,
+        "page_title": f"Search results for '{query}'" if query else "Search",
+    })
 
 # ---------- OTHER ----------
 
