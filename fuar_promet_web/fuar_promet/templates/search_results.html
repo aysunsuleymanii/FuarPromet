@@ -4,6 +4,23 @@
 {% block title %}{{ page_title }}{% endblock %}
 
 {% block content %}
+<style>
+    /* Product card image fix */
+    .product-image-wrapper {
+        width: 100%;
+        aspect-ratio: 1 / 1;   /* square cards */
+        overflow: hidden;
+        background: #f5f5f5;
+    }
+
+    .product-image-wrapper img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;   /* THIS fixes the issue */
+        display: block;
+    }
+
+</style>
 <div class="container my-5">
 
     <h2 class="mb-4">
