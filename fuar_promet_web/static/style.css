@@ -61,6 +61,12 @@ img {
     border-bottom: 2px solid #38240D;
     background-color: #ffffff !important;
     padding: 0.5rem 1rem;
+    position: relative;
+    z-index: 1050;
+}
+
+.navbar .dropdown-menu {
+    z-index: 1100;
 }
 
 .navbar .container-fluid {
