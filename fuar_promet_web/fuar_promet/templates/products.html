@@ -35,30 +35,40 @@
                         <button class="btn-reset" id="reset-filters">{% trans "Clear all" %}</button>
                     </div>
 
-                    <!-- CATEGORY -->
+                   <!-- CATEGORY -->
                     <div class="filter-block">
                         <button class="filter-toggle" data-bs-toggle="collapse"
-                                data-bs-target="#categoryCollapse" aria-expanded="false">
+                                data-bs-target="#categoryCollapse" aria-expanded="true">
                             {% trans "Category" %}
                             <svg width="16" height="16" viewBox="0 0 16 16">
                                 <path d="M1.646 4.646L8 10.293l6.354-5.647" fill="none" stroke="currentColor"/>
                             </svg>
                         </button>
-                        <div class="collapse" id="categoryCollapse">
+
+                        <div class="collapse show" id="categoryCollapse">
                             <div class="filter-options">
-                                <label class="filter-option">
-                                    <input type="checkbox" class="category-filter" id="cat-all" value="all" checked>
-                                    <span class="filter-label">{% trans "All Categories" %}</span>
-                                </label>
+
+                                <a href="{% url 'products' %}"
+                                   class="filter-link {% if request.resolver_match.url_name == 'products' %}active{% endif %}">
+                                    {% trans "All Products" %}
+                                </a>
+
+                                <a href="{% url 'decorative_products' %}"
+                                   class="filter-link {% if request.resolver_match.url_name == 'decorative_products' %}active{% endif %}">
+                                    {% trans "Decorative Products" %}
+                                </a>
+
                                 {% for category in categories %}
-                                <label class="filter-option">
-                                    <input type="checkbox" class="category-filter" value="{{ category.id }}">
-                                    <span class="filter-label">{{ category.name }}</span>
-                                </label>
+                                <a href="{% url 'category_products' category.id %}"
+                                   class="filter-link">
+                                    {{ category.name }}
+                                </a>
                                 {% endfor %}
+
                             </div>
                         </div>
                     </div>
+
 
                     <!-- BRAND -->
                     <div class="filter-block">
@@ -144,27 +154,24 @@
 <!-- ================= FILTER SCRIPT ================= -->
 <script>
 document.addEventListener('DOMContentLoaded', () => {
-    const allCategories = document.getElementById('cat-all');
-    const categoryFilters = [...document.querySelectorAll('.category-filter')];
     const brandFilters = [...document.querySelectorAll('.brand-filter')];
     const stockFilters = [...document.querySelectorAll('.stock-filter')];
     const productItems = [...document.querySelectorAll('.product-item')];
     const resetButton = document.getElementById('reset-filters');
 
     function applyFilters() {
-        const categories = categoryFilters.filter(c => c.checked && c.value !== 'all').map(c => c.value);
-        const brands = brandFilters.filter(b => b.checked).map(b => b.value);
-        const stock = stockFilters.filter(s => s.checked).map(s => s.value);
+    const brands = brandFilters.filter(b => b.checked).map(b => b.value);
+    const stock = stockFilters.filter(s => s.checked).map(s => s.value);
 
-        productItems.forEach(item => {
-            const show =
-                (categories.length === 0 || categories.includes(item.dataset.category)) &&
-                (brands.length === 0 || brands.includes(item.dataset.brand)) &&
-                (stock.length === 0 || stock.includes(item.dataset.stock));
+    productItems.forEach(item => {
+        const show =
+            (brands.length === 0 || brands.includes(item.dataset.brand)) &&
+            (stock.length === 0 || stock.includes(item.dataset.stock));
 
-            item.style.display = show ? '' : 'none';
-        });
-    }
+        item.style.display = show ? '' : 'none';
+    });
+}
+
 
     document.querySelectorAll('input[type="checkbox"]').forEach(cb =>
         cb.addEventListener('change', applyFilters)
@@ -260,5 +267,24 @@ document.addEventListener('DOMContentLoaded', () => {
 
 .stock-badge.in-stock { background:#dcfce7;color:#166534; }
 .stock-badge.out-of-stock { background:#fee2e2;color:#991b1b; }
+
+
+.filter-link {
+    display: block;
+    padding: 6px 0;
+    font-size: 14px;
+    font-weight: 500;
+    color: #111;
+    text-decoration: none;
+}
+
+.filter-link:hover {
+    text-decoration: underline;
+}
+
+.filter-link.active {
+    font-weight: 700;
+}
+
 </style>
 {% endblock %}
