@@ -53,11 +53,6 @@
                                     {% trans "All Products" %}
                                 </a>
 
-                                <a href="{% url 'decorative_products' %}"
-                                   class="filter-link {% if request.resolver_match.url_name == 'decorative_products' %}active{% endif %}">
-                                    {% trans "Decorative Products" %}
-                                </a>
-
                                 {% for category in categories %}
                                 <a href="{% url 'category_products' category.id %}"
                                    class="filter-link">
