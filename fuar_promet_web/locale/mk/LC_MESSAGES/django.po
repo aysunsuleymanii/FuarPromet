@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-01-14 12:45+0000\n"
+"POT-Creation-Date: 2026-01-19 17:30+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,8 +18,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n % 10 == 1 && n % 100 != 11) ? 0 : 1;\n"
 
-#: fuar_promet/templates/about.html:4
-#, fuzzy
+#: fuar_promet/templates/about.html:4 fuar_promet/templates/base.html:319
 #| msgid "About"
 msgid "About Us"
 msgstr "За нас"
@@ -30,7 +29,8 @@ msgstr "ЗА НАС"
 
 #: fuar_promet/templates/about.html:15
 msgid "A legacy of precision and quality in the furniture industry since 1993."
-msgstr "Наследство на прецизност и квалитет во мебелската индустрија од 1993 година."
+msgstr ""
+"Наследство на прецизност и квалитет во мебелската индустрија од 1993 година."
 
 #: fuar_promet/templates/about.html:22
 msgid "Our Story & Mission"
@@ -44,9 +44,10 @@ msgid ""
 "cutting and mass production services with meticulous attention to detail."
 msgstr ""
 "Основана во 1993 година, Fuar Promet е водечки специјалист за прецизно "
-"обвивување на рабови и обработка на панели. Работиме во модерна производствена "
-"сала од 2.500 m² на парцела од 7.500 m², обезбедувајќи услуги за сечење и "
-"масовно производство со висок капацитет и голема внимателност на детали."
+"обвивување на рабови и обработка на панели. Работиме во модерна "
+"производствена сала од 2.500 m² на парцела од 7.500 m², обезбедувајќи услуги "
+"за сечење и масовно производство со висок капацитет и голема внимателност на "
+"детали."
 
 #: fuar_promet/templates/about.html:27
 msgid ""
@@ -56,71 +57,134 @@ msgid ""
 "systems that streamline their workflows, enabling them to deliver superior "
 "quality to their own clients."
 msgstr ""
-"Покрај обработката, нашиот високо квалификуван тим нуди сеопфатно знаење "
-"во дизајн и производство на мебел. Во Fuar Promet се посветуваме на тоа да им "
+"Покрај обработката, нашиот високо квалификуван тим нуди сеопфатно знаење во "
+"дизајн и производство на мебел. Во Fuar Promet се посветуваме на тоа да им "
 "овозможиме на производителите на мебел и професионалците од индустријата да "
-"ги оптимизираат своите процеси, овозможувајќи им да испорачуваат врвен квалитет "
-"на своите клиенти."
+"ги оптимизираат своите процеси, овозможувајќи им да испорачуваат врвен "
+"квалитет на своите клиенти."
 
-#: fuar_promet/templates/about.html:40
+#: fuar_promet/templates/about.html:33
+msgid "Our Golden Partners"
+msgstr "Наши Златни Партнери"
+
+
+#: fuar_promet/templates/about.html:57
 msgid "OUR CORE EXPERTISE"
 msgstr "НАШИТЕ ОСНОВНИ ЕКСПЕРТИЗИ"
 
-#: fuar_promet/templates/about.html:48
+#: fuar_promet/templates/about.html:65
 msgid "Precision Processing"
 msgstr "Прецизна обработка"
 
-#: fuar_promet/templates/about.html:49
+#: fuar_promet/templates/about.html:66
 msgid ""
 "Advanced edge banding, cutting, and shaping for MDF, Chipboard, and more."
-msgstr "Напредно обвивување на рабови, сечење и обликување на MDF, иверица и повеќе."
+msgstr ""
+"Напредно обвивување на рабови, сечење и обликување на MDF, иверица и повеќе."
 
-#: fuar_promet/templates/about.html:58
+#: fuar_promet/templates/about.html:75
 msgid "Premium Supply"
 msgstr "Премиум снабдување"
 
-#: fuar_promet/templates/about.html:59
+#: fuar_promet/templates/about.html:76
 msgid "High-quality UV PVC, Bamboo Panels, Compact Laminates, and Table Bases."
-msgstr "Висококвалитетен UV PVC, панели од бамбус, компактни ламинирани плочи и столни основи."
+msgstr ""
+"Висококвалитетен UV PVC, панели од бамбус, компактни ламинирани плочи и "
+"столни основи."
 
-#: fuar_promet/templates/about.html:68
+#: fuar_promet/templates/about.html:85
 msgid "Design Solutions"
 msgstr "Дизајн решенија"
 
-#: fuar_promet/templates/about.html:69
+#: fuar_promet/templates/about.html:86
 msgid ""
 "Expert interior decoration and furniture design tailored to your project."
-msgstr "Експертски внатрешен дизајн и дизајн на мебел прилагоден на вашиот проект."
+msgstr ""
+"Експертски внатрешен дизајн и дизајн на мебел прилагоден на вашиот проект."
 
-#: fuar_promet/templates/base.html:23
+#: fuar_promet/templates/base.html:134
 msgid "Toggle navigation"
 msgstr "Промени навигација"
 
-#: fuar_promet/templates/base.html:43 fuar_promet/templates/home.html:4
-#: fuar_promet/templates/home.html:15
+#: fuar_promet/templates/base.html:155 fuar_promet/templates/base.html:318
+#: fuar_promet/templates/home.html:4
 msgid "Home"
 msgstr "Почетна"
 
-#: fuar_promet/templates/base.html:44
+#: fuar_promet/templates/base.html:156
 msgid "About"
 msgstr "За нас"
 
-#: fuar_promet/templates/base.html:45
+#: fuar_promet/templates/base.html:161 fuar_promet/templates/base.html:327
 msgid "Products"
 msgstr "Производи"
 
-#: fuar_promet/templates/base.html:46
+#: fuar_promet/templates/base.html:164
+#| msgid "Products"
+msgid "Product Categories"
+msgstr "Производи"
+
+#: fuar_promet/templates/base.html:173 fuar_promet/templates/base.html:329
+#| msgid "Products"
+msgid "All Products"
+msgstr "Производи"
+
+#: fuar_promet/templates/base.html:174
+msgid "Browse all products"
+msgstr "Прегледај ги сите производи"
+
+
+#: fuar_promet/templates/base.html:199 fuar_promet/templates/base.html:330
+#| msgid "Back to Products"
+msgid "Decorative Products"
+msgstr "Декоративни Производи"
+
+#: fuar_promet/templates/base.html:202
+msgid "Decorative Categories"
+msgstr "Декоративни категории"
+
+
+#: fuar_promet/templates/base.html:211
+msgid "All Decorative Products"
+msgstr "Сите декоративни производи"
+
+
+#: fuar_promet/templates/base.html:212
+msgid "View all decorative items"
+msgstr "Прегледај ги сите декоративни производи"
+
+
+#: fuar_promet/templates/base.html:234 fuar_promet/templates/base.html:320
 msgid "Services"
 msgstr "Услуги"
 
-#: fuar_promet/templates/base.html:47 fuar_promet/templates/contact.html:4
+#: fuar_promet/templates/base.html:235 fuar_promet/templates/base.html:321
+#: fuar_promet/templates/base.html:336 fuar_promet/templates/contact.html:4
 msgid "Contact"
 msgstr "Контакт"
 
-#: fuar_promet/templates/base.html:64 fuar_promet/templates/base.html:76
-#: fuar_promet/templates/base.html:77
+#: fuar_promet/templates/base.html:257 fuar_promet/templates/base.html:279
+msgid "Search products..."
+msgstr ""
+
+#: fuar_promet/templates/base.html:283
 msgid "Search"
 msgstr "Пребарај"
+
+#: fuar_promet/templates/base.html:310
+msgid ""
+"High-quality MDF panels, decorative materials and professional solutions for "
+"modern interiors."
+msgstr ""
+
+#: fuar_promet/templates/base.html:316
+msgid "Company"
+msgstr "Компанија"
+
+
+#: fuar_promet/templates/base.html:366
+msgid "All rights reserved."
+msgstr ""
 
 #: fuar_promet/templates/contact.html:12
 msgid "Get in Touch"
@@ -142,50 +206,84 @@ msgstr "Адреса"
 msgid "FOLLOW US"
 msgstr ""
 
-#: fuar_promet/templates/product_detail.html:28
-#: fuar_promet/templates/products.html:39
-msgid "Category"
-msgstr "Категорија"
+#: fuar_promet/templates/product_detail.html:17
+msgid "No image available"
+msgstr ""
 
-#: fuar_promet/templates/product_detail.html:29
-#: fuar_promet/templates/products.html:40
-msgid "Dimensions"
-msgstr "Димензии"
-
-#: fuar_promet/templates/product_detail.html:31
-#: fuar_promet/templates/products.html:41
-msgid "Color"
-msgstr "Боја"
-
-#: fuar_promet/templates/product_detail.html:34
-#: fuar_promet/templates/products.html:48
+#: fuar_promet/templates/product_detail.html:43
+#: fuar_promet/templates/products.html:92
+#: fuar_promet/templates/products.html:128
 msgid "In Stock"
 msgstr "На залиха"
 
-#: fuar_promet/templates/product_detail.html:36
-#: fuar_promet/templates/products.html:50
+#: fuar_promet/templates/product_detail.html:47
+#: fuar_promet/templates/products.html:93
+#: fuar_promet/templates/products.html:130
 msgid "Out of Stock"
 msgstr "Нема на залиха"
 
-#: fuar_promet/templates/product_detail.html:43
+#: fuar_promet/templates/product_detail.html:64
+msgid "Code"
+msgstr ""
+
+#: fuar_promet/templates/product_detail.html:69
+msgid "Dimensions"
+msgstr "Димензии"
+
+#: fuar_promet/templates/product_detail.html:78
 msgid "Back to Products"
 msgstr "Назад кон производите"
 
-#: fuar_promet/templates/products.html:9
-msgid "Explore our carefully selected range of high-quality products."
-msgstr ""
-"Истражете ја нашата внимателно одбрана палета на висококвалитетни производи."
+#: fuar_promet/templates/products.html:24
+msgid "Show Filters"
+msgstr "Прикажи филтри"
 
-#: fuar_promet/templates/products.html:14
-msgid "All"
-msgstr "Сите"
+#: fuar_promet/templates/products.html:34
+msgid "Filters"
+msgstr "Филтри"
+
+#: fuar_promet/templates/products.html:35
+msgid "Clear all"
+msgstr "Исчисти сè"
+
+
+#: fuar_promet/templates/products.html:42
+msgid "Category"
+msgstr "Категорија"
+
+#: fuar_promet/templates/products.html:51
+#| msgid "Category"
+msgid "All Categories"
+msgstr "Категорија"
+
+#: fuar_promet/templates/products.html:67
+msgid "Brand"
+msgstr "Бренд"
+
+#: fuar_promet/templates/products.html:85
+msgid "Availability"
+msgstr "Достапност"
+
+#: fuar_promet/templates/search_results.html:27
+msgid "Search results for"
+msgstr "Резултати од пребарување за"
+
+
+#: fuar_promet/templates/search_results.html:47
+#| msgid "Products"
+msgid "View product"
+msgstr "Производи"
+
+#: fuar_promet/templates/search_results.html:56
+msgid "No products found."
+msgstr "Нема пронајдени производи."
+
 
 #: fuar_promet/templates/service_detail.html:21
 msgid "Back to Services"
 msgstr "Назад кон услугите"
 
 #: fuar_promet/templates/services.html:4
-#, fuzzy
 #| msgid "Services"
 msgid "Our Services"
 msgstr "Услуги"
@@ -248,21 +346,32 @@ msgstr "Сигурна испорака"
 msgid "On time and hassle-free"
 msgstr "Навремено и без проблеми"
 
-#: fuar_promet_web/settings.py:118
+#: fuar_promet_web/settings.py:119
 msgid "English"
 msgstr "Англиски"
 
-#: fuar_promet_web/settings.py:119
+#: fuar_promet_web/settings.py:120
 msgid "Albanian"
 msgstr "Албански"
 
-#: fuar_promet_web/settings.py:120
+#: fuar_promet_web/settings.py:121
 msgid "Macedonian"
 msgstr "Македонски"
 
-#: fuar_promet_web/settings.py:121
+#: fuar_promet_web/settings.py:122
 msgid "Turkish"
 msgstr "Турски"
+
+#~ msgid "Color"
+#~ msgstr "Боја"
+
+#~ msgid "Explore our carefully selected range of high-quality products."
+#~ msgstr ""
+#~ "Истражете ја нашата внимателно одбрана палета на висококвалитетни "
+#~ "производи."
+
+#~ msgid "All"
+#~ msgstr "Сите"
 
 #~ msgid "Our Work"
 #~ msgstr "Нашата работа"

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-01-14 12:45+0000\n"
+"POT-Creation-Date: 2026-01-19 17:30+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,8 +18,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: fuar_promet/templates/about.html:4
-#, fuzzy
+#: fuar_promet/templates/about.html:4 fuar_promet/templates/base.html:319
 #| msgid "About"
 msgid "About Us"
 msgstr "Rreth nesh"
@@ -29,9 +28,10 @@ msgid "ABOUT US"
 msgstr "RRETH NESH"
 
 #: fuar_promet/templates/about.html:15
-#: fuar_promet/templates/about.html:15
 msgid "A legacy of precision and quality in the furniture industry since 1993."
-msgstr "Një trashëgimi e saktësisë dhe cilësisë në industrinë e mobiljeve që nga viti 1993."
+msgstr ""
+"Një trashëgimi e saktësisë dhe cilësisë në industrinë e mobiljeve që nga "
+"viti 1993."
 
 #: fuar_promet/templates/about.html:22
 msgid "Our Story & Mission"
@@ -44,10 +44,11 @@ msgid ""
 "facility situated on a 7,500 m² site, we provide high-capacity contract "
 "cutting and mass production services with meticulous attention to detail."
 msgstr ""
-"E themeluar në 1993, Fuar Promet është një specialist kryesor në bandimin e saktë "
-"të skajeve dhe përpunimin e paneleve. Duke operuar brenda një fabrike moderne "
-"prodhuese prej 2,500 m² në një truall prej 7,500 m², ne ofrojmë shërbime prerjeje "
-"dhe prodhimi masiv me kapacitet të lartë, me vëmendje të madhe ndaj detajeve."
+"E themeluar në 1993, Fuar Promet është një specialist kryesor në bandimin e "
+"saktë të skajeve dhe përpunimin e paneleve. Duke operuar brenda një fabrike "
+"moderne prodhuese prej 2,500 m² në një truall prej 7,500 m², ne ofrojmë "
+"shërbime prerjeje dhe prodhimi masiv me kapacitet të lartë, me vëmendje të "
+"madhe ndaj detajeve."
 
 #: fuar_promet/templates/about.html:27
 msgid ""
@@ -57,71 +58,132 @@ msgid ""
 "systems that streamline their workflows, enabling them to deliver superior "
 "quality to their own clients."
 msgstr ""
-"Përtej përpunimit, ekipi ynë i aftë ofron ekspertizë të plotë në dizajnin dhe "
-"prodhimin e mobiljeve. Tek Fuar Promet, jemi të përkushtuar për të fuqizuar "
-"prodhuesit e mobiljeve dhe profesionistët e industrisë duke zbatuar sisteme që "
-"thjeshtëzojnë proceset e tyre, duke u mundësuar atyre të ofrojnë cilësi të lartë "
-"për klientët e tyre."
+"Përtej përpunimit, ekipi ynë i aftë ofron ekspertizë të plotë në dizajnin "
+"dhe prodhimin e mobiljeve. Tek Fuar Promet, jemi të përkushtuar për të "
+"fuqizuar prodhuesit e mobiljeve dhe profesionistët e industrisë duke zbatuar "
+"sisteme që thjeshtëzojnë proceset e tyre, duke u mundësuar atyre të ofrojnë "
+"cilësi të lartë për klientët e tyre."
 
-#: fuar_promet/templates/about.html:40
+#: fuar_promet/templates/about.html:33
+msgid "Our Golden Partners"
+msgstr "Partnerët tanë të artë"
+
+
+#: fuar_promet/templates/about.html:57
 msgid "OUR CORE EXPERTISE"
 msgstr "EKSPERTIZA JONË KRYESORE"
 
-#: fuar_promet/templates/about.html:48
+#: fuar_promet/templates/about.html:65
 msgid "Precision Processing"
 msgstr "Përpunim i Saktë"
 
-#: fuar_promet/templates/about.html:49
+#: fuar_promet/templates/about.html:66
 msgid ""
 "Advanced edge banding, cutting, and shaping for MDF, Chipboard, and more."
-msgstr "Bandim, prerje dhe formësim i avancuar për MDF, tabla kompakte dhe të tjera."
+msgstr ""
+"Bandim, prerje dhe formësim i avancuar për MDF, tabla kompakte dhe të tjera."
 
-#: fuar_promet/templates/about.html:58
+#: fuar_promet/templates/about.html:75
 msgid "Premium Supply"
 msgstr "Furnizim Premium"
 
-#: fuar_promet/templates/about.html:59
+#: fuar_promet/templates/about.html:76
 msgid "High-quality UV PVC, Bamboo Panels, Compact Laminates, and Table Bases."
-msgstr "PVC UV me cilësi të lartë, panele bambuje, laminata kompakte dhe baza tavoline."
+msgstr ""
+"PVC UV me cilësi të lartë, panele bambuje, laminata kompakte dhe baza "
+"tavoline."
 
-#: fuar_promet/templates/about.html:68
+#: fuar_promet/templates/about.html:85
 msgid "Design Solutions"
 msgstr "Zgjidhje Dizajni"
 
-#: fuar_promet/templates/about.html:69
+#: fuar_promet/templates/about.html:86
 msgid ""
 "Expert interior decoration and furniture design tailored to your project."
-msgstr "Dekorim i brendshëm ekspert dhe dizajn mobiljesh të përshtatur për projektin tuaj."
+msgstr ""
+"Dekorim i brendshëm ekspert dhe dizajn mobiljesh të përshtatur për projektin "
+"tuaj."
 
-
-#: fuar_promet/templates/base.html:23
+#: fuar_promet/templates/base.html:134
 msgid "Toggle navigation"
 msgstr "Ndrysho navigimin"
 
-#: fuar_promet/templates/base.html:43 fuar_promet/templates/home.html:4
-#: fuar_promet/templates/home.html:15
+#: fuar_promet/templates/base.html:155 fuar_promet/templates/base.html:318
+#: fuar_promet/templates/home.html:4
 msgid "Home"
 msgstr "Ballina"
 
-#: fuar_promet/templates/base.html:44
+#: fuar_promet/templates/base.html:156
 msgid "About"
 msgstr "Rreth nesh"
 
-#: fuar_promet/templates/base.html:45
+#: fuar_promet/templates/base.html:161 fuar_promet/templates/base.html:327
 msgid "Products"
 msgstr "Produktet"
 
-#: fuar_promet/templates/base.html:46
+#: fuar_promet/templates/base.html:164
+#| msgid "Products"
+msgid "Product Categories"
+msgstr "Produktet"
+
+#: fuar_promet/templates/base.html:173 fuar_promet/templates/base.html:329
+#| msgid "Products"
+msgid "All Products"
+msgstr "Produktet"
+
+#: fuar_promet/templates/base.html:174
+msgid "Browse all products"
+msgstr "Shfleto të gjitha produktet"
+
+#: fuar_promet/templates/base.html:199 fuar_promet/templates/base.html:330
+#| msgid "Back to Products"
+msgid "Decorative Products"
+msgstr "Produkte Dekorative"
+
+
+#: fuar_promet/templates/base.html:202
+msgid "Decorative Categories"
+msgstr "Kategori dekorative"
+
+#: fuar_promet/templates/base.html:211
+msgid "All Decorative Products"
+msgstr "Të gjitha produktet dekorative"
+
+#: fuar_promet/templates/base.html:212
+msgid "View all decorative items"
+msgstr "Shiko të gjitha produktet dekorative"
+
+
+#: fuar_promet/templates/base.html:234 fuar_promet/templates/base.html:320
 msgid "Services"
 msgstr "Shërbimet"
 
-#: fuar_promet/templates/base.html:47 fuar_promet/templates/contact.html:4
+#: fuar_promet/templates/base.html:235 fuar_promet/templates/base.html:321
+#: fuar_promet/templates/base.html:336 fuar_promet/templates/contact.html:4
 msgid "Contact"
 msgstr "Kontakti"
 
-#: fuar_promet/templates/base.html:64 fuar_promet/templates/base.html:76
-#: fuar_promet/templates/base.html:77
+#: fuar_promet/templates/base.html:257 fuar_promet/templates/base.html:279
+msgid "Search products..."
+msgstr "Kërko produkte..."
+
+#: fuar_promet/templates/base.html:283
 msgid "Search"
+msgstr "Kërko"
+
+
+#: fuar_promet/templates/base.html:310
+msgid ""
+"High-quality MDF panels, decorative materials and professional solutions for "
+"modern interiors."
+msgstr ""
+
+#: fuar_promet/templates/base.html:316
+msgid "Company"
+msgstr ""
+
+#: fuar_promet/templates/base.html:366
+msgid "All rights reserved."
 msgstr ""
 
 #: fuar_promet/templates/contact.html:12
@@ -144,51 +206,84 @@ msgstr "Adresa"
 msgid "FOLLOW US"
 msgstr ""
 
-#: fuar_promet/templates/product_detail.html:28
-#: fuar_promet/templates/products.html:39
-msgid "Category"
-msgstr "Kategoria"
+#: fuar_promet/templates/product_detail.html:17
+msgid "No image available"
+msgstr ""
 
-#: fuar_promet/templates/product_detail.html:29
-#: fuar_promet/templates/products.html:40
-msgid "Dimensions"
-msgstr "Përmasat"
-
-#: fuar_promet/templates/product_detail.html:31
-#: fuar_promet/templates/products.html:41
-msgid "Color"
-msgstr "Ngjyra"
-
-#: fuar_promet/templates/product_detail.html:34
-#: fuar_promet/templates/products.html:48
+#: fuar_promet/templates/product_detail.html:43
+#: fuar_promet/templates/products.html:92
+#: fuar_promet/templates/products.html:128
 msgid "In Stock"
 msgstr "Në gjendje"
 
-#: fuar_promet/templates/product_detail.html:36
-#: fuar_promet/templates/products.html:50
+#: fuar_promet/templates/product_detail.html:47
+#: fuar_promet/templates/products.html:93
+#: fuar_promet/templates/products.html:130
 msgid "Out of Stock"
 msgstr "Nuk ka në gjendje"
 
-#: fuar_promet/templates/product_detail.html:43
+#: fuar_promet/templates/product_detail.html:64
+msgid "Code"
+msgstr ""
+
+#: fuar_promet/templates/product_detail.html:69
+msgid "Dimensions"
+msgstr "Përmasat"
+
+#: fuar_promet/templates/product_detail.html:78
 msgid "Back to Products"
 msgstr "Kthehu te Produktet"
 
-#: fuar_promet/templates/products.html:9
-msgid "Explore our carefully selected range of high-quality products."
-msgstr ""
-"Eksploroni gamën tonë të përzgjedhur me kujdes të produkteve me cilësi të "
-"lartë."
+#: fuar_promet/templates/products.html:24
+msgid "Show Filters"
+msgstr "Shfaq filtrat"
 
-#: fuar_promet/templates/products.html:14
-msgid "All"
-msgstr "Të gjitha"
+#: fuar_promet/templates/products.html:34
+msgid "Filters"
+msgstr "Filtra"
+
+#: fuar_promet/templates/products.html:35
+msgid "Clear all"
+msgstr "Pastro të gjitha"
+
+
+#: fuar_promet/templates/products.html:42
+msgid "Category"
+msgstr "Kategoria"
+
+#: fuar_promet/templates/products.html:51
+#| msgid "Category"
+msgid "All Categories"
+msgstr "Kategoria"
+
+#: fuar_promet/templates/products.html:67
+msgid "Brand"
+msgstr "Markë"
+
+#: fuar_promet/templates/products.html:85
+msgid "Availability"
+msgstr "Disponueshmëria"
+
+#: fuar_promet/templates/search_results.html:27
+msgid "Search results for"
+msgstr "Rezultatet e kërkimit për"
+
+
+#: fuar_promet/templates/search_results.html:47
+#| msgid "Products"
+msgid "View product"
+msgstr "Produktet"
+
+#: fuar_promet/templates/search_results.html:56
+msgid "No products found."
+msgstr "Nuk u gjetën produkte."
+
 
 #: fuar_promet/templates/service_detail.html:21
 msgid "Back to Services"
 msgstr "Kthehu te Shërbimet"
 
 #: fuar_promet/templates/services.html:4
-#, fuzzy
 #| msgid "Services"
 msgid "Our Services"
 msgstr "Shërbimet"
@@ -251,21 +346,32 @@ msgstr "Dërgesë e besueshme"
 msgid "On time and hassle-free"
 msgstr "Në kohë dhe pa probleme"
 
-#: fuar_promet_web/settings.py:118
+#: fuar_promet_web/settings.py:119
 msgid "English"
 msgstr "Anglisht"
 
-#: fuar_promet_web/settings.py:119
+#: fuar_promet_web/settings.py:120
 msgid "Albanian"
 msgstr "Shqip"
 
-#: fuar_promet_web/settings.py:120
+#: fuar_promet_web/settings.py:121
 msgid "Macedonian"
 msgstr "Maqedonisht"
 
-#: fuar_promet_web/settings.py:121
+#: fuar_promet_web/settings.py:122
 msgid "Turkish"
 msgstr "Turqisht"
+
+#~ msgid "Color"
+#~ msgstr "Ngjyra"
+
+#~ msgid "Explore our carefully selected range of high-quality products."
+#~ msgstr ""
+#~ "Eksploroni gamën tonë të përzgjedhur me kujdes të produkteve me cilësi të "
+#~ "lartë."
+
+#~ msgid "All"
+#~ msgstr "Të gjitha"
 
 #~ msgid "Our Work"
 #~ msgstr "Puna jonë"
