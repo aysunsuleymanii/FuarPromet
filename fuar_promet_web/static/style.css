@@ -927,12 +927,8 @@ img {
         padding: 0 50px;
     }
 
-    .best-seller-track {
-        gap: 16px;
-    }
-
     .best-seller-card {
-        flex: 0 0 calc(100% - 100px);
+        flex: 0 0 80%;
     }
 
     /* Mobile slider buttons */
@@ -963,17 +959,13 @@ img {
     .display-4 { font-size: 1.1rem; }
     .map-section, .map-section iframe { min-height: 300px; }
 
-    /* Extra small mobile - single full card view */
+    /* Extra small mobile - single card view */
     .best-seller-wrapper {
         padding: 0 45px;
     }
 
-    .best-seller-track {
-        gap: 12px;
-    }
-
     .best-seller-card {
-        flex: 0 0 calc(100% - 90px);
+        flex: 0 0 100%;
     }
 
     .best-seller-card .product-name {
