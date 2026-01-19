@@ -69,6 +69,33 @@
 
 
 
+<!-- LOGO SCROLL DRAW -->
+<section class="logo-section">
+    <div class="logo-wrapper">
+        {% include "fuar_logo.svg" %}
+    </div>
+</section>
+
+
+
+<div class="container">
+    <div class="row justify-content-center"
+         style="min-height:400px;">
+
+        <div class="panel-wrapper">
+            <img src="/static/panel1.png" class="panel">
+            <img src="/static/panel2.png" class="panel">
+            <img src="/static/panel3.png" class="panel">
+            <img src="/static/panel4.png" class="panel">
+            <img src="/static/panel5.png" class="panel">
+        </div>
+
+    </div>
+</div>
+
+
+
+
 <div class="row justify-content-start slide-in delay-2">
     <div class="col-12 text-start mb-5 mt-5">
         <h1>Featured Work</h1>
@@ -207,6 +234,51 @@
         track.style.transform = `translateX(-${index * cardWidth()}px)`;
     });
 });
+
+    /* ================= LOGO DRAW SCROLL ================= */
+
+    document.addEventListener("scroll", () => {
+        const section = document.querySelector(".logo-section");
+        const paths = document.querySelectorAll(".logo-wrapper path");
+
+        if (!section || paths.length === 0) return;
+
+        const rect = section.getBoundingClientRect();
+        const windowHeight = window.innerHeight;
+
+        let progress = 1 - (rect.bottom / (windowHeight * 1.2));
+        progress = Math.max(0, Math.min(1, progress));
+
+        paths.forEach(path => {
+            const length = path.getTotalLength();
+            path.style.strokeDasharray = length;
+            path.style.strokeDashoffset = length * (1 - progress);
+        });
+    });
+
+
+    const panels = [
+        "/static/panel1.png",
+        "/static/panel2.png",
+        "/static/panel3.png",
+        "/static/panel4.png",
+        "/static/panel5.png"
+    ];
+
+    let index = 0;
+    let rotation = 0;
+    const img = document.getElementById("panelImage");
+
+    setInterval(() => {
+        rotation += 360;
+        img.style.transform = `rotateY(${rotation}deg)`;
+
+        setTimeout(() => {
+            index = (index + 1) % panels.length;
+            img.src = panels[index];
+        }, 400); // change image halfway through rotation
+    }, 2000); // change every 2 seconds
+
 </script>
 {% endblock %}
 
