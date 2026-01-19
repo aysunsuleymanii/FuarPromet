@@ -12,7 +12,56 @@
     </div>
 </div>
 
-<img class="home_img slide-in delay-1" src="{% static 'index_img.jpg' %}" alt="{% trans 'Home' %}">
+<div class="container">
+    <div class="row">
+        <div class="col-4" style="background-color: #6E5241; min-height: 100px;">
+        </div>
+       <div class="col-8" style="min-height: 300px;">
+            <img
+                src="{% static 'main-img.png' %}"
+                alt="Main Image"
+                class="w-100 h-100"
+                style="object-fit: cover;"
+            >
+        </div>
+    </div>
+</div>
+
+
+
+
+<!-- BEST SELLERS -->
+<div class="container my-5">
+    <div class="d-flex justify-content-between align-items-center mb-3">
+        <h1 class="display-6 fw-light">Best Sellers</h1>
+        <a href="/products" class="text-decoration-none text-dark">View All</a>
+    </div>
+
+    <div class="best-seller-wrapper position-relative">
+        <!-- PREV BUTTON -->
+        <button class="slider-btn prev-btn">&#10094;</button>
+
+        <!-- SLIDER -->
+        <div class="best-seller-viewport">
+            <div class="best-seller-track">
+                {% for product in best_sellers %}
+                <div class="best-seller-card">
+                    <img src="{% static product.image %}" alt="{{ product.name }}">
+                    <div class="product-overlay">
+                        <span class="product-name">{{ product.name }}</span>
+                    </div>
+                </div>
+            {% endfor %}
+            </div>
+        </div>
+
+        <!-- NEXT BUTTON -->
+        <button class="slider-btn next-btn">&#10095;</button>
+    </div>
+</div>
+
+
+
 
 <div class="row justify-content-start slide-in delay-2">
     <div class="col-12 text-start mb-5 mt-5">
@@ -25,6 +74,9 @@
 <div class="reveal-section">
     <div class="image-block from-left">
         <img src="{% static '1.jpg' %}" alt="Image 1">
+        <div class="product-overlay">
+            <span class="product-name">Calcutta</span>
+        </div>
     </div>
     <div class="empty-space from-right"></div>
 </div>
@@ -33,20 +85,31 @@
     <div class="empty-space from-left"></div>
     <div class="image-block from-right">
         <img src="{% static '2.jpg' %}" alt="Image 2">
+        <div class="product-overlay">
+            <span class="product-name">Cashmere</span>
+        </div>
     </div>
 </div>
 
 <div class="reveal-section">
     <div class="image-block from-left">
-        <img src="{% static '3.jpg' %}" alt="Image 3">
+        <img src="{% static '3.png' %}" alt="Image 3">
+         <div class="product-overlay">
+            <span class="product-name">Elvira</span>
+        </div>
     </div>
     <div class="empty-space from-right"></div>
 </div>
+
+
 
 <div class="reveal-section">
     <div class="empty-space from-left"></div>
     <div class="image-block from-right">
         <img src="{% static '4.jpg' %}" alt="Image 4">
+        <div class="product-overlay">
+            <span class="product-name">Afrika</span>
+        </div>
     </div>
 </div>
 
@@ -54,16 +117,13 @@
 {% block extra_js %}
 <script>
     document.addEventListener("DOMContentLoaded", () => {
-        // We will target the .reveal-section elements
         const blocks = document.querySelectorAll(".reveal-section");
 
-        // Define the visibility threshold (e.g., 100 pixels from the bottom of the viewport)
         const visibilityThreshold = 100;
 
         const revealOnScroll = () => {
             blocks.forEach(section => {
                 const rect = section.getBoundingClientRect();
-                // Check if the top of the section is visible (above window height - threshold)
                 if (rect.top < window.innerHeight - visibilityThreshold) {
                     section.classList.add("visible");
                 }
@@ -71,11 +131,77 @@
         };
 
         window.addEventListener("scroll", revealOnScroll);
-        // Initial check in case the elements are already in view on load
         revealOnScroll();
     });
+
+
+    document.addEventListener("DOMContentLoaded", () => {
+    const track = document.querySelector(".best-seller-track");
+    const prevBtn = document.querySelector(".prev-btn");
+    const nextBtn = document.querySelector(".next-btn");
+
+    let cards = Array.from(document.querySelectorAll(".best-seller-card"));
+    const visibleCards = 4;
+    let index = visibleCards; // start after prepended clones
+    let isTransitioning = false;
+
+    const cardWidth = () => cards[0].offsetWidth;
+
+    /* ===== CLONE CARDS ===== */
+    const firstClones = cards.slice(0, visibleCards).map(card => card.cloneNode(true));
+    const lastClones = cards.slice(-visibleCards).map(card => card.cloneNode(true));
+
+    lastClones.forEach(clone => track.prepend(clone));
+    firstClones.forEach(clone => track.append(clone));
+
+    cards = Array.from(document.querySelectorAll(".best-seller-card"));
+
+    /* ===== INITIAL POSITION ===== */
+    track.style.transform = `translateX(-${index * cardWidth()}px)`;
+
+    function moveSlider() {
+        track.style.transition = "transform 0.5s ease";
+        track.style.transform = `translateX(-${index * cardWidth()}px)`;
+    }
+
+    nextBtn.addEventListener("click", () => {
+        if (isTransitioning) return;
+        isTransitioning = true;
+        index++;
+        moveSlider();
+    });
+
+    prevBtn.addEventListener("click", () => {
+        if (isTransitioning) return;
+        isTransitioning = true;
+        index--;
+        moveSlider();
+    });
+
+    track.addEventListener("transitionend", () => {
+        isTransitioning = false;
+
+        // Jump forward (end → start)
+        if (index >= cards.length - visibleCards) {
+            track.style.transition = "none";
+            index = visibleCards;
+            track.style.transform = `translateX(-${index * cardWidth()}px)`;
+        }
+
+        // Jump backward (start → end)
+        if (index < visibleCards) {
+            track.style.transition = "none";
+            index = cards.length - (visibleCards * 2);
+            track.style.transform = `translateX(-${index * cardWidth()}px)`;
+        }
+    });
+
+    window.addEventListener("resize", () => {
+        track.style.transition = "none";
+        track.style.transform = `translateX(-${index * cardWidth()}px)`;
+    });
+});
 </script>
 {% endblock %}
-
 
 {% endblock %}

@@ -8,7 +8,23 @@ from django.db.models import Q
 # ---------- BASIC PAGES ----------
 
 def home(request):
-    return render(request, "home.html", {"languages": settings.LANGUAGES})
+    best_sellers = [
+        {'image': '1.jpg', 'name': 'Calcutta'},
+        {'image': '2.jpg', 'name': 'Cashmere'},
+        {'image': '3.png', 'name': 'Elvira'},
+        {'image': '4.jpg', 'name': 'Afrika'},
+        {'image': '5.png', 'name': 'Efes'},
+        {'image': '6.png', 'name': 'Kumsal'},
+        {'image': '7.jpeg', 'name': 'Traverten'},
+        {'image': '8.jpg', 'name': 'İyon'},
+        {'image': '9.jpg', 'name': 'Dor'},
+        {'image': '10.jpg', 'name': 'Resif'},
+    ]
+
+    context = {
+        'best_sellers': best_sellers
+    }
+    return render(request, 'home.html', context)
 
 
 def contact(request):
