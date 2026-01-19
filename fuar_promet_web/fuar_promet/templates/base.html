@@ -125,6 +125,33 @@
     </style>
 </head>
 
+<!-- WhatsApp Floating Button -->
+<div class="whatsapp-widget">
+    <button class="whatsapp-btn" id="whatsappToggle">
+        <img src="{% static 'WhatsApp.svg' %}" alt="WhatsApp">
+    </button>
+
+    <div class="whatsapp-popup" id="whatsappPopup">
+        <div class="whatsapp-header">
+            <span>{% trans "Chat with us" %}</span>
+            <button id="whatsappClose">×</button>
+        </div>
+
+        <div class="whatsapp-body">
+            <p>{% trans "Hi, How can we help you?" %}</p>
+        </div>
+
+        <a
+            href="https://wa.me/38970271156?text=Hello%20I%20have%20a%20question"
+            target="_blank"
+            class="whatsapp-action"
+        >
+            {% trans "Start WhatsApp Chat" %}
+        </a>
+    </div>
+</div>
+
+
 <body>
 <!-- Navbar -->
 <nav class="navbar navbar-expand-lg bg-body-tertiary">
@@ -394,6 +421,20 @@
                 });
             });
         }
+    });
+
+
+
+    const toggleBtn = document.getElementById("whatsappToggle");
+    const popup = document.getElementById("whatsappPopup");
+    const closeBtn = document.getElementById("whatsappClose");
+
+    toggleBtn.addEventListener("click", () => {
+        popup.classList.toggle("show");
+    });
+
+    closeBtn.addEventListener("click", () => {
+        popup.classList.remove("show");
     });
 </script>
 

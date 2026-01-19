@@ -1179,3 +1179,97 @@ img:not(.product-detail-img) {
 
 
 
+
+
+/* ================= WHATSAPP WIDGET ================= */
+
+.whatsapp-widget {
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    z-index: 9999;
+}
+
+/* Button */
+.whatsapp-btn {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    border: none;
+    background: #25D366;
+    box-shadow: 0 8px 24px rgba(0,0,0,.25);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.whatsapp-btn img {
+    width: 28px;
+    height: 28px;
+}
+
+/* Popup */
+.whatsapp-popup {
+    position: absolute;
+    bottom: 70px;
+    right: 0;
+    width: 280px;
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 20px 40px rgba(0,0,0,.15);
+    overflow: hidden;
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(10px);
+    transition: .25s ease;
+}
+
+.whatsapp-popup.show {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateY(0);
+}
+
+/* Header */
+.whatsapp-header {
+    background: #25D366;
+    color: #fff;
+    padding: 12px 14px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.whatsapp-header button {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 18px;
+    cursor: pointer;
+}
+
+/* Body */
+.whatsapp-body {
+    padding: 14px;
+    font-size: 14px;
+    color: #374151;
+}
+
+/* Action */
+.whatsapp-action {
+    display: block;
+    text-align: center;
+    padding: 12px;
+    background: #25D366;
+    color: white;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.whatsapp-action:hover {
+    background: #1ebe5b;
+}
+
+
+
