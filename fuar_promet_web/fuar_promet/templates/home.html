@@ -16,7 +16,7 @@
     <div class="row">
         <div class="col-4">
              <img
-                src="{% static 'main-img2.png' %}"
+                src="{% static 'home2.png' %}"
                 alt="Main Image 2"
                 class="w-100 h-100"
                 style="object-fit: cover;"
@@ -24,7 +24,7 @@
         </div>
        <div class="col-8" style="min-height: 300px;">
             <img
-                src="{% static 'main-img.png' %}"
+                src="{% static 'home1.png' %}"
                 alt="Main Image"
                 class="w-100 h-100"
                 style="object-fit: cover;"
@@ -70,17 +70,24 @@
 
 
 <!-- LOGO SCROLL DRAW -->
-<section class="logo-section">
-    <div class="logo-wrapper">
-        {% include "fuar_logo.svg" %}
-    </div>
-</section>
+<!--<section class="logo-section">-->
+<!--    <div class="logo-wrapper">-->
+<!--        {% include "fuar_logo.svg" %}-->
+<!--    </div>-->
+<!--</section>-->
+
 
 
 
 <div class="container">
     <div class="row justify-content-center"
          style="min-height:400px;">
+
+        <div class="section-title-wrapper">
+            <span class="line"></span>
+            <h2 class="section-title">CUSTOM WOOD FINISHES</h2>
+            <span class="line"></span>
+        </div>
 
         <div class="panel-wrapper">
             <img src="/static/panel1.png" class="panel">
@@ -94,58 +101,88 @@
 </div>
 
 
-
-
-<div class="row justify-content-start slide-in delay-2">
-    <div class="col-12 text-start mb-5 mt-5">
-        <h1>Featured Work</h1>
-    </div>
-</div>
-
-<hr>
-
-<div class="reveal-section">
-    <div class="image-block from-left">
-        <img src="{% static '1.jpg' %}" alt="Image 1">
-        <div class="product-overlay">
-            <span class="product-name">Calcutta</span>
+<div class="container design-section">
+    <div class="row align-items-center">
+        <div class="col-lg-4 col-md-5 image-col">
+            <img
+                src="{% static 'home-img4.png' %}"
+                alt="Sophisticated Design"
+                class="design-image"
+            >
         </div>
-    </div>
-    <div class="empty-space from-right"></div>
-</div>
 
-<div class="reveal-section">
-    <div class="empty-space from-left"></div>
-    <div class="image-block from-right">
-        <img src="{% static '2.jpg' %}" alt="Image 2">
-        <div class="product-overlay">
-            <span class="product-name">Cashmere</span>
+        <div class="col-lg-8 col-md-7 text-col">
+            <h2 class="design-title">Sophisticated & Timeless Design</h2>
+            <p class="design-subtitle">
+                A palette of refined materials for an elegant, modern aesthetic.
+            </p>
         </div>
     </div>
 </div>
 
-<div class="reveal-section">
-    <div class="image-block from-left">
-        <img src="{% static '3.png' %}" alt="Image 3">
-         <div class="product-overlay">
-            <span class="product-name">Elvira</span>
+
+
+
+
+<div class="container design-section design-section--reverse">
+    <div class="row align-items-center">
+        <div class="col-lg-8 col-md-7 text-col">
+            <h2 class="design-title">
+                Natural textures. <br> Balanced tones.
+            </h2>
+            <p class="design-subtitle">
+                Designed for modern interiors that value quality and detail.
+            </p>
+        </div>
+
+        <div class="col-lg-4 col-md-5 image-col">
+            <img
+                src="{% static 'home-img5.png' %}"
+                alt="Material Palette"
+                class="design-image design-image2"
+            >
         </div>
     </div>
-    <div class="empty-space from-right"></div>
 </div>
 
 
 
-<div class="reveal-section">
-    <div class="empty-space from-left"></div>
-    <div class="image-block from-right">
-        <img src="{% static '4.jpg' %}" alt="Image 4">
-        <div class="product-overlay">
-            <span class="product-name">Afrika</span>
+
+
+<section class="featured-section slide-in delay-2">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 mx-auto">
+                <span class="section-eyebrow">Our Expertise</span>
+                <h2 class="section-title">Signature Works</h2>
+                <p class="section-subtitle">
+                    Real applications of our panels, materials, and finishes in modern spaces.
+                </p>
+            </div>
         </div>
+    </div>
+</section>
+
+
+
+<div class="reveal-section">
+    <div class="image-block reveal">
+        <img src="{% static 'overlay1.png' %}" alt="Image 1">
     </div>
 </div>
 
+<div class="reveal-section">
+    <div class="empty-space" style="background-color: #ffffff"></div>
+    <div class="image-block reveal">
+        <img src="{% static 'overlay2.png' %}" alt="Image 2">
+    </div>
+</div>
+
+<div class="reveal-section">
+    <div class="image-block reveal">
+        <img src="{% static 'overlay3.png' %}" alt="Image 3">
+    </div>
+</div>
 
 {% block extra_js %}
 <script>
@@ -278,6 +315,22 @@
             img.src = panels[index];
         }, 400); // change image halfway through rotation
     }, 2000); // change every 2 seconds
+
+
+
+    const revealItems = document.querySelectorAll('.reveal');
+
+    const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+            }
+        });
+    }, {
+        threshold: 0.25
+    });
+
+    revealItems.forEach(el => observer.observe(el));
 
 </script>
 {% endblock %}
