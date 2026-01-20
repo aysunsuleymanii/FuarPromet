@@ -1797,3 +1797,10 @@ img:not(.product-detail-img) {
         padding-left: 8px;
     }
 }
+
+
+img:not(.product-detail-img):not(.product-img) {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
