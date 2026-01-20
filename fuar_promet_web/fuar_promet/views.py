@@ -39,8 +39,6 @@ def our_work(request):
     return render(request, "our_work.html")
 
 
-# ---------- PRODUCTS ----------
-
 # ALL PRODUCTS
 def products_list(request):
     products = Product.objects.all().order_by("-created_at")
@@ -50,9 +48,8 @@ def products_list(request):
         "products": products,
         "categories": categories,
         "page_title": "All Products",
+        "is_decorative": False,  # ADD THIS
     })
-
-
 
 
 # ALL DECORATIVE PRODUCTS
@@ -72,9 +69,8 @@ def decorative_products_list(request):
         "products": products,
         "categories": categories,
         "page_title": "Decorative Products",
+        "is_decorative": True,  # ADD THIS
     })
-
-
 
 
 def category_products(request, category_id):
@@ -89,13 +85,26 @@ def category_products(request, category_id):
         products = Product.objects.filter(category=category)
         categories = [category]
 
+    # Determine if this category belongs to Decorative Products
+    is_decorative = False
+    current_cat = category
+    while current_cat.parent:
+        if current_cat.parent.name.lower() == "decorative products":
+            is_decorative = True
+            break
+        current_cat = current_cat.parent
+
+    # Check if the category itself is Decorative Products
+    if category.name.lower() == "decorative products":
+        is_decorative = True
+
     return render(request, "products.html", {
         "products": products,
         "categories": categories,
+        "category": category,  # ADD THIS
         "page_title": category.name,
+        "is_decorative": is_decorative,  # ADD THIS
     })
-
-
 
 # ---------- SERVICES ----------
 

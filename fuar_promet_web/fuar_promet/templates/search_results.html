@@ -3,6 +3,20 @@
 
 {% block title %}{{ page_title }}{% endblock %}
 
+{% block breadcrumbs %}
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb container my-3">
+        <li class="breadcrumb-item">
+            <a href="{% url 'home' %}">{% trans "Home" %}</a>
+        </li>
+        <li class="breadcrumb-item active" aria-current="page">
+            {% trans "Search" %}
+        </li>
+    </ol>
+</nav>
+{% endblock %}
+
+
 {% block content %}
 <style>
     /* Product card image fix */

@@ -3,6 +3,20 @@
 
 {% block title %}{% trans "Our Services" %} - Fuar Promet{% endblock %}
 
+{% block breadcrumbs %}
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb container my-3">
+        <li class="breadcrumb-item">
+            <a href="{% url 'home' %}">{% trans "Home" %}</a>
+        </li>
+        <li class="breadcrumb-item active" aria-current="page">
+            {% trans "Services" %}
+        </li>
+    </ol>
+</nav>
+{% endblock %}
+
+
 {% block content %}
 <div class="container my-5 py-3">
 

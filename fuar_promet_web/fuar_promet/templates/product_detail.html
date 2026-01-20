@@ -3,6 +3,31 @@
 
 {% block title %}{{ product.name }} - Fuar Promet{% endblock %}
 
+{% block breadcrumbs %}
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb container my-3">
+        <li class="breadcrumb-item">
+            <a href="{% url 'home' %}">{% trans "Home" %}</a>
+        </li>
+
+        <li class="breadcrumb-item">
+            <a href="{% url 'products' %}">{% trans "Products" %}</a>
+        </li>
+
+        <li class="breadcrumb-item">
+            <a href="{% url 'category_products' product.category.id %}">
+                {{ product.category.name }}
+            </a>
+        </li>
+
+        <li class="breadcrumb-item active" aria-current="page">
+            {{ product.name }}
+        </li>
+    </ol>
+</nav>
+{% endblock %}
+
+
 {% block content %}
 <div class="container my-5 py-4 product-detail-page">
 

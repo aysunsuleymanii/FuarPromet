@@ -3,6 +3,59 @@
 
 {% block title %}Products - Fuar Promet{% endblock %}
 
+{% block breadcrumbs %}
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb container my-3">
+        <li class="breadcrumb-item">
+            <a href="{% url 'home' %}">{% trans "Home" %}</a>
+        </li>
+
+        {# Main section link #}
+        {% if category %}
+            {# We're on a category page, so link back to main section #}
+            {% if is_decorative %}
+                <li class="breadcrumb-item">
+                    <a href="{% url 'decorative_products' %}">{% trans "Decorative Products" %}</a>
+                </li>
+            {% else %}
+                <li class="breadcrumb-item">
+                    <a href="{% url 'products' %}">{% trans "Products" %}</a>
+                </li>
+            {% endif %}
+
+            {# Show parent category if it exists and is not a root category #}
+            {% if category.parent and category.parent.parent %}
+                <li class="breadcrumb-item">
+                    <a href="{% url 'category_products' category.parent.id %}">
+                        {{ category.parent.name }}
+                    </a>
+                </li>
+            {% endif %}
+
+            {# Current category #}
+            <li class="breadcrumb-item active" aria-current="page">
+                {{ category.name }}
+            </li>
+        {% else %}
+            {# We're on the main section page (no specific category) #}
+            {% if is_decorative %}
+                <li class="breadcrumb-item active" aria-current="page">
+                    {% trans "Decorative Products" %}
+                </li>
+            {% else %}
+                <li class="breadcrumb-item active" aria-current="page">
+                    {% trans "Products" %}
+                </li>
+            {% endif %}
+        {% endif %}
+    </ol>
+</nav>
+{% endblock %}
+
+
+
+
+
 {% block content %}
 <div class="container-fluid my-5 py-3">
 
@@ -48,10 +101,16 @@
                         <div class="collapse show" id="categoryCollapse">
                             <div class="filter-options">
 
-                                <a href="{% url 'products' %}"
-                                   class="filter-link {% if request.resolver_match.url_name == 'products' %}active{% endif %}">
-                                    {% trans "All Products" %}
-                                </a>
+                                {% if category %}
+                                    <a href="{% url 'category_products' category.id %}">
+                                        {{ category.name }}
+                                    </a>
+                                {% else %}
+                                    <a href="{% url 'products' %}">
+                                        {% trans "All Products" %}
+                                    </a>
+                                {% endif %}
+
 
                                 {% for category in categories %}
                                 <a href="{% url 'category_products' category.id %}"
