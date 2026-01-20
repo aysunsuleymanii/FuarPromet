@@ -106,20 +106,40 @@
             <!-- Divider -->
             <hr class="my-4">
 
-            <!-- Specifications -->
+           <!-- Specifications -->
             <div class="product-specs">
+
                 <div>
                     <span>{% trans "Code" %}</span>
                     <strong>{{ product.code }}</strong>
                 </div>
 
-                <div>
-                    <span>{% trans "Dimensions" %}</span>
-                    <strong>
-                        {{ product.length }} × {{ product.width }} × {{ product.thickness }} mm
-                    </strong>
-                </div>
+                {# EDGE BAND → ONLY LENGTH #}
+                {% if product.category.name == "Edge Band" %}
+                    <div>
+                        <span>{% trans "Length" %}</span>
+                        <strong>{{ product.band_length }} m</strong>
+                    </div>
+
+                {# TABLE LEG → ONLY HEIGHT #}
+                {% elif product.category.name == "Table Leg" %}
+                    <div>
+                        <span>{% trans "Height" %}</span>
+                        <strong>{{ product.height }} m</strong>
+                    </div>
+
+                {# ALL OTHER PRODUCTS → LENGTH + WIDTH + THICKNESS #}
+                {% else %}
+                     <div>
+                        <span>{% trans "Dimensions" %}</span>
+                        <strong>
+                            {{ product.length }} × {{ product.width }} × {{ product.thickness }} mm
+                        </strong>
+                    </div>
+                {% endif %}
+
             </div>
+
 
             <!-- Back Button -->
             <a href="{% url 'products' %}" class="btn btn-outline-dark rounded-pill mt-5 px-4">
