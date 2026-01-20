@@ -1799,8 +1799,29 @@ img:not(.product-detail-img) {
 }
 
 
-img:not(.product-detail-img):not(.product-img) {
-    max-width: 100%;
-    height: auto;
-    display: block;
+@media (max-width: 768px) {
+    .product-detail-img {
+        width: 100% !important;
+        height: 100% !important;
+        object-fit: cover !important;
+    }
 }
+
+@media (max-width: 991px) {
+    .product-image-container {
+        height: 260px;
+        overflow: hidden;
+    }
+
+    .product-img {
+        width: 100% !important;
+        height: 100% !important;
+        object-fit: cover !important;
+        display: block;
+    }
+}
+
+img:not(.product-detail-img):not(.product-img) {
+    height: auto;
+}
+
