@@ -240,6 +240,9 @@ img:not(.product-detail-img):not(.product-img) {
 .product-card {
     border-radius: 12px;
     transition: all 0.4s ease;
+    border: 1px solid #e5e7eb;
+    background: #ffffff;
+    overflow: hidden;
 }
 
 .product-card:hover {
@@ -272,6 +275,23 @@ img:not(.product-detail-img):not(.product-img) {
 
 .product-image-container.gallery {
     position: relative;
+}
+
+.product-card .card-body {
+    padding: 16px;
+}
+
+.product-card .card-title {
+    font-size: 15px;
+    font-weight: 600;
+    color: #1a1a1a;
+    margin-bottom: 10px;
+    line-height: 1.4;
+    min-height: 42px;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
 }
 
 /* ================= CONTACT PAGE ================= */
@@ -559,27 +579,31 @@ img:not(.product-detail-img):not(.product-img) {
 .product-meta {
     display: flex;
     flex-wrap: wrap;
-    gap: 6px;
+    gap: 8px;
     font-size: 0.75rem;
     color: #666;
+    margin-bottom: 12px;
 }
 
 .meta-item {
     background: #f1f3f5;
-    padding: 3px 8px;
+    padding: 5px 10px;
     border-radius: 6px;
+    font-weight: 500;
+    line-height: 1.2;
 }
 
 .product-price {
-    font-size: 0.95rem;
+    font-size: 1.1rem;
     font-weight: 700;
-    color: #122942;
+    color: #000000;
+    margin-bottom: 8px;
 }
 
 .stock-badge {
     font-size: 0.7rem;
     font-weight: 700;
-    padding: 4px 8px;
+    padding: 5px 10px;
     border-radius: 20px;
     text-transform: uppercase;
     letter-spacing: 0.5px;
@@ -779,13 +803,17 @@ img:not(.product-detail-img):not(.product-img) {
     position: relative;
     overflow: hidden;
     border-radius: 6px;
-    height: 240px;
+    height: 280px;
+    min-height: 280px;
+    aspect-ratio: 1 / 1;
 }
 
 .best-seller-card img {
     width: 100%;
     height: 100%;
+    min-height: 280px;
     object-fit: cover;
+    object-position: center;
     border-radius: 6px;
     background: #e5e5e5;
     transition: transform 0.3s ease;
@@ -1537,27 +1565,57 @@ img:not(.product-detail-img):not(.product-img) {
     }
 
     .product-image-container {
-        height: 200px;
+        height: 240px;
         overflow: hidden;
     }
 
+    .product-card {
+        margin-bottom: 20px;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    }
+
     .product-card .card-body {
-        padding: 12px;
+        padding: 14px;
     }
 
     .product-card .card-title {
         font-size: 14px;
-        margin-bottom: 8px;
+        margin-bottom: 10px;
+        min-height: 40px;
+        font-weight: 600;
     }
 
     .product-meta {
+        font-size: 0.72rem;
+        gap: 6px;
+        margin-bottom: 10px;
+    }
+
+    .meta-item {
+        padding: 4px 8px;
         font-size: 0.7rem;
+    }
+
+    .product-price {
+        font-size: 1rem;
+        margin-bottom: 6px;
+    }
+
+    .stock-badge {
+        font-size: 0.65rem;
+        padding: 4px 8px;
     }
 }
 
 @media (max-width: 992px) {
     .best-seller-card {
         flex: 0 0 30%;
+        height: 280px;
+        min-height: 280px;
+    }
+
+    .best-seller-card img {
+        min-height: 280px;
     }
 }
 
@@ -1585,6 +1643,12 @@ img:not(.product-detail-img):not(.product-img) {
 
     .best-seller-card {
         flex: 0 0 calc(100% - 100px);
+        height: 280px;
+        min-height: 280px;
+    }
+
+    .best-seller-card img {
+        min-height: 280px;
     }
 
     /* Mobile slider buttons */
@@ -1750,23 +1814,47 @@ img:not(.product-detail-img):not(.product-img) {
 
     /* Product cards even smaller on very small screens */
     .product-image-container {
-        height: 180px;
+        height: 220px;
+    }
+
+    .product-card {
+        margin-bottom: 18px;
+        border-radius: 10px;
     }
 
     .product-card .card-body {
-        padding: 10px;
+        padding: 12px;
     }
 
     .product-card .card-title {
         font-size: 13px;
+        min-height: 38px;
+        font-weight: 600;
+        line-height: 1.3;
+    }
+
+    .product-meta {
+        gap: 5px;
+        margin-bottom: 8px;
     }
 
     .product-meta span {
-        font-size: 0.65rem;
+        font-size: 0.68rem;
+    }
+
+    .meta-item {
+        padding: 3px 7px;
+        font-size: 0.68rem;
     }
 
     .product-price {
-        font-size: 0.85rem;
+        font-size: 0.95rem;
+        margin-bottom: 5px;
+    }
+
+    .stock-badge {
+        font-size: 0.62rem;
+        padding: 3px 7px;
     }
 
     /* Extra small mobile - single full card view */
@@ -1780,6 +1868,12 @@ img:not(.product-detail-img):not(.product-img) {
 
     .best-seller-card {
         flex: 0 0 calc(100% - 90px);
+        height: 280px;
+        min-height: 280px;
+    }
+
+    .best-seller-card img {
+        min-height: 280px;
     }
 
     .best-seller-card .product-name {
