@@ -1825,3 +1825,22 @@ img:not(.product-detail-img):not(.product-img) {
     height: auto;
 }
 
+
+.best-seller-card {
+    flex: 0 0 22%;
+    position: relative;
+    overflow: hidden;
+    border-radius: 6px;
+    height: 240px; /* IMPORTANT */
+}
+
+.best-seller-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.best-seller-card .product-overlay {
+    position: absolute;
+    inset: 0;
+}
