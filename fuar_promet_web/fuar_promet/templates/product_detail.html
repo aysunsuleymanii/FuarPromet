@@ -87,14 +87,15 @@
 
             <!-- Stock -->
             {% if product.stock > 0 %}
-                <span class="stock-badge in-stock">
-                    {% trans "In Stock" %}
-                </span>
+            <span class="stock-badge in-stock">
+                {{ product.stock }} {% trans "in stock" %}
+            </span>
             {% else %}
-                <span class="stock-badge out-of-stock">
-                    {% trans "Out of Stock" %}
-                </span>
+            <span class="stock-badge out-of-stock">
+                {% trans "Out of stock" %}
+            </span>
             {% endif %}
+
 
             <!-- Description -->
             {% if product.description %}
