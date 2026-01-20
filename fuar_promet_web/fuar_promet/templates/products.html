@@ -176,13 +176,39 @@
                      data-stock="{% if product.stock > 0 %}in-stock{% else %}out-of-stock{% endif %}">
                     <a href="{% url 'product_detail' product.pk %}" class="text-decoration-none text-dark">
                         <div class="card product-card h-100">
-                            <div class="product-image-container">
+                            <div class="product-image-container gallery">
+
                                 {% if product.image %}
-                                <img src="{{ product.image.url }}" class="product-img">
-                                {% else %}
-                                <img src="{% static 'placeholder-elegant.png' %}" class="product-img">
+                                    <img src="{{ product.image.url }}"
+                                         class="product-img gallery-img active">
                                 {% endif %}
+
+                                {% for img in product.images.all %}
+                                    <img src="{{ img.image.url }}"
+                                         class="product-img gallery-img">
+                                {% endfor %}
+
+                                {% if product.images.all|length > 0 %}
+                                    <button class="gallery-btn prev"
+                                            type="button"
+                                            aria-label="Previous image">
+                                        <svg viewBox="0 0 24 24">
+                                            <path d="M15 18l-6-6 6-6"/>
+                                        </svg>
+                                    </button>
+
+                                    <button class="gallery-btn next"
+                                            type="button"
+                                            aria-label="Next image">
+                                        <svg viewBox="0 0 24 24">
+                                            <path d="M9 6l6 6-6 6"/>
+                                        </svg>
+                                    </button>
+                                {% endif %}
+
                             </div>
+
+
                             <div class="card-body d-flex flex-column">
                                 <h6 class="card-title">{{ product.name }}</h6>
                                 <div class="product-meta">
@@ -239,6 +265,40 @@ document.addEventListener('DOMContentLoaded', () => {
         allCategories.checked = true;
         applyFilters();
     });
+});
+
+
+    document.addEventListener("DOMContentLoaded", () => {
+
+    document.querySelectorAll(".product-image-container.gallery").forEach(gallery => {
+        const images = gallery.querySelectorAll(".gallery-img");
+        const prev = gallery.querySelector(".gallery-btn.prev");
+        const next = gallery.querySelector(".gallery-btn.next");
+
+        if (!images.length) return;
+
+        let index = 0;
+
+        const showImage = i => {
+            images.forEach(img => img.classList.remove("active"));
+            images[i].classList.add("active");
+        };
+
+        prev?.addEventListener("click", e => {
+            e.preventDefault();
+            e.stopPropagation(); // VERY IMPORTANT
+            index = (index - 1 + images.length) % images.length;
+            showImage(index);
+        });
+
+        next?.addEventListener("click", e => {
+            e.preventDefault();
+            e.stopPropagation(); // VERY IMPORTANT
+            index = (index + 1) % images.length;
+            showImage(index);
+        });
+    });
+
 });
 </script>
 
