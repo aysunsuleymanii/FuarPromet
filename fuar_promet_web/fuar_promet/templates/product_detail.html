@@ -35,13 +35,36 @@
 
         <!-- PRODUCT IMAGE -->
         <div class="col-lg-6">
-            <div class="product-image-card">
+           <div class="product-gallery">
+            <div class="gallery-image-wrapper">
+
                 {% if product.image %}
-                    <img src="{{ product.image.url }}" alt="{{ product.name }}" class="product-detail-img">
-                {% else %}
-                    <img src="{% static 'placeholder-elegant.png' %}" alt="{% trans 'No image available' %}">
+                    <img src="{{ product.image.url }}"
+                         class="product-detail-img gallery-img active">
                 {% endif %}
+
+                {% for img in product.images.all %}
+                    <img src="{{ img.image.url }}"
+                         class="product-detail-img gallery-img">
+                {% endfor %}
+
+                <button class="gallery-btn prev" aria-label="Previous image">
+                    <svg viewBox="0 0 24 24">
+                        <path d="M15 18l-6-6 6-6"/>
+                    </svg>
+                </button>
+
+                <button class="gallery-btn next" aria-label="Next image">
+                    <svg viewBox="0 0 24 24">
+                        <path d="M9 6l6 6-6 6"/>
+                    </svg>
+                </button>
+
+
             </div>
+        </div>
+
+
         </div>
 
         <!-- PRODUCT INFO -->
@@ -106,4 +129,29 @@
         </div>
     </div>
 </div>
+
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+    const images = document.querySelectorAll(".gallery-img");
+    const next = document.querySelector(".gallery-btn.next");
+    const prev = document.querySelector(".gallery-btn.prev");
+
+    let index = 0;
+
+    function showImage(i) {
+        images.forEach(img => img.classList.remove("active"));
+        images[i].classList.add("active");
+    }
+
+    next.addEventListener("click", () => {
+        index = (index + 1) % images.length;
+        showImage(index);
+    });
+
+    prev.addEventListener("click", () => {
+        index = (index - 1 + images.length) % images.length;
+        showImage(index);
+    });
+});
+</script>
 {% endblock %}

@@ -5,6 +5,11 @@ from fuar_promet.models import *
 
 # Register your models here.
 
+class ProductImageInline(admin.TabularInline):
+    model = ProductImage
+    extra = 1
+
+
 class CategoryAdmin(admin.ModelAdmin):
     list_display = ('name', 'parent')
     list_filter = ('parent',)
@@ -26,6 +31,8 @@ class ProductAdmin(admin.ModelAdmin):
     list_display = ('name', 'category', 'brand', 'price', 'stock')
     list_filter = ('category', 'brand')
     search_fields = ('name', 'code')
+
+    inlines = [ProductImageInline]
 
     def formfield_for_foreignkey(self, db_field, request, **kwargs):
         if db_field.name == "category":
