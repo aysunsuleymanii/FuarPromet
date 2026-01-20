@@ -12,24 +12,52 @@
     </div>
 </div>
 
-<div class="container">
+<!--<div class="container">-->
+<!--    <div class="row">-->
+<!--        <div class="col-4">-->
+<!--             <img-->
+<!--                src="{% static 'home2.png' %}"-->
+<!--                alt="Main Image 2"-->
+<!--                class="w-100 h-100"-->
+<!--                style="object-fit: cover;"-->
+<!--            >-->
+<!--        </div>-->
+<!--       <div class="col-8" style="min-height: 300px;">-->
+<!--            <img-->
+<!--                src="{% static 'home1.png' %}"-->
+<!--                alt="Main Image"-->
+<!--                class="w-100 h-100"-->
+<!--                style="object-fit: cover;"-->
+<!--            >-->
+<!--        </div>-->
+<!--    </div>-->
+<!--</div>-->
+
+<div class="container hero-slider">
     <div class="row">
-        <div class="col-4">
-             <img
-                src="{% static 'home2.png' %}"
-                alt="Main Image 2"
-                class="w-100 h-100"
-                style="object-fit: cover;"
-            >
+
+        <!-- LEFT COLUMN -->
+        <div class="col-4 col-12 slider-col">
+            <div class="image-slider" data-slider="left">
+                <img class="slide active" src="{% static 'home2.png' %}">
+                <img class="slide" src="{% static 'home4.png' %}">
+                <img class="slide" src="{% static 'home8.png' %}">
+
+                <div class="dots"></div>
+            </div>
         </div>
-       <div class="col-8" style="min-height: 300px;">
-            <img
-                src="{% static 'home1.png' %}"
-                alt="Main Image"
-                class="w-100 h-100"
-                style="object-fit: cover;"
-            >
+
+        <!-- RIGHT COLUMN -->
+        <div class="col-8 col-12 slider-col">
+            <div class="image-slider" data-slider="right">
+                <img class="slide active" src="{% static 'home1.png' %}">
+                <img class="slide" src="{% static 'home3.png' %}">
+                <img class="slide" src="{% static 'home7.png' %}">
+
+                <div class="dots"></div>
+            </div>
         </div>
+
     </div>
 </div>
 
@@ -332,6 +360,34 @@
 
     revealItems.forEach(el => observer.observe(el));
 
+
+
+
+
+    document.querySelectorAll('.image-slider').forEach(slider => {
+    const slides = slider.querySelectorAll('.slide');
+    const dotsContainer = slider.querySelector('.dots');
+    let index = 0;
+
+    // Create dots
+    slides.forEach((_, i) => {
+        const dot = document.createElement('span');
+        if (i === 0) dot.classList.add('active');
+        dotsContainer.appendChild(dot);
+    });
+
+    const dots = dotsContainer.querySelectorAll('span');
+
+    setInterval(() => {
+        slides[index].classList.remove('active');
+        dots[index].classList.remove('active');
+
+        index = (index + 1) % slides.length;
+
+        slides[index].classList.add('active');
+        dots[index].classList.add('active');
+    }, 1500);
+});
 </script>
 {% endblock %}
 
