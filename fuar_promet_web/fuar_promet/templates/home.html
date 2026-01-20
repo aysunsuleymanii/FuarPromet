@@ -12,24 +12,32 @@
     </div>
 </div>
 
-<!--<div class="container">-->
+
+<!--<div class="container hero-slider">-->
 <!--    <div class="row">-->
-<!--        <div class="col-4">-->
-<!--             <img-->
-<!--                src="{% static 'home2.png' %}"-->
-<!--                alt="Main Image 2"-->
-<!--                class="w-100 h-100"-->
-<!--                style="object-fit: cover;"-->
-<!--            >-->
+
+<!--        &lt;!&ndash; LEFT COLUMN &ndash;&gt;-->
+<!--        <div class="col-4 slider-col">-->
+<!--            <div class="image-slider" data-slider="left">-->
+<!--                <img class="slide active" src="{% static 'home2.png' %}">-->
+<!--                <img class="slide" src="{% static 'home4.png' %}">-->
+<!--                <img class="slide" src="{% static 'home8.png' %}">-->
+
+<!--                <div class="dots"></div>-->
+<!--            </div>-->
 <!--        </div>-->
-<!--       <div class="col-8" style="min-height: 300px;">-->
-<!--            <img-->
-<!--                src="{% static 'home1.png' %}"-->
-<!--                alt="Main Image"-->
-<!--                class="w-100 h-100"-->
-<!--                style="object-fit: cover;"-->
-<!--            >-->
+
+<!--        &lt;!&ndash; RIGHT COLUMN &ndash;&gt;-->
+<!--        <div class="col-8 slider-col">-->
+<!--            <div class="image-slider" data-slider="right">-->
+<!--                <img class="slide active" src="{% static 'home1.png' %}">-->
+<!--                <img class="slide" src="{% static 'home3.png' %}">-->
+<!--                <img class="slide" src="{% static 'home7.png' %}">-->
+
+<!--                <div class="dots"></div>-->
+<!--            </div>-->
 <!--        </div>-->
+
 <!--    </div>-->
 <!--</div>-->
 
@@ -37,23 +45,21 @@
     <div class="row">
 
         <!-- LEFT COLUMN -->
-        <div class="col-4 col-12 slider-col">
+        <div class="col-lg-4 col-12 slider-col">
             <div class="image-slider" data-slider="left">
                 <img class="slide active" src="{% static 'home2.png' %}">
                 <img class="slide" src="{% static 'home4.png' %}">
                 <img class="slide" src="{% static 'home8.png' %}">
-
                 <div class="dots"></div>
             </div>
         </div>
 
         <!-- RIGHT COLUMN -->
-        <div class="col-8 col-12 slider-col">
+        <div class="col-lg-8 col-12 slider-col">
             <div class="image-slider" data-slider="right">
                 <img class="slide active" src="{% static 'home1.png' %}">
                 <img class="slide" src="{% static 'home3.png' %}">
                 <img class="slide" src="{% static 'home7.png' %}">
-
                 <div class="dots"></div>
             </div>
         </div>
