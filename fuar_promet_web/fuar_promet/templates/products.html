@@ -124,7 +124,7 @@
                     </div>
 
 
-                    <!-- BRAND -->
+                   <!-- BRAND -->
                     <div class="filter-block">
                         <button class="filter-toggle" data-bs-toggle="collapse"
                                 data-bs-target="#brandCollapse" aria-expanded="false">
@@ -135,9 +135,12 @@
                         </button>
                         <div class="collapse" id="brandCollapse">
                             <div class="filter-options">
-                                <label class="filter-option"><input type="checkbox" class="brand-filter" value="kastamonu entegre"><span class="filter-label">Kastamonu Entegre</span></label>
-                                <label class="filter-option"><input type="checkbox" class="brand-filter" value="starwood"><span class="filter-label">Starwood</span></label>
-                                <label class="filter-option"><input type="checkbox" class="brand-filter" value="swiss krono"><span class="filter-label">Swiss Krono</span></label>
+                                {% for brand in brands %}
+                                <label class="filter-option">
+                                    <input type="checkbox" class="brand-filter" value="{{ brand.name|lower }}">
+                                    <span class="filter-label">{{ brand.name }}</span>
+                                </label>
+                                {% endfor %}
                             </div>
                         </div>
                     </div>
