@@ -128,7 +128,8 @@ LOCALE_PATHS = [os.path.join(BASE_DIR, 'locale')]
 # https://docs.djangoproject.com/en/6.0/howto/static-files/
 
 STATIC_URL = '/static/'
-STATIC_ROOT = os.path.join(BASE_DIR.parent, 'static')  # Outside project directory
+# STATIC_ROOT = os.path.join(BASE_DIR.parent, 'static')  # Outside project directory
+STATIC_ROOT = BASE_DIR / 'staticfiles'
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]  # Your app's static files
 
 MEDIA_URL = '/media/'
@@ -145,13 +146,13 @@ if not DEBUG:
     SECURE_BROWSER_XSS_FILTER = True
     SECURE_CONTENT_TYPE_NOSNIFF = True
     X_FRAME_OPTIONS = 'DENY'
-    SECURE_HSTS_SECONDS = 31536000  # 1 year
+    SECURE_HSTS_SECONDS = 31536000
     SECURE_HSTS_INCLUDE_SUBDOMAINS = True
     SECURE_HSTS_PRELOAD = True
 
     # Add your PythonAnywhere domain here
     CSRF_TRUSTED_ORIGINS = [
-        'https://www.fuarpromet.com.mk',
-        'https://fuarpromet.com.mk',
+        'https://www.fuarpromet.com',
+        'https://fuarpromet.com',
         'https://webapp-2910853.pythonanywhere.com'
     ]
